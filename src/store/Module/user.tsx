@@ -16,3 +16,9 @@ export const menus = atom<Array<Router>>({
   default: [],
   effects_UNSTABLE: [persistAtom]
 })
+
+export const token = atom<string>({
+  key: 'token',
+  default: '',
+  effects_UNSTABLE: [persistAtom]
+})

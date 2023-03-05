@@ -4,10 +4,12 @@ import Layout from '@/layout'
 import { Router } from './routerDto'
 import { deepCopy } from '@/utils/deepCopy'
 import Login from '@/views/Login'
+const mo: any = import.meta.glob('../views/**/*.tsx') // 在vite中必须这样动态引入所有组件
 
 // 快速导入工具函数
 const lazyLoad = (moduleName: string) => {
-  const Module = lazy(() => import(/* @vite-ignore */ `../views/${moduleName}`))
+  console.log(mo)
+  const Module = lazy(mo[`../views/${moduleName}/index.tsx`])
   return (
     <Suspense>
       <Module></Module>

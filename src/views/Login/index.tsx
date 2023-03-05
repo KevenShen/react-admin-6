@@ -1,12 +1,15 @@
 import { Button, Checkbox, Form, Input } from 'antd'
 import { userLogin } from '@/api/login'
 import './index.less'
-import { useRecoilCallback, useRecoilState } from 'recoil'
-import { userInfo } from '@/store/Module/user'
+import { useSetRecoilState } from 'recoil'
+import { token, userInfo } from '@/store/Module/user'
+import { useNavigate } from 'react-router-dom'
 
 function Login() {
-  const [text, setText] = useRecoilState(userInfo)
+  const setText = useSetRecoilState(userInfo)
+  const setTokenRec = useSetRecoilState(token)
 
+  const navigate = useNavigate()
   const onFinishFailed = (errorInfo: any) => {
     console.log('Failed:', errorInfo)
   }
@@ -16,9 +19,9 @@ function Login() {
       username: values.username,
       password: values.password
     })
-
     setText(data.user)
-    console.log(text, data)
+    setTokenRec(data.token)
+    navigate('/')
   }
   return (
     <div className="login">
