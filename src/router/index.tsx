@@ -62,6 +62,12 @@ const R: Array<Router> = [
         name: '关于',
         isMenu: true,
         element: 'About'
+      },
+      {
+        path: '/chatgpt',
+        name: 'ChatGPT',
+        isMenu: true,
+        element: 'ChatGPT'
       }
     ]
   },
