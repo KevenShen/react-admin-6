@@ -8,7 +8,6 @@ const mo: any = import.meta.glob('../views/**/*.tsx') // 在vite中必须这样�
 
 // 快速导入工具函数
 const lazyLoad = (moduleName: string) => {
-  console.log(mo)
   const Module = lazy(mo[`../views/${moduleName}/index.tsx`])
   return (
     <Suspense>

@@ -23,12 +23,14 @@ const App: React.FC = () => {
             onClick: () => setCollapsed(!collapsed)
           })}
         </Header>
-        <TransitionGroup>
+        <TransitionGroup style={{ flex: 1 }}>
           <CSSTransition timeout={500} key={location.pathname} classNames="fade" exit={false}>
             <Content
               style={{
-                margin: '24px 16px',
-                minHeight: 280
+                padding: '16px',
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column'
               }}>
               <Outlet />
             </Content>

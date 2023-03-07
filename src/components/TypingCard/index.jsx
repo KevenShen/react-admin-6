@@ -26,7 +26,9 @@ const Panl = (props) => {
         />
         <div ref={outputEl} />
       </Card>
-      <div className="app-card">{children}</div>
+      <div className="app-card" style={{ flex: 1 }}>
+        {children}
+      </div>
     </>
   )
 }

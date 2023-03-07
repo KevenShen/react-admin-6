@@ -13,7 +13,6 @@ function App() {
     }
   }, [RR])
   const element = useRoutes(rout)
-  console.log(rout)
   return (
     <RecoilRoot>
       <Auth>{element}</Auth>

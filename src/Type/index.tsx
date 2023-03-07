@@ -14,3 +14,12 @@ export interface User {
   avatar?: string //头像
   role?: Array<number> // 用户角色
 }
+
+export interface Mes {
+  role?: 'user' | 'assistant'
+  content: string
+  time: string | number
+}
+export interface chatcmpl {
+  choices: Array<Mes>
+}
