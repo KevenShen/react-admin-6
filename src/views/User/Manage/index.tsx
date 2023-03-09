@@ -8,32 +8,30 @@ const { Column } = Table
 const cardContent =
   '在这里，你可以对系统中的用户进行管理，例如添加一个新用户，或者修改系统中已经存在的用户。'
 const Manage = () => {
-  // const from = useRef(null)
+  const from = useRef(null)
   const [list, setList] = useState([])
   const getList = async () => {
     console.log('发请求')
-    const { data } = await getUserList({
-      param: {},
-      pageInfo: {
-        pageNum: 1,
-        pageSize: 10
-      }
-    })
-    setList(data)
+    // const { data } = await getUserList({
+    //   param: {},
+    //   pageInfo: {
+    //     pageNum: 1,
+    //     pageSize: 10
+    //   }
+    // })
+    // setList(data)
   }
-  console.log('用户管理渲染')
   // 挂载时运行一次
   useEffect(() => {
     getList()
   }, [])
-
   return (
     <Panl title="用户管理" source={cardContent}>
       <Space wrap>
         <Button type="primary" onClick={getList}>
           查询
         </Button>
-        <Button type="primary" className="btn-pink">
+        <Button type="primary" onClick={() => from?.current.showModal()} className="btn-pink">
           新增
         </Button>
       </Space>
@@ -67,7 +65,7 @@ const Manage = () => {
           )}
         />
       </Table>
-      {/* <Edituser ref={from}></Edituser> */}
+      <Edituser ref={from}></Edituser>
     </Panl>
   )
 }

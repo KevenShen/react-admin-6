@@ -3,16 +3,8 @@ import { forwardRef, useEffect, useImperativeHandle, useState } from 'react'
 import { getUserList } from '@/api/user'
 import type { SelectProps } from 'antd'
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons'
-import type { UploadChangeParam } from 'antd/es/upload'
-import type { RcFile, UploadFile, UploadProps } from 'antd/es/upload/interface'
+import type { RcFile } from 'antd/es/upload/interface'
 import { upload } from '@/api/upload'
-
-const getBase64 = (img: RcFile, callback: (url: string) => void) => {
-  const reader = new FileReader()
-  console.log(img)
-  reader.addEventListener('load', () => callback(reader.result as string))
-  reader.readAsDataURL(img)
-}
 
 const Edituser = (props, ref) => {
   const [form] = Form.useForm()
