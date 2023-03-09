@@ -1,22 +1,22 @@
 import { lazy, Suspense } from 'react'
-import { Navigate, RouteObject } from 'react-router-dom'
+import { Navigate, useRoutes } from 'react-router-dom'
 import Layout from '@/layout'
 import { Router } from './routerDto'
-import { deepCopy } from '@/utils/deepCopy'
 import Login from '@/views/Login'
+import routerModules, { res } from './modules'
 const mo: any = import.meta.glob('../views/**/*.tsx') // 在vite中必须这样动态引入所有组件
 
 // 快速导入工具函数
 const lazyLoad = (moduleName: string) => {
   const Module = lazy(mo[`../views/${moduleName}/index.tsx`])
   return (
-    <Suspense>
+    <Suspense fallback={<div />}>
       <Module></Module>
     </Suspense>
   )
 }
 
-// 定义路由
+// 菜单
 const R: Array<Router> = [
   {
     path: '/',
@@ -81,6 +81,7 @@ const R: Array<Router> = [
 
 // 默认路由
 const defRouter: Array<Router> = [
+  // 需要在路由最前面添加 优先匹配 重定向
   {
     path: '/',
     name: '',
@@ -130,6 +131,15 @@ export const filterAsyncRouter = (menus: Array<Router> = []) => {
   return addRouter
 }
 
-export const RR = deepCopy(R)
+const asyncRouter = filterAsyncRouter(R)
 
-export default defRouter
+const rootRouter = [...defRouter, ...asyncRouter]
+
+export const RR = R
+
+const RouterCom = () => {
+  const routes = useRoutes(rootRouter)
+  return routes
+}
+
+export default RouterCom

@@ -24,7 +24,7 @@ function ChatGPT() {
     setValue('') // 重置
     setGptMes(arr)
     setLod(true)
-    const gptData = gptMes.map((item) => {
+    const gptData = arr.map((item) => {
       return { role: item.role, content: item.content }
     })
     // 发请求时不需要time否则chatgpt会报错

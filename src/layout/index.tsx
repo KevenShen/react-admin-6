@@ -13,6 +13,7 @@ const App: React.FC = () => {
   const {
     token: { colorBgContainer }
   } = theme.useToken()
+  console.log('Layout 渲染')
   return (
     <Layout>
       <Sider sidebarCollapsed={collapsed}></Sider>

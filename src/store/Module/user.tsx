@@ -3,7 +3,7 @@ import { atom } from 'recoil'
 
 import { recoilPersist } from 'recoil-persist'
 //Recoil持久化存储，默认为localStroge
-const { persistAtom } = recoilPersist()
+const { persistAtom } = recoilPersist({ key: 'user' })
 
 export const userInfo = atom<User>({
   key: 'userInfo',

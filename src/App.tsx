@@ -1,21 +1,14 @@
-import { useEffect, useState } from 'react'
-import { useRoutes } from 'react-router-dom'
 import '@/styles/index.less'
-import defRouter, { filterAsyncRouter, mergeRouter, RR } from '@/router'
+import Router from '@/router'
 import { RecoilRoot } from 'recoil'
 import Auth from './Auth'
 function App() {
-  const [rout, setrout] = useState(defRouter)
-  useEffect(() => {
-    if (RR) {
-      const end = mergeRouter(filterAsyncRouter(RR))
-      setrout(end)
-    }
-  }, [RR])
-  const element = useRoutes(rout)
+  console.log('APP 渲染')
   return (
     <RecoilRoot>
-      <Auth>{element}</Auth>
+      <Auth>
+        <Router></Router>
+      </Auth>
     </RecoilRoot>
   )
 }

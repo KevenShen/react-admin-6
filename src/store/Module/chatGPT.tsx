@@ -10,7 +10,7 @@ const htmlString = (message: string) => {
   return md.render(message)
 }
 import { recoilPersist } from 'recoil-persist'
-const { persistAtom } = recoilPersist({ key: 'myReact' })
+const { persistAtom } = recoilPersist({ key: 'chatgpt' })
 
 export const chatGPTMes = atom<Mes[]>({
   key: 'chatGPTMes',

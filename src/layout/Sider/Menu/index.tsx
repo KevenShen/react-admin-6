@@ -30,7 +30,6 @@ const Menus = () => {
   const menus = renderMenuItem(menuConfig)
   const onClick = (item: any) => {
     navigate(item.key)
-    console.log(item)
   }
   return (
     <Menu theme={theme} mode="inline" inlineCollapsed={true} onClick={onClick} items={menus}></Menu>
