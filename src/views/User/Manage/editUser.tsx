@@ -119,9 +119,10 @@ const Edituser = (props, ref) => {
 
   // 弹窗关闭
   const handleCancel = () => {
+    setLoading(false)
+    setImageUrl('')
     setOpen(false)
     form.resetFields()
-    setImageUrl('')
   }
 
   return (
