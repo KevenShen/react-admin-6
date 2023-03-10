@@ -1,5 +1,3 @@
-import React, { memo } from 'react'
-
 import { Layout } from 'antd'
 import Sider from './Sider'
 import Content from './Content'
@@ -7,7 +5,7 @@ import Header from './Header'
 
 const App: React.FC = () => {
   return (
-    <Layout>
+    <Layout hasSider>
       <Sider></Sider>
       <Layout className="site-layout">
         <Header></Header>

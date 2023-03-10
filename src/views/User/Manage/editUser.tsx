@@ -1,5 +1,5 @@
 import { Form, Input, Modal, Select, Upload, message } from 'antd'
-import { forwardRef, useEffect, useImperativeHandle, useState } from 'react'
+import { forwardRef, memo, useEffect, useImperativeHandle, useState } from 'react'
 import { getUserList } from '@/api/user'
 import type { SelectProps } from 'antd'
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons'
@@ -7,6 +7,7 @@ import type { RcFile } from 'antd/es/upload/interface'
 import { upload } from '@/api/upload'
 
 const Edituser = (props, ref) => {
+  console.log('编辑弹窗刷新')
   const [form] = Form.useForm()
   const [loading, setLoading] = useState(false)
   const [imageUrl, setImageUrl] = useState<string>()
@@ -21,17 +22,17 @@ const Edituser = (props, ref) => {
     }
   }))
 
-  const getList = async () => {
-    const { data } = await getUserList({
-      param: {},
-      pageInfo: {
-        pageNum: 1,
-        pageSize: 10
-      }
-    })
-    setList(data)
-  }
-  // 提交表单
+  // const getList = async () => {
+  //   const { data } = await getUserList({
+  //     param: {},
+  //     pageInfo: {
+  //       pageNum: 1,
+  //       pageSize: 10
+  //     }
+  //   })
+  //   setList(data)
+  // }
+  // 弹窗按钮提交表单
   const handleOk = async () => {
     try {
       const values = await form.validateFields()
@@ -48,21 +49,27 @@ const Edituser = (props, ref) => {
     // }, 2000)
   }
 
-  const options: SelectProps['options'] = []
-
-  for (let i = 10; i < 36; i++) {
-    options.push({
-      label: i.toString(36) + i,
-      value: i.toString(36) + i
-    })
-  }
+  const options: SelectProps['options'] = [
+    {
+      label: '管理员',
+      value: '1'
+    },
+    {
+      label: '用户',
+      value: '2'
+    },
+    {
+      label: '体验用户',
+      value: '3'
+    }
+  ]
 
   // 选择角色
   const handleChange = (value: string[]) => {
     console.log(`selected ${value}`)
   }
 
-  // 选择头像
+  // 选择头像时显示加载动画
   const uploadButton = (
     <div>
       {loading ? <LoadingOutlined /> : <PlusOutlined />}
@@ -80,13 +87,12 @@ const Edituser = (props, ref) => {
       message.error('文件不能超过2MB!')
     }
     if (isJpgOrPng && isLt2M) {
-      console.log(111)
+      setImageUrl('') // 清除之前的图片地址
       setLoading(true) // 等待上传loading
       setFile(file)
     }
     return false
   }
-
   useEffect(() => {
     if (file) {
       handleImgChange()
@@ -96,25 +102,28 @@ const Edituser = (props, ref) => {
   // 上传头像
   const handleImgChange = async () => {
     const formdata = new FormData()
-    console.log(file, '准备请求')
     formdata.append('avatar', file)
     const { data } = await upload(formdata)
     setLoading(false)
     setImageUrl(data)
   }
 
-  // 关闭
-  const handleCancel = () => {
-    setOpen(false)
+  // from表单选择文件
+  const normFile = (e: any) => {
+    console.log('Upload event:', e)
+    if (Array.isArray(e)) {
+      return e
+    }
+    return e?.fileList
   }
 
-  useEffect(() => {
-    if (!open) {
-      form.resetFields()
-    }
-  }, [open])
+  // 弹窗关闭
+  const handleCancel = () => {
+    setOpen(false)
+    form.resetFields()
+    setImageUrl('')
+  }
 
-  console.log('Manage 渲染')
   return (
     <Modal
       forceRender
@@ -164,6 +173,8 @@ const Edituser = (props, ref) => {
         <Form.Item
           label="用户头像"
           name="avatar"
+          valuePropName="fileList"
+          getValueFromEvent={normFile}
           rules={[{ required: false, message: 'Please input your avatar!' }]}>
           <Upload
             name="avatar"
@@ -172,7 +183,7 @@ const Edituser = (props, ref) => {
             showUploadList={false}
             beforeUpload={beforeUpload}>
             {imageUrl ? (
-              <img src={imageUrl} alt="avatar" style={{ width: '100%' }} />
+              <img src={imageUrl} alt="avatar" style={{ width: '100%', height: '100%' }} />
             ) : (
               uploadButton
             )}
@@ -183,4 +194,4 @@ const Edituser = (props, ref) => {
   )
 }
 
-export default forwardRef(Edituser) // 必须使用forwardRef包裹组件才能暴露方法
+export default memo(forwardRef(Edituser)) // 必须使用forwardRef包裹组件才能暴露方法

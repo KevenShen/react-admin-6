@@ -8,18 +8,20 @@ const { Column } = Table
 const cardContent =
   '在这里，你可以对系统中的用户进行管理，例如添加一个新用户，或者修改系统中已经存在的用户。'
 const Manage = () => {
+  console.log('Manage 渲染')
+
   const from = useRef(null)
   const [list, setList] = useState([])
   const getList = async () => {
     console.log('发请求')
-    // const { data } = await getUserList({
-    //   param: {},
-    //   pageInfo: {
-    //     pageNum: 1,
-    //     pageSize: 10
-    //   }
-    // })
-    // setList(data)
+    const { data } = await getUserList({
+      param: {},
+      pageInfo: {
+        pageNum: 1,
+        pageSize: 10
+      }
+    })
+    setList(data)
   }
   // 挂载时运行一次
   useEffect(() => {

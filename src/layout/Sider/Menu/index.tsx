@@ -1,4 +1,4 @@
-import { Component, useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import type { MenuProps, MenuTheme } from 'antd'
 import { Menu } from 'antd'
@@ -31,10 +31,7 @@ const Menus = () => {
   const onClick = (item: any) => {
     navigate(item.key)
   }
-  return (
-    <Menu theme={theme} mode="inline" inlineCollapsed={true} onClick={onClick} items={menus}></Menu>
-  )
+  return <Menu theme={theme} mode="inline" onClick={onClick} items={menus}></Menu>
 }
 
-// export default connect((state) => state.user, { addTag })(withRouter(Meun))
 export default Menus
