@@ -3,6 +3,7 @@ export interface Router {
   path: string
   children?: Array<Router>
   element: any
-  isMenu: boolean
+  component?: any
+  isShow: boolean
   redirectTo?: any
 }

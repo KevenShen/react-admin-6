@@ -22,3 +22,14 @@ export const token = atom<string>({
   default: '',
   effects_UNSTABLE: [persistAtom]
 })
+
+export const menu = atom<[]>({
+  key: 'menu',
+  default: [],
+  effects_UNSTABLE: [persistAtom]
+})
+export const router = atom({
+  key: 'router',
+  default: [],
+  effects_UNSTABLE: [persistAtom]
+})

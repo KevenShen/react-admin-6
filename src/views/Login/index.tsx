@@ -1,14 +1,14 @@
 import { Button, Checkbox, Form, Input } from 'antd'
-import { userLogin } from '@/api/login'
+import { getMenu, userLogin } from '@/api/login'
 import './index.less'
 import { useSetRecoilState } from 'recoil'
-import { token, userInfo } from '@/store/Module/user'
+import { menu, token, userInfo, router } from '@/store/Module/user'
 import { useNavigate } from 'react-router-dom'
 
 function Login() {
   const setText = useSetRecoilState(userInfo)
   const setTokenRec = useSetRecoilState(token)
-
+  const setmenu = useSetRecoilState(menu)
   const navigate = useNavigate()
   const onFinishFailed = (errorInfo: any) => {
     console.log('Failed:', errorInfo)
@@ -21,6 +21,8 @@ function Login() {
     })
     setText(data.user)
     setTokenRec(data.token)
+    const { data: menu } = await getMenu()
+    setmenu(menu)
     navigate('/')
   }
   return (

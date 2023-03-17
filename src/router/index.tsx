@@ -1,15 +1,11 @@
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useMemo } from 'react'
 import { Navigate, useRoutes } from 'react-router-dom'
 import { Router } from './routerDto'
 import Login from '@/views/Login'
 import Layout from '@/layout'
-// import About from '@/views/About'
-// import ChatGPT from '@/views/ChatGPT'
-// import Home from '@/views/Home'
-// import User from '@/views/User'
-// import Manage from '@/views/User/Manage'
-// import Menu from '@/views/User/Menu'
-// import Role from '@/views/User/Role'
+import { menu } from '@/store/Module/user'
+import { useRecoilValue } from 'recoil'
+
 const Mod: any = import.meta.glob('../views/**/*.tsx') // 在vite中必须这样动态引入所有组件
 
 // 快速导入工具函数
@@ -28,37 +24,37 @@ const R: Array<Router> = [
   {
     path: '/',
     name: '',
-    isMenu: false,
+    isShow: false,
     element: 'Layout',
     children: [
       {
         path: '/home',
         name: '主页',
-        isMenu: true,
+        isShow: true,
         element: 'Home'
       },
       {
         path: '/user',
         name: 'CRM管理',
-        isMenu: true,
+        isShow: true,
         element: 'User',
         children: [
           {
             path: '/user/manage',
             name: '用户管理',
-            isMenu: true,
+            isShow: true,
             element: 'User/Manage'
           },
           {
             path: '/user/role',
             name: '角色管理',
-            isMenu: true,
+            isShow: true,
             element: 'User/Role'
           },
           {
             path: '/user/menu',
             name: '菜单管理',
-            isMenu: true,
+            isShow: true,
             element: 'User/Menu'
           }
         ]
@@ -66,13 +62,13 @@ const R: Array<Router> = [
       {
         path: '/about',
         name: '关于',
-        isMenu: true,
+        isShow: true,
         element: 'About'
       },
       {
         path: '/chatgpt',
         name: 'ChatGPT',
-        isMenu: true,
+        isShow: true,
         element: 'ChatGPT'
       }
     ]
@@ -80,103 +76,56 @@ const R: Array<Router> = [
   {
     path: '*',
     name: '',
-    isMenu: false,
+    isShow: false,
     element: '',
     redirectTo: '/'
   }
 ]
 
 // 默认路由
-const defRouter: Array<Router> = [
+export const defRouter: Array<Router> = [
   // 需要在路由最前面添加 优先匹配 重定向
   {
     path: '/',
     name: '',
-    isMenu: false,
+    isShow: false,
     element: <Navigate to={'/home'} />
   },
   {
     path: '/login',
     name: '登录',
-    isMenu: false,
+    isShow: false,
     element: <Login></Login>
   }
-  // {
-  //   path: '/',
-  //   name: '',
-  //   isMenu: false,
-  //   element: <Layout></Layout>,
-  //   children: [
-  //     {
-  //       path: '/home',
-  //       name: '主页',
-  //       isMenu: true,
-  //       element: <Home></Home>
-  //     },
-  //     {
-  //       path: '/user',
-  //       name: 'CRM管理',
-  //       isMenu: true,
-  //       element: <User></User>
-  //     },
-  //     {
-  //       path: '/about',
-  //       name: '关于',
-  //       isMenu: true,
-  //       element: <About></About>
-  //     },
-  //     {
-  //       path: '/chatgpt',
-  //       name: 'ChatGPT',
-  //       isMenu: true,
-  //       element: <ChatGPT></ChatGPT>
-  //     },
-  //     {
-  //       path: '/user/manage',
-  //       name: '用户管理',
-  //       isMenu: true,
-  //       element: <Manage></Manage>
-  //     },
-  //     {
-  //       path: '/user/role',
-  //       name: '角色管理',
-  //       isMenu: true,
-  //       element: <Role></Role>
-  //     },
-  //     {
-  //       path: '/user/menu',
-  //       name: '菜单管理',
-  //       isMenu: true,
-  //       element: <Menu></Menu>
-  //     }
-  //   ]
-  // }
 ]
-
 // 合并路由
-export const mergeRouter = (router: Array<Router> = []) => {
-  return [...defRouter, ...router]
+const marRouter = (arr) => {
+  return [
+    ...defRouter,
+    {
+      path: '/',
+      name: '',
+      isShow: false,
+      element: <Layout></Layout>,
+      children: arr
+    }
+  ]
 }
 
 // 根据菜单筛选路由
-export const filterAsyncRouter = (menus: Array<Router> = []) => {
+const filterAsyncRouter = (menus: Array<Router> = []) => {
   const addRouter: Array<Router> = []
-
   menus.forEach((item: Router) => {
     const route: Router = {
       name: item.name,
       path: item.path,
-      isMenu: item.isMenu,
+      isShow: item.isShow,
       element: '',
       redirectTo: item.redirectTo
     }
-    if (item.element) {
-      if (item.element === 'Layout') {
-        route.element = <Layout></Layout>
-      } else {
-        route.element = lazyLoad(item.element)
-      }
-    }
+
+    route.element = lazyLoad(item.component)
+
     if (item.children) {
       route.children = filterAsyncRouter(item.children)
     }
@@ -188,14 +137,17 @@ export const filterAsyncRouter = (menus: Array<Router> = []) => {
   return addRouter
 }
 
-const asyncRouter = filterAsyncRouter(R)
-
-const rootRouter = [...defRouter, ...asyncRouter]
-
 export const RR = R
 
 const RouterCom = () => {
-  const routes = useRoutes(rootRouter)
+  const menuArr = useRecoilValue(menu)
+
+  const r = useMemo(() => {
+    const asyncArr = filterAsyncRouter(menuArr)
+    return marRouter(asyncArr)
+  }, [menuArr]) // 只有在变化的时候才去重新生成路由
+
+  const routes = useRoutes(r)
   return routes
 }
 

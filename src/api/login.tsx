@@ -15,3 +15,10 @@ export function userLogout(data) {
     data
   })
 }
+
+export function getMenu() {
+  return request({
+    url: '/menu/list',
+    method: 'get'
+  })
+}
