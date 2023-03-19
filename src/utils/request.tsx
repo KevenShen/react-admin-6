@@ -58,16 +58,18 @@ service.interceptors.response.use(
   (error) => {
     console.log('错误' + error) // for debug
     console.log(error.response) // for debug
-    const { status, statusText } = error.response
-    if (status === 401) {
+    const {
+      data: { message: text, statusCode }
+    } = error.response
+    if (statusCode === 401) {
       message.error({
-        content: '请重新登入!'
+        content: text
       })
       localStorage.removeItem('user')
       window.location.hash = '/login' // 使用hash来实现不刷新页面重新登入
     } else {
       message.error({
-        content: statusText
+        content: text
       })
     }
     return Promise.reject(error)
