@@ -4,11 +4,15 @@ import type { MenuProps, MenuTheme } from 'antd'
 import { Menu } from 'antd'
 import { RR } from '@/router'
 import { Router } from '@/router/routerDto'
+import { useRecoilValue } from 'recoil'
+import { menu } from '@/store/Module/user'
+
 type MenuItem = Required<MenuProps>['items'][number]
 const Menus = () => {
   const navigate = useNavigate()
+  const menuArr = useRecoilValue(menu)
+
   const [theme] = useState<MenuTheme>('light')
-  const menuConfig = RR[0].children
 
   //用于渲染路由，通过递归实现任意层级渲染
   const renderMenuItem = (menuArr: Array<Router>): Array<MenuItem> => {
@@ -27,7 +31,8 @@ const Menus = () => {
     })
     return ret
   }
-  const menus = renderMenuItem(menuConfig)
+  const menus = renderMenuItem(menuArr)
+  console.log(menus)
   const onClick = (item: any) => {
     navigate(item.key)
   }

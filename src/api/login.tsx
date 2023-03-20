@@ -22,6 +22,12 @@ export function getMenu() {
     method: 'get'
   })
 }
+export function getMenuById(id) {
+  return request({
+    url: `/menu/list/${id}`,
+    method: 'get'
+  })
+}
 
 export function getRole() {
   return request({

@@ -1,5 +1,5 @@
 import { Button, Checkbox, Form, Input } from 'antd'
-import { getMenu, userLogin } from '@/api/login'
+import { getMenu, getMenuById, userLogin } from '@/api/login'
 import './index.less'
 import { useSetRecoilState } from 'recoil'
 import { menu, token, userInfo, router } from '@/store/Module/user'
@@ -21,7 +21,7 @@ function Login() {
     })
     setText(data.user)
     setTokenRec(data.token)
-    const { data: menu } = await getMenu()
+    const { data: menu } = await getMenuById(data.user.role)
     setmenu(menu)
     navigate('/')
   }
