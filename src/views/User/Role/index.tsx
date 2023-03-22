@@ -51,7 +51,7 @@ const Role = () => {
     '在这里，你可以对系统中的用户进行管理，例如添加一个新用户，或者修改系统中已经存在的用户。'
   return (
     <Panl title="用户管理" source={cardContent}>
-      <div className="role">
+      <div className="app-card role">
         <div className="role-info">
           <Row justify="space-between" align="middle">
             <Col>角色列表</Col>

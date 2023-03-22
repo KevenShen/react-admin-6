@@ -1,0 +1,31 @@
+// @import '~@fullcalendar/core/main.css';
+// @import '~@fullcalendar/daygrid/main.css';
+.calendar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  .eventList {
+    flex: 1;
+    margin-right: 10px;
+    .ant-card {
+      margin-bottom: 10px;
+    }
+  }
+  .demo-app-main {
+    width: 70%;
+  }
+  .icon-block {
+    display: flex;
+    .son {
+      width: 30px;
+      height: 30px;
+      border-radius: 4px;
+      margin-right: 4px;
+      cursor: pointer;
+      transform: linear 0.3s;
+      &:hover {
+        transform: rotate(30deg);
+      }
+    }
+  }
+}

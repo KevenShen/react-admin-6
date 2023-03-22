@@ -22,33 +22,35 @@ const Menu = () => {
     '在这里，你可以对系统中的用户进行管理，例如添加一个新用户，或者修改系统中已经存在的用户。'
   return (
     <Panl title="用户管理" source={cardContent}>
-      <Space wrap>
-        <Button type="primary" onClick={getList}>
-          查询
-        </Button>
-        {/* <Button type="primary" onClick={() => from?.current.showModal()} className="btn-pink">
+      <div className="app-card">
+        <Space wrap>
+          <Button type="primary" onClick={getList}>
+            查询
+          </Button>
+          {/* <Button type="primary" onClick={() => from?.current.showModal()} className="btn-pink">
           新增
         </Button> */}
-      </Space>
-      <Table bordered dataSource={list} rowKey={(record) => record.id}>
-        <Column title="菜单名称" dataIndex="name" key="name" />
-        <Column title="图标" dataIndex="icon" key="icon" />
-        <Column title="路径" dataIndex="path" key="path" />
-        <Column title="组件路径" dataIndex="component" key="component" />
-        <Column title="显示" dataIndex="isShow" key="isShow" />
-        <Column title="排序" dataIndex="sort_num" key="sort_num" />
+        </Space>
+        <Table bordered dataSource={list} rowKey={(record) => record.id}>
+          <Column title="菜单名称" dataIndex="name" key="name" />
+          <Column title="图标" dataIndex="icon" key="icon" />
+          <Column title="路径" dataIndex="path" key="path" />
+          <Column title="组件路径" dataIndex="component" key="component" />
+          <Column title="显示" dataIndex="isShow" key="isShow" />
+          <Column title="排序" dataIndex="sort_num" key="sort_num" />
 
-        <Column
-          title="操作"
-          key="action"
-          render={(_: any, record: DataType) => (
-            <Space size="middle">
-              <Button type="primary" shape="circle" icon={<EditOutlined />} />
-              <Button type="primary" danger shape="circle" icon={<DeleteOutlined />} />
-            </Space>
-          )}
-        />
-      </Table>
+          <Column
+            title="操作"
+            key="action"
+            render={(_: any, record: DataType) => (
+              <Space size="middle">
+                <Button type="primary" shape="circle" icon={<EditOutlined />} />
+                <Button type="primary" danger shape="circle" icon={<DeleteOutlined />} />
+              </Space>
+            )}
+          />
+        </Table>
+      </div>
     </Panl>
   )
 }

@@ -42,7 +42,7 @@ function ChatGPT() {
 
   return (
     <Panl title="openAI 交互" source={'ChatGPT模型'}>
-      <div className="chat">
+      <div className="app-card chat">
         {/* 内容盒子 */}
         <Box></Box>
         <Search

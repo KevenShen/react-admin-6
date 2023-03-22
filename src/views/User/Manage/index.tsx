@@ -29,20 +29,22 @@ const Manage = () => {
   }, [])
   return (
     <Panl title="用户管理" source={cardContent}>
-      <Space wrap>
-        <Button type="primary" onClick={getList}>
-          查询
-        </Button>
-        <Button type="primary" onClick={() => from?.current.showModal()} className="btn-pink">
-          新增
-        </Button>
-      </Space>
-      <Table bordered dataSource={list} rowKey={(record) => record.id}>
-        <Column title="用户名称" dataIndex="username" key="username" />
-        <Column title="用户昵称" dataIndex="nickname" key="nickname" />
-        <Column title="头像" dataIndex="avatar" key="avatar" />
-        <Column title="角色" dataIndex="role" key="role" />
-        {/* <Column
+      <div className="app-card">
+        {' '}
+        <Space wrap>
+          <Button type="primary" onClick={getList}>
+            查询
+          </Button>
+          <Button type="primary" onClick={() => from?.current.showModal()} className="btn-pink">
+            新增
+          </Button>
+        </Space>
+        <Table bordered dataSource={list} rowKey={(record) => record.id}>
+          <Column title="用户名称" dataIndex="username" key="username" />
+          <Column title="用户昵称" dataIndex="nickname" key="nickname" />
+          <Column title="头像" dataIndex="avatar" key="avatar" />
+          <Column title="角色" dataIndex="role" key="role" />
+          {/* <Column
           title="角色"
           dataIndex="role"
           key="role"
@@ -56,18 +58,19 @@ const Manage = () => {
             </>
           )}
         /> */}
-        <Column
-          title="操作"
-          key="action"
-          render={(_: any, record: DataType) => (
-            <Space size="middle">
-              <Button type="primary" shape="circle" icon={<EditOutlined />} />
-              <Button type="primary" danger shape="circle" icon={<DeleteOutlined />} />
-            </Space>
-          )}
-        />
-      </Table>
-      <Edituser ref={from}></Edituser>
+          <Column
+            title="操作"
+            key="action"
+            render={(_: any, record: DataType) => (
+              <Space size="middle">
+                <Button type="primary" shape="circle" icon={<EditOutlined />} />
+                <Button type="primary" danger shape="circle" icon={<DeleteOutlined />} />
+              </Space>
+            )}
+          />
+        </Table>
+        <Edituser ref={from}></Edituser>
+      </div>
     </Panl>
   )
 }

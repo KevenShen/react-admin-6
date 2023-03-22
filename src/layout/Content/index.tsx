@@ -7,7 +7,7 @@ const Contents = () => {
   const location = useLocation()
   const current = useOutlet()
   return (
-    <TransitionGroup style={{ flex: 1 }}>
+    <TransitionGroup style={{ flex: 1, overflowY: 'scroll' }}>
       <CSSTransition timeout={500} key={location.pathname} classNames="fade" exit={false}>
         <Content
           style={{

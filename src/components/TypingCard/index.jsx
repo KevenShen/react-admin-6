@@ -3,7 +3,7 @@ import { Card } from 'antd'
 import Typing from '@/utils/typing'
 
 const Panl = (props) => {
-  const { title, source, children } = props
+  const { title, source, children, className } = props
 
   const sourceEl = useRef()
   const outputEl = useRef()
@@ -17,7 +17,7 @@ const Panl = (props) => {
     typing.start()
   }, [])
   return (
-    <>
+    <div className="card-wrapper">
       <Card bordered={false} className="card-item" title={title}>
         <div
           style={{ display: 'none' }}
@@ -26,10 +26,10 @@ const Panl = (props) => {
         />
         <div ref={outputEl} />
       </Card>
-      <div className="app-card" style={{ flex: 1 }}>
+      <div className={className} style={{ flex: 1 }}>
         {children}
       </div>
-    </>
+    </div>
   )
 }
 

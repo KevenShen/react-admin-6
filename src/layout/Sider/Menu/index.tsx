@@ -23,7 +23,7 @@ const Menus = () => {
       menu.title = item.name
       if (item.children) {
         const children = renderMenuItem(item.children)
-        menu.children = children
+        if (children.length) menu.children = children
       } else {
         menu.path = item.path
       }

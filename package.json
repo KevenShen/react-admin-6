@@ -11,6 +11,11 @@
     "lint": "eslint src --ext .ts,.tsx,.js,.jsx --fix"
   },
   "dependencies": {
+    "@fullcalendar/core": "^6.1.5",
+    "@fullcalendar/daygrid": "^6.1.5",
+    "@fullcalendar/interaction": "^6.1.5",
+    "@fullcalendar/react": "^6.1.5",
+    "@fullcalendar/timegrid": "^6.1.5",
     "antd": "^5.2.3",
     "bcryptjs": "^2.4.3",
     "clipboard": "^2.0.11",
