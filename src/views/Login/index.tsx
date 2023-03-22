@@ -1,5 +1,5 @@
 import { Button, Checkbox, Form, Input } from 'antd'
-import { getMenu, getMenuById, userLogin } from '@/api/login'
+import { getMenuById, userLogin } from '@/api/login'
 import './index.less'
 import { useSetRecoilState } from 'recoil'
 import { menu, token, userInfo, router } from '@/store/Module/user'
