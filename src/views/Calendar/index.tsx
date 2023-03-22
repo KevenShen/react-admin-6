@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import {
   EventApi,
   DateSelectArg,
@@ -6,7 +6,7 @@ import {
   EventContentArg,
   formatDate
 } from '@fullcalendar/core'
-import { Card } from 'antd'
+import { Card, Input, InputRef } from 'antd'
 import zhLocale from '@fullcalendar/core/locales/zh-cn'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
@@ -14,16 +14,27 @@ import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import './index.less'
 import Panl from '@/components/TypingCard'
+
+const { Search } = Input
+
 const Calendar = () => {
   const [taskList, setTaskList] = useState([])
   const [taskInput, setTaskInput] = useState('')
   const [calendarEvents, setCalendarEvents] = useState([])
+  const searchBox = useRef<InputRef>(null)
   const [colorList] = useState(['#007bff', '#ffc107', '#dc3545', '#6c757d'])
   const handleAddTask = () => {
     if (taskInput) {
       setTaskList([...taskList, taskInput])
       setTaskInput('')
     }
+  }
+  const onSearch = () => {}
+  const colorClick = (item: string) => {
+    console.log(item)
+    const child: any = searchBox?.current?.input?.parentNode?.nextSibling?.firstChild
+    child.style.backgroundColor = item
+    console.dir(child)
   }
 
   const handleEventDrop = (info) => {
@@ -51,9 +62,23 @@ const Calendar = () => {
         <Card title="添加事件" bordered={false} style={{ width: 300 }}>
           <div className="icon-block">
             {colorList.map((item) => {
-              return <p key={item} className="son" style={{ backgroundColor: item }}></p>
+              return (
+                <p
+                  onClick={() => colorClick(item)}
+                  key={item}
+                  className="son"
+                  style={{ backgroundColor: item }}></p>
+              )
             })}
           </div>
+          <Search
+            ref={searchBox}
+            placeholder="添加事件"
+            allowClear
+            enterButton="添加"
+            size="large"
+            onSearch={onSearch}
+          />
         </Card>
       </div>
       <div className="app-card demo-app-main">

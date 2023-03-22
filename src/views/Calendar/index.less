@@ -6,6 +6,7 @@
   align-items: flex-start;
   .eventList {
     flex: 1;
+    margin-top: 10px;
     margin-right: 10px;
     .ant-card {
       margin-bottom: 10px;
@@ -22,10 +23,13 @@
       border-radius: 4px;
       margin-right: 4px;
       cursor: pointer;
-      transform: linear 0.3s;
+      transition: transform linear 0.3s, -webkit-transform linear 0.3s;
       &:hover {
         transform: rotate(30deg);
       }
     }
+  }
+  .ant-input-group-wrapper {
+    margin-top: 10px;
   }
 }
