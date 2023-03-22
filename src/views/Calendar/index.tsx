@@ -14,69 +14,98 @@ import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import './index.less'
 import Panl from '@/components/TypingCard'
+import { Color, TaskList } from '@/Type'
 
 const { Search } = Input
 
 const Calendar = () => {
-  const [taskList, setTaskList] = useState([])
-  const [taskInput, setTaskInput] = useState('')
+  const [taskList, setTaskList] = useState<Array<TaskList>>([])
+  const [currentColor, setCurrentColor] = useState<Color>({
+    color: '#007bff',
+    name: 'health',
+    describe: '正常'
+  })
   const [calendarEvents, setCalendarEvents] = useState([])
   const searchBox = useRef<InputRef>(null)
-  const [colorList] = useState(['#007bff', '#ffc107', '#dc3545', '#6c757d'])
-  const handleAddTask = () => {
-    if (taskInput) {
-      setTaskList([...taskList, taskInput])
-      setTaskInput('')
+  const [colorList] = useState<Array<Color>>([
+    {
+      color: '#007bff',
+      name: 'health',
+      describe: '正常'
+    },
+    {
+      color: '#ffc107',
+      name: 'same',
+      describe: '一般'
+    },
+    {
+      color: '#dc3545',
+      name: 'warn',
+      describe: '警告'
+    },
+    {
+      color: '#6c757d',
+      name: 'ordinary',
+      describe: '普通'
     }
+  ])
+  // const handleAddTask = () => {
+  //   if (taskInput) {
+  //     setTaskList([...taskList, taskInput])
+  //     setTaskInput('')
+  //   }
+  // }
+  const onSearch = (item: string) => {
+    setTaskList([...taskList, { ...currentColor, value: item }])
+    console.log(taskList)
   }
-  const onSearch = () => {}
-  const colorClick = (item: string) => {
-    console.log(item)
+  const colorClick = (item: Color) => {
+    setCurrentColor(item)
     const child: any = searchBox?.current?.input?.parentNode?.nextSibling?.firstChild
-    child.style.backgroundColor = item
-    console.dir(child)
+    child.style.backgroundColor = item.color
   }
 
-  const handleEventDrop = (info) => {
-    const newEvents = [...calendarEvents]
-    newEvents.push({
-      title: info.draggedEl.innerText,
-      start: info.date
-    })
-    setCalendarEvents(newEvents)
-  }
+  // const handleEventDrop = (info) => {
+  //   const newEvents = [...calendarEvents]
+  //   newEvents.push({
+  //     title: info.draggedEl.innerText,
+  //     start: info.date
+  //   })
+  //   setCalendarEvents(newEvents)
+  // }
 
   return (
     <Panl title="工作日历" source={'工作日历'} className="calendar">
       <div className="eventList">
         <Card title="今天" bordered={false} style={{ width: 300 }}>
-          <p>Card content</p>
-          <p>Card content</p>
-          <p>Card content</p>
+          {taskList.map((item) => {
+            return (
+              <p key={item.color} className="task" style={{ backgroundColor: item.color }}>
+                {item.value}
+              </p>
+            )
+          })}
         </Card>
-        <Card title="昨天" bordered={false} style={{ width: 300 }}>
-          <p>Card content</p>
-          <p>Card content</p>
-          <p>Card content</p>
-        </Card>
+        <Card title="昨天" bordered={false} style={{ width: 300 }}></Card>
         <Card title="添加事件" bordered={false} style={{ width: 300 }}>
           <div className="icon-block">
             {colorList.map((item) => {
               return (
                 <p
                   onClick={() => colorClick(item)}
-                  key={item}
+                  key={item.name}
                   className="son"
-                  style={{ backgroundColor: item }}></p>
+                  style={{ backgroundColor: item.color }}></p>
               )
             })}
           </div>
           <Search
             ref={searchBox}
+            className={currentColor.name}
             placeholder="添加事件"
             allowClear
             enterButton="添加"
-            size="large"
+            size="middle"
             onSearch={onSearch}
           />
         </Card>

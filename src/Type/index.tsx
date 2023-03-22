@@ -23,3 +23,16 @@ export interface Mes {
 export interface chatcmpl {
   choices: Array<Mes>
 }
+
+export interface Color {
+  color: string
+  name: string // 颜色类型
+  describe: string // 描述
+}
+// 任务列表
+export interface TaskList {
+  color: string
+  name: string // 颜色类型
+  describe: string // 描述
+  value: string // 事件描述
+}
