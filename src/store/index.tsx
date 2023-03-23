@@ -1,3 +1,1 @@
-import * as user from './Module/user'
-
-export { user }
+export const loc = ['user', 'comStore', 'chatgpt']

@@ -437,3 +437,25 @@ input {
     // overflow-y: scroll;
   }
 }
+
+.user-center {
+  p {
+    line-height: 36px;
+    padding: 0 10px;
+    border-radius: 8px;
+    white-space: nowrap;
+    cursor: pointer;
+    text-align: center;
+    transition: border-color 0.3s, background 0.3s, padding 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+    &:hover {
+      background-color: #e6f4ff;
+      color: #1677ff;
+    }
+  }
+  p.danger:hover {
+    &:hover {
+      background-color: #fff;
+      color: #ff4d4f;
+    }
+  }
+}

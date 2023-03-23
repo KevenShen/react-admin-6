@@ -2,16 +2,14 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import type { MenuProps, MenuTheme } from 'antd'
 import { Menu } from 'antd'
-import { RR } from '@/router'
 import { Router } from '@/router/routerDto'
-import { useRecoilValue } from 'recoil'
 import { menu } from '@/store/Module/user'
+import { useRecoilValue } from 'recoil'
 
 type MenuItem = Required<MenuProps>['items'][number]
 const Menus = () => {
   const navigate = useNavigate()
   const menuArr = useRecoilValue(menu)
-
   const [theme] = useState<MenuTheme>('light')
 
   //用于渲染路由，通过递归实现任意层级渲染
