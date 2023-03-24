@@ -1,23 +1,31 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
   EventApi,
   DateSelectArg,
   EventClickArg,
   EventContentArg,
+  EventChangeArg,
   formatDate
 } from '@fullcalendar/core'
-import { Card, Input, InputRef } from 'antd'
+import { Card, Collapse, Input, InputRef } from 'antd'
 import zhLocale from '@fullcalendar/core/locales/zh-cn'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
+import { SettingOutlined } from '@ant-design/icons'
 import './index.less'
 import Panl from '@/components/TypingCard'
 import { Color, TaskList } from '@/Type'
-
 const { Search } = Input
-
+const { Panel } = Collapse
+const recursiveQuery = (e): Date => {
+  if ([...e.classList].includes('fc-daygrid-day')) {
+    return new Date(e.getAttribute('data-date'))
+  } else {
+    return recursiveQuery(e.parentElement)
+  }
+}
 const Calendar = () => {
   const [taskList, setTaskList] = useState<Array<TaskList>>([])
   const [currentColor, setCurrentColor] = useState<Color>({
@@ -25,8 +33,43 @@ const Calendar = () => {
     name: 'health',
     describe: '正常'
   })
-  const [calendarEvents, setCalendarEvents] = useState([])
   const searchBox = useRef<InputRef>(null)
+  const [events, setEvents] = useState<EventApi[]>([]) // 事件列表
+  const [dragging, setDragging] = useState<any>({}) // 当前选择的
+  const [selectEve, setSelectEve] = useState<DateSelectArg>() // 当前选择的
+  const calendarRef = useRef(null)
+  const handleDragStart = (e, item) => {
+    setDragging(item)
+  }
+
+  useEffect(() => {
+    colorClick(currentColor)
+  }, [])
+
+  // 增加事件
+  const handleDrop = (e) => {
+    e.preventDefault()
+    const id = new Date().toISOString()
+    const ev: EventApi = {
+      id,
+      title: dragging.value,
+      backgroundColor: dragging.color,
+      borderColor: dragging.color
+    }
+    if (selectEve) {
+      ev.start = selectEve.startStr
+      ev.end = selectEve.endStr
+      ev.allDay = selectEve.allDay
+      setSelectEve(null)
+    } else {
+      ev.start = recursiveQuery(e.target)
+      ev.allDay = true
+    }
+    if (dragging) {
+      setEvents([...events, ev])
+      setDragging(null)
+    }
+  }
   const [colorList] = useState<Array<Color>>([
     {
       color: '#007bff',
@@ -49,44 +92,94 @@ const Calendar = () => {
       describe: '普通'
     }
   ])
-  // const handleAddTask = () => {
-  //   if (taskInput) {
-  //     setTaskList([...taskList, taskInput])
-  //     setTaskInput('')
-  //   }
-  // }
+  // 添加事件到列表
   const onSearch = (item: string) => {
     setTaskList([...taskList, { ...currentColor, value: item }])
-    console.log(taskList)
   }
+  // 选择颜色
   const colorClick = (item: Color) => {
     setCurrentColor(item)
     const child: any = searchBox?.current?.input?.parentNode?.nextSibling?.firstChild
     child.style.backgroundColor = item.color
+    const span: any = searchBox?.current?.input?.parentNode
+    span.style.borderColor = item.color
   }
 
-  // const handleEventDrop = (info) => {
-  //   const newEvents = [...calendarEvents]
-  //   newEvents.push({
-  //     title: info.draggedEl.innerText,
-  //     start: info.date
-  //   })
-  //   setCalendarEvents(newEvents)
-  // }
+  // 日历选择
+  const handleSelect = (selectInfo: DateSelectArg) => {
+    setSelectEve(selectInfo)
+    const calendarApi = selectInfo.view.calendar
+    // calendarApi.unselect() // 清除页面选中的框框
+    // calendarApi.addEvent({
+    //   id: Math.random() + '',
+    //   title: '事件事件',
+    //   start: selectInfo.startStr,
+    //   end: selectInfo.endStr,
+    //   allDay: selectInfo.allDay,
+    //   classNames: ['ggg']
+    // })
+  }
+  // 日历渲染
+  const renderEventContent = (eventContent: EventContentArg) => {
+    console.log(eventContent)
+    return (
+      <div
+        style={{
+          backgroundColor: eventContent.backgroundColor,
+          width: '100%',
+          borderRadius: '3px',
+          color: '#fff'
+        }}>
+        <b>{eventContent.timeText}</b>
+        &nbsp;
+        <i>{eventContent.event.title}</i>
+      </div>
+    )
+  }
+
+  // 点击删除事件
+  const handleEventClick = (clickInfo: EventClickArg) => {
+    // clickInfo.event.remove()
+    // setEvents(events.filter((item) => item.id !== clickInfo.event.id))
+  }
+  // 事件改变 -- 日历拖拽时更新
+  const eventChange = (event: EventChangeArg) => {
+    const arr = events.map((item) => {
+      if (item.id === event.event.id) {
+        item.start = event.event.start
+        console.log(item, event.event.start)
+        return item
+      } else {
+        return item
+      }
+    })
+    setEvents(arr)
+  }
 
   return (
     <Panl title="工作日历" source={'工作日历'} className="calendar">
-      <div className="eventList">
-        <Card title="今天" bordered={false} style={{ width: 300 }}>
-          {taskList.map((item) => {
-            return (
-              <p key={item.color} className="task" style={{ backgroundColor: item.color }}>
-                {item.value}
-              </p>
-            )
-          })}
-        </Card>
-        <Card title="昨天" bordered={false} style={{ width: 300 }}></Card>
+      <div className="eventList" style={{ position: 'sticky', top: '10px' }}>
+        <Collapse defaultActiveKey={['1']} expandIconPosition="end">
+          <Panel header="今天" key="1" style={{ width: 300 }}>
+            {taskList.map((item) => {
+              return (
+                <p
+                  key={item.color}
+                  draggable
+                  onDragStart={(e) => handleDragStart(e, item)}
+                  className="task"
+                  style={{ backgroundColor: item.color }}>
+                  {item.value}
+                </p>
+              )
+            })}
+          </Panel>
+        </Collapse>
+        {/* <Card title="回收站" bordered={false} style={{ width: 300 }}>
+          <div onDrop={handleDelDrop} onDragOver={(e) => e.preventDefault()}>
+            烦烦烦威威温热微软
+          </div>
+        </Card> */}
         <Card title="添加事件" bordered={false} style={{ width: 300 }}>
           <div className="icon-block">
             {colorList.map((item) => {
@@ -110,8 +203,12 @@ const Calendar = () => {
           />
         </Card>
       </div>
-      <div className="app-card demo-app-main">
+      <div
+        className="app-card demo-app-main"
+        onDrop={handleDrop}
+        onDragOver={(e) => e.preventDefault()}>
         <FullCalendar
+          ref={calendarRef}
           plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
           headerToolbar={{
             left: 'prev,next today',
@@ -124,12 +221,18 @@ const Calendar = () => {
           selectMirror={true}
           dayMaxEvents={true}
           locale={zhLocale}
+          events={events}
+          eventContent={renderEventContent} // custom render function
+          eventClick={handleEventClick}
+          select={handleSelect}
+          eventChange={eventChange} // 事件改变时触发
+          // eventReceive={eventChange} // 创建新事件触发
           // weekends={weekendsVisible}
           // initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
           // select={handleDateSelect}
           // eventContent={renderEventContent} // custom render function
           // eventClick={handleEventClick}
-          // eventsSet={handleEvents} // called after events are initialized/added/changed/removed
+          // eventsSet={handleEvents} // 事件改变时自动修改事件  不能与events={events} 同时使用
           /* you can update a remote database when these fire:
             eventAdd={function(){}}
             eventChange={function(){}}
