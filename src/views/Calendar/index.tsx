@@ -4,9 +4,9 @@ import {
   DateSelectArg,
   EventClickArg,
   EventContentArg,
-  EventChangeArg,
-  formatDate
+  EventChangeArg
 } from '@fullcalendar/core'
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import { Card, Collapse, Input, InputRef } from 'antd'
 import zhLocale from '@fullcalendar/core/locales/zh-cn'
 import FullCalendar from '@fullcalendar/react'
@@ -17,6 +17,7 @@ import { SettingOutlined } from '@ant-design/icons'
 import './index.less'
 import Panl from '@/components/TypingCard'
 import { Color, TaskList } from '@/Type'
+import CollCard from '@/components/CollCard'
 const { Search } = Input
 const { Panel } = Collapse
 const recursiveQuery = (e): Date => {
@@ -159,22 +160,20 @@ const Calendar = () => {
   return (
     <Panl title="工作日历" source={'工作日历'} className="calendar">
       <div className="eventList" style={{ position: 'sticky', top: '10px' }}>
-        <Collapse defaultActiveKey={['1']} expandIconPosition="end">
-          <Panel header="今天" key="1" style={{ width: 300 }}>
-            {taskList.map((item) => {
-              return (
-                <p
-                  key={item.color}
-                  draggable
-                  onDragStart={(e) => handleDragStart(e, item)}
-                  className="task"
-                  style={{ backgroundColor: item.color }}>
-                  {item.value}
-                </p>
-              )
-            })}
-          </Panel>
-        </Collapse>
+        <CollCard title="今天" style={{ width: 300 }}>
+          {taskList.map((item) => {
+            return (
+              <p
+                key={item.color}
+                draggable
+                onDragStart={(e) => handleDragStart(e, item)}
+                className="task"
+                style={{ backgroundColor: item.color }}>
+                {item.value}
+              </p>
+            )
+          })}
+        </CollCard>
         {/* <Card title="回收站" bordered={false} style={{ width: 300 }}>
           <div onDrop={handleDelDrop} onDragOver={(e) => e.preventDefault()}>
             烦烦烦威威温热微软

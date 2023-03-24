@@ -2,7 +2,7 @@ import { useRef, useEffect } from 'react'
 import { Card } from 'antd'
 import Typing from '@/utils/typing'
 
-const Panl = (props) => {
+const Panl = (props: { title: any; source: any; children: any; className: any }) => {
   const { title, source, children, className } = props
 
   const sourceEl = useRef()
@@ -31,11 +31,6 @@ const Panl = (props) => {
       </div>
     </div>
   )
-}
-
-Panl.defaultProps = {
-  title: '',
-  source: ''
 }
 
 export default Panl
