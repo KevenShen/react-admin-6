@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import {
   EventApi,
   DateSelectArg,
@@ -6,7 +6,7 @@ import {
   EventContentArg,
   EventChangeArg
 } from '@fullcalendar/core'
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
+import Sortable from 'sortablejs'
 import { Card, Collapse, Input, InputRef } from 'antd'
 import zhLocale from '@fullcalendar/core/locales/zh-cn'
 import FullCalendar from '@fullcalendar/react'
@@ -20,6 +20,7 @@ import { Color, TaskList } from '@/Type'
 import CollCard from '@/components/CollCard'
 const { Search } = Input
 const { Panel } = Collapse
+
 const recursiveQuery = (e): Date => {
   if ([...e.classList].includes('fc-daygrid-day')) {
     return new Date(e.getAttribute('data-date'))
@@ -28,6 +29,7 @@ const recursiveQuery = (e): Date => {
   }
 }
 const Calendar = () => {
+  console.log('悬案')
   const [taskList, setTaskList] = useState<Array<TaskList>>([])
   const [currentColor, setCurrentColor] = useState<Color>({
     color: '#007bff',
@@ -35,20 +37,43 @@ const Calendar = () => {
     describe: '正常'
   })
   const searchBox = useRef<InputRef>(null)
-  const [events, setEvents] = useState<EventApi[]>([]) // 事件列表
+  const [events, setEvents] = useState<EventApi[]>([]) // 事件列
   const [dragging, setDragging] = useState<any>({}) // 当前选择的
   const [selectEve, setSelectEve] = useState<DateSelectArg>() // 当前选择的
+  const [dstDom, setDstDom] = useState() // 目标dom
   const calendarRef = useRef(null)
-  const handleDragStart = (e, item) => {
-    setDragging(item)
+
+  const handleDragOnEnd = (event: any) => {
+    const dstDom = event.originalEvent // 目标dom
+    setDstDom(dstDom)
+  }
+
+  const handleDragOnStart = (event: any) => {
+    const srcDom = event.item // 原dom
+    const dra = { value: srcDom.innerHTML, color: srcDom.style.backgroundColor }
+    setDragging(dra)
   }
 
   useEffect(() => {
+    if (dstDom) {
+      handleDrop(dstDom)
+    }
+  }, [dstDom])
+  useEffect(() => {
+    const sortable = document.getElementById('sortable')
+    new Sortable(sortable, {
+      animation: 150,
+      forceFallback: true,
+      fallbackClass: 'dragged-item',
+      onEnd: handleDragOnEnd,
+      onStart: handleDragOnStart
+    })
     colorClick(currentColor)
   }, [])
 
   // 增加事件
   const handleDrop = (e) => {
+    if (!e) return
     e.preventDefault()
     const id = new Date().toISOString()
     const ev: EventApi = {
@@ -68,7 +93,7 @@ const Calendar = () => {
     }
     if (dragging) {
       setEvents([...events, ev])
-      setDragging(null)
+      // setDragging(null)
     }
   }
   const [colorList] = useState<Array<Color>>([
@@ -122,7 +147,6 @@ const Calendar = () => {
   }
   // 日历渲染
   const renderEventContent = (eventContent: EventContentArg) => {
-    console.log(eventContent)
     return (
       <div
         style={{
@@ -148,7 +172,6 @@ const Calendar = () => {
     const arr = events.map((item) => {
       if (item.id === event.event.id) {
         item.start = event.event.start
-        console.log(item, event.event.start)
         return item
       } else {
         return item
@@ -161,18 +184,15 @@ const Calendar = () => {
     <Panl title="工作日历" source={'工作日历'} className="calendar">
       <div className="eventList" style={{ position: 'sticky', top: '10px' }}>
         <CollCard title="今天" style={{ width: 300 }}>
-          {taskList.map((item) => {
-            return (
-              <p
-                key={item.color}
-                draggable
-                onDragStart={(e) => handleDragStart(e, item)}
-                className="task"
-                style={{ backgroundColor: item.color }}>
-                {item.value}
-              </p>
-            )
-          })}
+          <div id="sortable">
+            {taskList.map((item) => {
+              return (
+                <p key={item.color} className="task" style={{ backgroundColor: item.color }}>
+                  {item.value}
+                </p>
+              )
+            })}
+          </div>
         </CollCard>
         {/* <Card title="回收站" bordered={false} style={{ width: 300 }}>
           <div onDrop={handleDelDrop} onDragOver={(e) => e.preventDefault()}>
@@ -202,10 +222,7 @@ const Calendar = () => {
           />
         </Card>
       </div>
-      <div
-        className="app-card demo-app-main"
-        onDrop={handleDrop}
-        onDragOver={(e) => e.preventDefault()}>
+      <div id="sortable2" className="app-card demo-app-main">
         <FullCalendar
           ref={calendarRef}
           plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
