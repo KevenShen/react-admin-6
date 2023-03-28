@@ -1,10 +1,9 @@
-import React from 'react'
-import logo from '@/assets/logo.svg'
+import logo from '@/assets/images/logo.png'
 import './index.less'
 const Logo = () => {
   return (
     <div className="sidebar-logo-container">
-      <img src={logo} className="sidebar-logo" alt="logo" />
+      <img src={logo} className="sidebar-logo" alt="" />
     </div>
   )
 }

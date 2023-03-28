@@ -1,4 +1,5 @@
-import { Router, User } from '@/Type'
+import { Router, TaskList, User } from '@/Type'
+import { EventApi } from '@fullcalendar/core'
 import { atom } from 'recoil'
 
 import { recoilPersist } from 'recoil-persist'
@@ -27,8 +28,15 @@ export const menu = atom<[]>({
   default: [],
   effects_UNSTABLE: [persistAtom]
 })
+
 export const router = atom({
   key: 'router',
+  default: [],
+  effects_UNSTABLE: [persistAtom]
+})
+
+export const calendar = atom<Array<EventApi>>({
+  key: 'calendar',
   default: [],
   effects_UNSTABLE: [persistAtom]
 })

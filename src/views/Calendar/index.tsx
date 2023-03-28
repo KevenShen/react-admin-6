@@ -7,19 +7,20 @@ import {
   EventChangeArg
 } from '@fullcalendar/core'
 import Sortable from 'sortablejs'
-import { Card, Collapse, Input, InputRef } from 'antd'
+import { Card, Input, InputRef } from 'antd'
 import zhLocale from '@fullcalendar/core/locales/zh-cn'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
-import { SettingOutlined } from '@ant-design/icons'
 import './index.less'
 import Panl from '@/components/TypingCard'
 import { Color, TaskList } from '@/Type'
 import CollCard from '@/components/CollCard'
+import { useRecoilState } from 'recoil'
+import { calendar } from '@/store/Module/user'
+
 const { Search } = Input
-const { Panel } = Collapse
 
 const recursiveQuery = (e): Date => {
   if ([...e.classList].includes('fc-daygrid-day')) {
@@ -29,15 +30,14 @@ const recursiveQuery = (e): Date => {
   }
 }
 const Calendar = () => {
-  console.log('悬案')
-  const [taskList, setTaskList] = useState<Array<TaskList>>([])
+  const [taskList, setTaskList] = useState([])
   const [currentColor, setCurrentColor] = useState<Color>({
     color: '#007bff',
     name: 'health',
     describe: '正常'
   })
   const searchBox = useRef<InputRef>(null)
-  const [events, setEvents] = useState<EventApi[]>([]) // 事件列
+  const [events, setEvents] = useRecoilState<EventApi[]>(calendar) // 事件列
   const [dragging, setDragging] = useState<any>({}) // 当前选择的
   const [selectEve, setSelectEve] = useState<DateSelectArg>() // 当前选择的
   const [dstDom, setDstDom] = useState() // 目标dom
@@ -183,7 +183,7 @@ const Calendar = () => {
   return (
     <Panl title="工作日历" source={'工作日历'} className="calendar">
       <div className="eventList" style={{ position: 'sticky', top: '10px' }}>
-        <CollCard title="今天" style={{ width: 300 }}>
+        <CollCard title="任务清单" style={{ width: 300 }}>
           <div id="sortable">
             {taskList.map((item) => {
               return (

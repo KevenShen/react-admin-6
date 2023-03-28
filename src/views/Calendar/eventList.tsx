@@ -4,7 +4,7 @@ import { TaskList } from '@/Type'
 const EventList = (props) => {
   const { taskList } = props
   return (
-    <CollCard title="今天" style={{ width: 300 }}>
+    <CollCard title="任务清单" style={{ width: 300 }}>
       <div id="sortable">
         {taskList.map((item: TaskList) => {
           return (
