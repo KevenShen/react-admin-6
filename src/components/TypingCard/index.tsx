@@ -2,7 +2,7 @@ import { useRef, useEffect } from 'react'
 import { Card } from 'antd'
 import Typing from '@/utils/typing'
 
-const Panl = (props: { title: any; source: any; children: any; className: any }) => {
+const Panl = (props: { title: any; source: any; children: any; className?: any }) => {
   const { title, source, children, className } = props
 
   const sourceEl = useRef()

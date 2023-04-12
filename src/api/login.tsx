@@ -49,3 +49,12 @@ export function getRoleById(id) {
     method: 'get'
   })
 }
+
+// 根据用户名称获取 岗位列表
+export function getPosList(data) {
+  return request({
+    url: '/pos/list',
+    method: 'post',
+    data
+  })
+}

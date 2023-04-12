@@ -96,6 +96,12 @@ export const defRouter: Array<Router> = [
     name: '登录',
     isShow: false,
     element: <Login></Login>
+  },
+  {
+    path: '*',
+    name: '登录',
+    isShow: false,
+    element: <Login></Login>
   }
 ]
 // 合并路由

@@ -8,9 +8,16 @@ export function getUserList(data) {
   })
 }
 
-export function createUser(data) {
+export function sign(data) {
   return request({
-    url: '/user/createUser',
+    url: '/user/sign',
+    method: 'post',
+    data
+  })
+}
+export function update(data) {
+  return request({
+    url: '/user/update',
     method: 'post',
     data
   })

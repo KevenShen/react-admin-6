@@ -5,6 +5,7 @@ import Column from 'antd/es/table/Column'
 import { useEffect, useState } from 'react'
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 import './index.less'
+import { editmenu, getmenu } from '@/api/menu'
 const Role = () => {
   console.log('Role 渲染')
 
@@ -29,15 +30,16 @@ const Role = () => {
 
   const update = async () => {
     console.log(checkedKeys.join(','))
-    const { data } = await updateRole({
+    const { data } = await editmenu({
       id: rowValue[0],
-      menu: checkedKeys.join(',')
+      menu: checkedKeys
     })
   }
   // 点击角色菜单选中
-  const inversemenu = () => {
-    const menu = list.filter((item) => +item.id === +rowValue[0])[0]?.menu || ''
-    setCheckedKeys(menu.split(',').map((item) => +item))
+  const inversemenu = async () => {
+    console.log(rowValue[0])
+    const { data } = await getmenu(rowValue[0])
+    setCheckedKeys(data.map((item) => +item.menu_id))
   }
   // 挂载时运行一次
   useEffect(() => {
@@ -45,7 +47,7 @@ const Role = () => {
     getmenyList()
   }, [])
   useEffect(() => {
-    inversemenu()
+    if (rowValue.length) inversemenu()
   }, [rowValue])
   const cardContent =
     '在这里，你可以对系统中的用户进行管理，例如添加一个新用户，或者修改系统中已经存在的用户。'
@@ -56,7 +58,6 @@ const Role = () => {
           <Row justify="space-between" align="middle">
             <Col>角色列表</Col>
             <Col>
-              {' '}
               <Button type="primary" onClick={getList}>
                 查询
               </Button>

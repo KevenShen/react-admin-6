@@ -1,5 +1,5 @@
 import Panl from '@/components/TypingCard'
-import { Button, Space, Table, Tag } from 'antd'
+import { Avatar, Button, Space, Table, Tag } from 'antd'
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 import { useEffect, useRef, useState } from 'react'
 import { getUserList } from '@/api/user'
@@ -12,8 +12,8 @@ const Manage = () => {
 
   const from = useRef(null)
   const [list, setList] = useState([])
+  const [row, setRow] = useState({})
   const getList = async () => {
-    console.log('发请求')
     const { data } = await getUserList({
       param: {},
       pageInfo: {
@@ -22,6 +22,10 @@ const Manage = () => {
       }
     })
     setList(data)
+  }
+  // 修改
+  const edit = async (row) => {
+    from?.current.showModal(row)
   }
   // 挂载时运行一次
   useEffect(() => {
@@ -42,8 +46,14 @@ const Manage = () => {
         <Table bordered dataSource={list} rowKey={(record) => record.id}>
           <Column title="用户名称" dataIndex="username" key="username" />
           <Column title="用户昵称" dataIndex="nickname" key="nickname" />
-          <Column title="头像" dataIndex="avatar" key="avatar" />
-          <Column title="角色" dataIndex="role" key="role" />
+          <Column
+            title="头像"
+            dataIndex="avatar"
+            key="avatar"
+            render={(_: any, record) => (
+              <img style={{ width: '64px', height: '64px' }} src={record.avatar} alt="avatar" />
+            )}
+          />
           {/* <Column
           title="角色"
           dataIndex="role"
@@ -63,13 +73,18 @@ const Manage = () => {
             key="action"
             render={(_: any, record: DataType) => (
               <Space size="middle">
-                <Button type="primary" shape="circle" icon={<EditOutlined />} />
+                <Button
+                  type="primary"
+                  shape="circle"
+                  onClick={() => edit(record)}
+                  icon={<EditOutlined />}
+                />
                 <Button type="primary" danger shape="circle" icon={<DeleteOutlined />} />
               </Space>
             )}
           />
         </Table>
-        <Edituser ref={from}></Edituser>
+        <Edituser ref={from} getList={getList}></Edituser>
       </div>
     </Panl>
   )

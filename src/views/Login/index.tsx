@@ -1,32 +1,53 @@
-import { Button, Checkbox, Form, Input } from 'antd'
-import { getMenuById, userLogin } from '@/api/login'
+import { Button, Checkbox, Form, Input, Select } from 'antd'
+import { getMenuById, getPosList, userLogin } from '@/api/login'
 import './index.less'
 import { useSetRecoilState } from 'recoil'
 import { menu, token, userInfo, router } from '@/store/Module/user'
 import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import { LoginUser } from '@/Type'
+const { useForm } = Form
+const { Option } = Select
 
 function Login() {
+  const [form] = useForm()
+
   const setText = useSetRecoilState(userInfo)
   const setTokenRec = useSetRecoilState(token)
   const setmenu = useSetRecoilState(menu)
+  const [list, setList] = useState<Array<LoginUser>>([])
   const navigate = useNavigate()
   const onFinishFailed = (errorInfo: any) => {
     console.log('Failed:', errorInfo)
   }
   const onFinish = async (values: any) => {
+    const { posId } = form.getFieldsValue()
+    const obj = list.find((item) => item.id === posId) as LoginUser
     const { data } = await userLogin({
       username: values.username,
-      password: values.password
+      password: values.password,
+      role_id: obj.role_id,
+      pos_id: obj.id
     })
     setText(data.user)
     setTokenRec(data.token)
-    const { data: menu } = await getMenuById(data.user.role)
+    const { data: menu } = await getMenuById(data.user.role_id)
     setmenu(menu)
     navigate('/')
+  }
+  const handleFocus = async () => {
+    const { username } = form.getFieldsValue()
+    console.log(username)
+    if (!username) return
+    const { data } = await getPosList({
+      username
+    })
+    setList(data)
   }
   return (
     <div className="login">
       <Form
+        form={form}
         className="login-form"
         name="basic"
         style={{ width: 400 }}
@@ -42,11 +63,23 @@ function Login() {
           <Input.Password placeholder="密码" />
         </Form.Item>
 
+        <Form.Item name="posId" rules={[{ required: true, message: '请选择岗位!' }]}>
+          <Select onFocus={handleFocus} placeholder="请选择岗位">
+            {list.map((item) => {
+              return (
+                <Option key={item.id} value={item.id}>
+                  {item.name}
+                </Option>
+              )
+            })}
+          </Select>
+        </Form.Item>
+
         <Form.Item name="remember" valuePropName="checked">
           <Checkbox>记住我</Checkbox>
         </Form.Item>
 
-        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+        <Form.Item style={{ textAlign: 'center' }}>
           <Button type="primary" htmlType="submit">
             Login
           </Button>

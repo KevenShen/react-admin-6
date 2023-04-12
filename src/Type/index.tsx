@@ -36,3 +36,14 @@ export interface TaskList {
   describe: string // 描述
   value: string // 事件描述
 }
+
+export interface LoginUser {
+  description: string
+  id: number
+  name: string
+  org_id: string
+  role_id: number
+  status: number
+  type: number
+  user_id: number
+}

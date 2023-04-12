@@ -1,6 +1,6 @@
 import { Form, Input, Modal, Select, Upload, message } from 'antd'
 import { forwardRef, memo, useEffect, useImperativeHandle, useState } from 'react'
-import { getUserList } from '@/api/user'
+import { sign, update } from '@/api/user'
 import type { SelectProps } from 'antd'
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons'
 import type { RcFile } from 'antd/es/upload/interface'
@@ -10,63 +10,51 @@ const Edituser = (props, ref) => {
   console.log('编辑弹窗刷新')
   const [form] = Form.useForm()
   const [loading, setLoading] = useState(false)
-  const [imageUrl, setImageUrl] = useState<string>()
+  const [row, setRow] = useState({})
+  const [imageUrl, setImageUrl] = useState<string>('')
   const [file, setFile] = useState<Blob | string>('')
-  const [list, setList] = useState()
   const [open, setOpen] = useState(false)
   const [confirmLoading, setConfirmLoading] = useState(false)
   useImperativeHandle(ref, () => ({
     // changeVal 就是暴露给父组件的方法
-    showModal: () => {
+    showModal: (row) => {
+      if (row) {
+        setRow(row)
+        form.setFieldsValue({ username: row.username, nickname: row.nickname })
+        setImageUrl(row.avatar)
+      }
       setOpen(true)
     }
   }))
 
-  // const getList = async () => {
-  //   const { data } = await getUserList({
-  //     param: {},
-  //     pageInfo: {
-  //       pageNum: 1,
-  //       pageSize: 10
-  //     }
-  //   })
-  //   setList(data)
-  // }
   // 弹窗按钮提交表单
   const handleOk = async () => {
     try {
       const values = await form.validateFields()
-      // 验证成功
-      console.log('Success:', values)
+      setConfirmLoading(true)
+      if (row.id) {
+        await update({
+          ...values,
+          id: row.id,
+          avatar: imageUrl || ''
+        }).catch(() => {
+          setConfirmLoading(false)
+        })
+      } else {
+        await sign({
+          ...values,
+          avatar: imageUrl || ''
+        }).catch(() => {
+          setConfirmLoading(false)
+        })
+      }
+      props.getList()
+      message.success('创建成功')
+      setOpen(false)
     } catch (errorInfo) {
       // 验证失败
       console.log('Failed:', errorInfo)
     }
-    // setConfirmLoading(true)
-    // setTimeout(() => {
-    //   setOpen(false)
-    //   setConfirmLoading(false)
-    // }, 2000)
-  }
-
-  const options: SelectProps['options'] = [
-    {
-      label: '管理员',
-      value: '1'
-    },
-    {
-      label: '用户',
-      value: '2'
-    },
-    {
-      label: '体验用户',
-      value: '3'
-    }
-  ]
-
-  // 选择角色
-  const handleChange = (value: string[]) => {
-    console.log(`selected ${value}`)
   }
 
   // 选择头像时显示加载动画
@@ -98,6 +86,16 @@ const Edituser = (props, ref) => {
       handleImgChange()
     }
   }, [file])
+  useEffect(() => {
+    if (!open) {
+      setLoading(false)
+      setImageUrl('')
+      setFile('')
+      setConfirmLoading(false)
+      form.resetFields()
+      setRow({})
+    }
+  }, [open])
 
   // 上传头像
   const handleImgChange = async () => {
@@ -144,32 +142,19 @@ const Edituser = (props, ref) => {
           label="用户名称"
           name="username"
           rules={[{ required: true, message: 'Please input your username!' }]}>
-          <Input />
+          <Input autoComplete="off" />
         </Form.Item>
         <Form.Item
           label="用户昵称"
           name="nickname"
           rules={[{ required: true, message: 'Please input your nickname!' }]}>
-          <Input />
+          <Input autoComplete="off" />
         </Form.Item>
         <Form.Item
           label="用户密码"
           name="password"
           rules={[{ required: true, message: 'Please input your password!' }]}>
-          <Input.Password />
-        </Form.Item>
-        <Form.Item
-          label="角色"
-          name="role"
-          rules={[{ required: false, message: 'Please input your role!' }]}>
-          <Select
-            mode="multiple"
-            allowClear
-            style={{ width: '100%' }}
-            placeholder="Please select"
-            onChange={handleChange}
-            options={options}
-          />
+          <Input.Password autoComplete="off" />
         </Form.Item>
         <Form.Item
           label="用户头像"
