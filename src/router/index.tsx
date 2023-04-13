@@ -3,6 +3,7 @@ import { Navigate, useRoutes } from 'react-router-dom'
 import { Router } from './routerDto'
 import Login from '@/views/Login'
 import Layout from '@/layout'
+import Error from '@/views/404'
 import { menu } from '@/store/Module/user'
 import { useRecoilValue } from 'recoil'
 
@@ -101,7 +102,7 @@ export const defRouter: Array<Router> = [
     path: '*',
     name: '登录',
     isShow: false,
-    element: <Login></Login>
+    element: <Error></Error>
   }
 ]
 // 合并路由

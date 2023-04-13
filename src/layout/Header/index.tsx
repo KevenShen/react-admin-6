@@ -82,7 +82,7 @@ const Headers: React.FC = () => {
             <BulbOutlined style={{ fontSize: 18 }} />
             <DashboardOutlined style={{ fontSize: 18 }} />
             <Popover placement="bottom" trigger="click" content={content}>
-              <Avatar size={30} icon={<UserOutlined />} />
+              <Avatar src={user.avatar} size={30}></Avatar>
               <span className="user-name">{user.username}</span>
             </Popover>
           </Space>

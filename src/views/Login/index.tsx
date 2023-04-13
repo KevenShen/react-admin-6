@@ -11,7 +11,6 @@ const { Option } = Select
 
 function Login() {
   const [form] = useForm()
-
   const setText = useSetRecoilState(userInfo)
   const setTokenRec = useSetRecoilState(token)
   const setmenu = useSetRecoilState(menu)
@@ -31,13 +30,16 @@ function Login() {
     })
     setText(data.user)
     setTokenRec(data.token)
-    const { data: menu } = await getMenuById(data.user.role_id)
+    const { data: menu } = await getMenuById(data.user.pos_id)
     setmenu(menu)
     navigate('/')
   }
+  const onChange = () => {
+    setmenu([])
+    form.resetFields(['posId'])
+  }
   const handleFocus = async () => {
     const { username } = form.getFieldsValue()
-    console.log(username)
     if (!username) return
     const { data } = await getPosList({
       username
@@ -56,7 +58,7 @@ function Login() {
         onFinishFailed={onFinishFailed}
         autoComplete="off">
         <Form.Item name="username" rules={[{ required: true, message: '请输入用户名!' }]}>
-          <Input placeholder="用户名" />
+          <Input placeholder="用户名" onChange={onChange} />
         </Form.Item>
 
         <Form.Item name="password" rules={[{ required: true, message: '请输入密码!' }]}>
