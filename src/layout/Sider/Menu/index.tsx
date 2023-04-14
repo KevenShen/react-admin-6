@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useMemo, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import type { MenuProps, MenuTheme } from 'antd'
 import { Menu } from 'antd'
 import { Router } from '@/router/routerDto'
@@ -11,7 +11,13 @@ const Menus = () => {
   const navigate = useNavigate()
   const menuArr = useRecoilValue(menu)
   const [theme] = useState<MenuTheme>('light')
-
+  const location = useLocation()
+  const pathSnippets = location.pathname.split('/').filter((i) => i)
+  const openKeys = useMemo(() => {
+    return pathSnippets.map((item, index) => {
+      return `/${pathSnippets.slice(0, index + 1).join('/')}`
+    })
+  }, [pathSnippets])
   //用于渲染路由，通过递归实现任意层级渲染
   const renderMenuItem = (menuArr: Array<Router>): Array<MenuItem> => {
     const ret = menuArr.map((item) => {
@@ -30,11 +36,21 @@ const Menus = () => {
     return ret
   }
   const menus = renderMenuItem(menuArr)
-  console.log(menus)
   const onClick = (item: any) => {
     navigate(item.key)
   }
-  return <Menu theme={theme} mode="inline" onClick={onClick} items={menus}></Menu>
+
+  console.log('Menu 渲染', menuArr)
+
+  return (
+    <Menu
+      theme={theme}
+      mode="inline"
+      defaultOpenKeys={openKeys}
+      selectedKeys={openKeys}
+      onClick={onClick}
+      items={menus}></Menu>
+  )
 }
 
 export default Menus

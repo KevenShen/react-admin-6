@@ -127,8 +127,7 @@ const filterAsyncRouter = (menus: Array<Router> = []) => {
       name: item.name,
       path: item.path,
       isShow: item.isShow,
-      element: '',
-      redirectTo: item.redirectTo
+      element: ''
     }
 
     route.element = lazyLoad(item.component)
@@ -136,9 +135,7 @@ const filterAsyncRouter = (menus: Array<Router> = []) => {
     if (item.children) {
       route.children = filterAsyncRouter(item.children)
     }
-    if (item.redirectTo) {
-      route.element = <Navigate to={item.redirectTo} />
-    }
+
     addRouter.push(route)
   })
   return addRouter

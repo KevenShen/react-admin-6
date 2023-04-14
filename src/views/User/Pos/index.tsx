@@ -33,7 +33,7 @@ const Role = () => {
             新增
           </Button>
         </Space>
-        <Table bordered dataSource={list}>
+        <Table bordered dataSource={list} rowKey={(record) => record.id}>
           <Column title="岗位名称" dataIndex="name" key="name" />
           <Column title="岗位代码" dataIndex="id" key="id" />
           <Column title="岗位类型" dataIndex="role_id" key="role_id" />
