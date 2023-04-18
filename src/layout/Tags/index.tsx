@@ -1,10 +1,11 @@
-import { AndroidOutlined, CloseOutlined } from '@ant-design/icons'
+import { HomeOutlined, CloseOutlined } from '@ant-design/icons'
 import { Tabs } from 'antd'
-
 import './index.less'
 import { useEffect, useState } from 'react'
 import useTab from '@/hooks/useTab'
 import { useLocation, useNavigate } from 'react-router-dom'
+import SvgImage from '@/components/SvgImage'
+
 interface HistoryList {
   pathname: string
   name: string
@@ -23,6 +24,7 @@ const Tags = () => {
     if (!newHistoryList.length) return navigate('/')
     navigate(newHistoryList[newHistoryList.length - 1].pathname)
   }
+
   return (
     <div className="header-tags">
       <Tabs
@@ -35,6 +37,7 @@ const Tags = () => {
           return {
             label: (
               <span className="tabName">
+                <SvgImage name="ancient-gate-fill" fill="red" size="14px"></SvgImage>
                 {_.name}
                 <CloseOutlined
                   onClick={() => deltab(_.pathname)}

@@ -19,9 +19,11 @@ function findname(arr: string | any[], name: string) {
   }
 }
 export default function useTab(): [HistoryList[], (pathname: string) => void] {
-  const [historyList, setHistoryList] = useState<HistoryList[]>([])
-  const location = useLocation()
   const menuArr = useRecoilValue(menu)
+  const [historyList, setHistoryList] = useState<HistoryList[]>([
+    { pathname: '/home', name: '主页' }
+  ])
+  const location = useLocation()
 
   useEffect(() => {
     const name = findname(menuArr, location.pathname)

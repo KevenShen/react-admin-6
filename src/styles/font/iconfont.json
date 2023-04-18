@@ -1,0 +1,16 @@
+{
+  "id": "4016172",
+  "name": "React_admin",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "24695600",
+      "name": "ancient-gate-fill",
+      "font_class": "ancient-gate-fill",
+      "unicode": "e71e",
+      "unicode_decimal": 59166
+    }
+  ]
+}
