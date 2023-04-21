@@ -2,7 +2,12 @@ import { useState, useEffect } from 'react'
 import { ReactSVG } from 'react-svg'
 import './index.less'
 import '@/styles/font/iconfont'
-const SvgImage = ({ name, size, fill }) => {
+interface Props {
+  name: string
+  size?: string
+  fill?: string
+}
+const SvgImage = ({ name, size = '14px', fill = '#000' }: Props) => {
   // const [imgUrl, setImgUrl] = useState('')
 
   // useEffect(() => {
@@ -20,12 +25,11 @@ const SvgImage = ({ name, size, fill }) => {
         width: size,
         height: size,
         fill,
-        fontSize: '20px',
-        margin: '0 4px'
+        fontSize: '20px'
       }}
       className="icon"
       aria-hidden="true">
-      <use xlinkHref="#icon-ancient-gate-fill"></use>
+      <use xlinkHref={`#${name}`}></use>
     </svg>
   )
 }

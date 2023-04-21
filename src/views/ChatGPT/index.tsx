@@ -52,7 +52,6 @@ function ChatGPT() {
           allowClear
           value={value}
           enterButton={lod ? '' : '发送'}
-          size="large"
           loading={lod}
           onChange={(e) => setValue(e.target.value.trim())}
           onSearch={onSearch}

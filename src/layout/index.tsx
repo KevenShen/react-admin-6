@@ -1,4 +1,4 @@
-import { Layout } from 'antd'
+import { ConfigProvider, Layout } from 'antd'
 import Sider from './Sider'
 import Content from './Content'
 import Header from './Header'
@@ -6,14 +6,18 @@ import Tags from './Tags'
 
 const App: React.FC = () => {
   return (
-    <Layout hasSider>
-      <Sider></Sider>
-      <Layout className="site-layout">
+    <ConfigProvider componentiddle" theme={{ token: { colorPrimary: '#172f4a' } }}>
+      <Layout>
         <Header></Header>
-        <Tags></Tags>
-        <Content></Content>
+        <Layout className="site-layout">
+          <Sider></Sider>
+          <Layout className="site-layout">
+            {/* <Tags></Tags> */}
+            <Content></Content>
+          </Layout>
+        </Layout>
       </Layout>
-    </Layout>
+    </ConfigProvider>
   )
 }
 

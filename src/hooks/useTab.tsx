@@ -6,12 +6,14 @@ import { useRecoilValue } from 'recoil'
 interface HistoryList {
   pathname: string
   name: string
+  icon?: string
+  state?: any
 }
 
 function findname(arr: string | any[], name: string) {
   for (let i = 0; i < arr.length; i++) {
     if (arr[i].path === name) {
-      return arr[i].name
+      return arr[i]
     } else if (arr[i].children) {
       const childerName = findname(arr[i].children, name)
       if (childerName) return childerName
@@ -26,15 +28,17 @@ export default function useTab(): [HistoryList[], (pathname: string) => void] {
   const location = useLocation()
 
   useEffect(() => {
-    const name = findname(menuArr, location.pathname)
+    const menu = findname(menuArr, location.pathname)
+    if (menu.redirectTo) return // 又重定向就是父菜单不展示tabs
     setHistoryList((prev) => {
       const index = prev.findIndex((item) => item.pathname === location.pathname)
       if (index !== -1) {
         const newHistoryList = [...prev]
-        newHistoryList[index] = { ...location, name }
+        newHistoryList[index] = { ...location, ...menu }
         return newHistoryList
       }
-      return [...prev, { ...location, name }]
+
+      return [...prev, { ...location, ...menu }]
     })
   }, [location.pathname])
 

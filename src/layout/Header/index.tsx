@@ -1,21 +1,17 @@
-import { Avatar, Breadcrumb, Layout, Popover, Space, theme } from 'antd'
+import { Avatar, Breadcrumb, Drawer, Layout, Popover, Space, theme } from 'antd'
 import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  UserOutlined,
-  CommentOutlined,
-  BulbOutlined,
-  DashboardOutlined
-} from '@ant-design/icons'
+import { CommentOutlined, BulbOutlined, DashboardOutlined } from '@ant-design/icons'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { menu as m, userInfo } from '@/store/Module/user'
-
+import SvgImage from '@/components/SvgImage'
 const { Header } = Layout
 import './index.less'
-import { collapsed } from '@/store/Module/com'
+import { collapsed, navShow, navType } from '@/store/Module/com'
 import { Router } from '@/Type'
+import Config from '@/components/Config'
+import Logo from '../Sider/Logo'
+import Tags from '../Tags'
 
 const asyncUrl = (arr: Array<Router>) => {
   let urlObj: Record<string, string> = {}
@@ -29,9 +25,10 @@ const Headers: React.FC = () => {
   const {
     token: { colorBgContainer }
   } = theme.useToken()
+  const [config, setConfig] = useState(false)
+  const nav = useRecoilValue(navType)
+  const isNav = useRecoilValue(navShow)
   const user = useRecoilValue(userInfo)
-
-  const [coll, setColl] = useRecoilState(collapsed)
   const menuArr = useRecoilValue(m)
   const breadcrumbNameMap: Record<string, string> = asyncUrl(menuArr)
   const location = useLocation()
@@ -66,21 +63,19 @@ const Headers: React.FC = () => {
       </p>
     </div>
   )
+
   return (
     <Header style={{ padding: 0, background: colorBgContainer }}>
+      <div className="logo">{true ? <Logo /> : null}</div>
+
       <div className="nav-user">
-        <div className="leftBox">
-          {React.createElement(coll ? MenuUnfoldOutlined : MenuFoldOutlined, {
-            className: 'trigger',
-            onClick: () => setColl(!coll)
-          })}
-          <Breadcrumb items={breadcrumbItems} />
-        </div>
+        {nav === 'nav' && isNav ? <Breadcrumb items={breadcrumbItems} /> : <div />}
+        {nav === 'navNimble' && isNav ? <Tags></Tags> : <div />}
         <div className="rightBox">
           <Space size={18}>
             <CommentOutlined style={{ fontSize: 18 }} />
             <BulbOutlined style={{ fontSize: 18 }} />
-            <DashboardOutlined style={{ fontSize: 18 }} />
+            <DashboardOutlined style={{ fontSize: 18 }} onClick={() => setConfig(true)} />
             <Popover placement="bottom" trigger="click" content={content}>
               <Avatar src={user.avatar} size={30}></Avatar>
               <span className="user-name">{user.username}</span>
@@ -88,6 +83,19 @@ const Headers: React.FC = () => {
           </Space>
         </div>
       </div>
+      <Drawer
+        title="全局配置"
+        placement="right"
+        closable={false}
+        extra={
+          <Space>
+            <SvgImage size="18px" name="icon-tishi"></SvgImage>
+          </Space>
+        }
+        onClose={() => setConfig(false)}
+        open={config}>
+        <Config></Config>
+      </Drawer>
     </Header>
   )
 }

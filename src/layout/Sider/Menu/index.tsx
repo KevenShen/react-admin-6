@@ -5,9 +5,11 @@ import { Menu } from 'antd'
 import { Router } from '@/router/routerDto'
 import { menu } from '@/store/Module/user'
 import { useRecoilValue } from 'recoil'
+import SvgImage from '@/components/SvgImage'
+import './index.less'
 
 type MenuItem = Required<MenuProps>['items'][number]
-const Menus = () => {
+const Menus = ({ className }) => {
   const navigate = useNavigate()
   const menuArr = useRecoilValue(menu)
   const [theme] = useState<MenuTheme>('light')
@@ -25,6 +27,7 @@ const Menus = () => {
       menu.key = item.path
       menu.label = item.name
       menu.title = item.name
+      menu.icon = <SvgImage name={item.icon} size="14px" fill="#4D4D4D"></SvgImage>
       if (item.children) {
         const children = renderMenuItem(item.children)
         if (children.length) menu.children = children
@@ -44,6 +47,7 @@ const Menus = () => {
 
   return (
     <Menu
+      className={className}
       theme={theme}
       mode="inline"
       defaultOpenKeys={openKeys}

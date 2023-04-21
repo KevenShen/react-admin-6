@@ -1,19 +1,35 @@
 .ant-layout-header {
   height: 60px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.13);
+  position: relative;
+  z-index: 1;
+  .logo {
+    width: 200px;
+    min-width: 200px;
+    background-color: #404e67;
+  }
   .nav-user {
-    height: 100%;
-    padding: 0 20px;
     display: flex;
     justify-content: space-between;
+    flex: 1;
+    height: 100%;
+    padding: 0 20px;
     align-items: center;
+    min-width: 0;
     .leftBox {
       display: flex;
+      flex: 1;
       align-items: center;
+      min-width: 0;
       .trigger {
         margin-right: 10px;
       }
     }
     .rightBox {
+      min-width: 200px;
+      max-width: 200px;
       height: 40px;
       margin-right: 10px;
       .ant-space {
