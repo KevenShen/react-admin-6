@@ -1,12 +1,17 @@
-import { ConfigProvider, Layout } from 'antd'
+import { ConfigProvider, Layout, Tabs, theme } from 'antd'
 import Sider from './Sider'
 import Content from './Content'
 import Header from './Header'
 import Tags from './Tags'
+import { useRecoilValue } from 'recoil'
+import { btnSize, thColor } from '@/store/Module/com'
 
 const App: React.FC = () => {
+  const bsize = useRecoilValue(btnSize)
+  const color = useRecoilValue(thColor)
+
   return (
-    <ConfigProvider componentiddle" theme={{ token: { colorPrimary: '#172f4a' } }}>
+    <ConfigProvider componentSize={bsize} theme={{ token: { colorPrimary: color } }}>
       <Layout>
         <Header></Header>
         <Layout className="site-layout">

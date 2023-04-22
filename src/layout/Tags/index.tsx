@@ -1,16 +1,19 @@
 import { LeftOutlined, RightOutlined, CloseOutlined } from '@ant-design/icons'
 import { Tabs } from 'antd'
 import './index.less'
-import { useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import useTab from '@/hooks/useTab'
 import { useLocation, useNavigate } from 'react-router-dom'
 import SvgImage from '@/components/SvgImage'
-
+import { theme, ThemeType } from 'antd'
+const { useToken } = theme
 interface HistoryList {
   pathname: string
   name: string
 }
 const Tags = () => {
+  const { token }: { token: ThemeType } = useToken()
+  console.log(token)
   const navigate = useNavigate()
   const [activeKey, setActiveKey] = useState('')
   const [historyList, removeTab] = useTab()
@@ -67,17 +70,20 @@ const Tags = () => {
           <div className="tabs-nav-list">
             {historyList.map((item) => (
               <div
-                className="tabs-nav-box"
+                className="tabs-nav-box ant-tabs"
                 key={item.pathname + item.state}
                 onClick={() => navigate(item.pathname)}>
-                <div className={isActive(item.pathname) ? 'tab-nav-item isActive' : 'tab-nav-item'}>
+                <div
+                  className={
+                    (isActive(item.pathname) ? 'ant-tabs-tab-active' : '') + '  ant-tabs-tab'
+                  }>
                   {item.icon && (
                     <SvgImage
                       name={item.icon}
                       size="14px"
                       fill={activeKey === item.pathname ? '#1677ff' : '#000'}></SvgImage>
                   )}
-                  <span>{item.name}</span>
+                  <span className="ant-tabs-tab-btn">{item.name}</span>
                   {item.pathname !== '/home' && (
                     <CloseOutlined
                       className="close-icon"
@@ -99,6 +105,7 @@ const Tags = () => {
         )}
       </div>
     </div>
+
     // <Tabs
     //   className="header-tags "
     //   hideAdd

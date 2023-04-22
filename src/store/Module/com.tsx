@@ -1,5 +1,6 @@
 // 全局状态  用户自定义状态等
 import { Router, User } from '@/Type'
+import { SizeType } from 'antd/es/config-provider/SizeContext'
 import { atom } from 'recoil'
 
 import { recoilPersist } from 'recoil-persist'
@@ -27,16 +28,22 @@ export const navShow = atom<boolean>({
   effects_UNSTABLE: [persistAtom]
 })
 
-// // 按钮大小
-// export const navShow = atom<boolean>({
-//   key: 'navShow',
-//   default: false,
-//   effects_UNSTABLE: [persistAtom]
-// })
+// 按钮大小
+export const btnSize = atom<SizeType>({
+  key: 'btnSize',
+  default: 'middle',
+  effects_UNSTABLE: [persistAtom]
+})
 
 // 导航栏样式
 export const navType = atom<string | 'nav' | 'navNimble'>({
   key: 'navType',
   default: 'navNimble',
+  effects_UNSTABLE: [persistAtom]
+})
+
+export const thColor = atom<string>({
+  key: 'thColor',
+  default: '#7c4dff',
   effects_UNSTABLE: [persistAtom]
 })

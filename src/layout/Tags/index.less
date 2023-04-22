@@ -30,7 +30,7 @@
       display: inline-block;
       vertical-align: middle;
     }
-    .tab-nav-item {
+    .ant-tabs-tab {
       display: flex;
       position: relative;
       box-sizing: border-box;
@@ -44,7 +44,7 @@
       line-height: 38px;
       padding: 0 30px;
       margin-right: -18px;
-      transition: color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
+      transition: backgroundColor 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
         padding 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
       .close-icon {
         position: absolute;
@@ -54,7 +54,7 @@
         right: 25px;
       }
     }
-    .tab-nav-item:hover {
+    .ant-tabs-tab:hover {
       padding-right: 44px;
       cursor: pointer;
       .close-icon {
@@ -68,7 +68,7 @@
       mask-size: 100% 100%;
       background: #dee1e6;
     }
-    .tab-nav-item.isActive {
+    .ant-tabs-tab.ant-tabs-tab-active {
       padding-right: 44px;
       .close-icon {
         width: 14px !important;

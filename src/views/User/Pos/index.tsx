@@ -43,7 +43,7 @@ const Role = () => {
             title="操作"
             key="action"
             render={(_: any, record: any) => (
-              <Space iddle">
+              <Space>
                 <Button
                   type="primary"
                   onClick={() => from?.current.showModal(record.id)}

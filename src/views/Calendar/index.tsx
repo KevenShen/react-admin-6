@@ -217,7 +217,6 @@ const Calendar = () => {
             placeholder="添加事件"
             allowClear
             enterButton="添加"
-            iddle"
             onSearch={onSearch}
           />
         </Card>

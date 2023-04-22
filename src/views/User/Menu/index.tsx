@@ -43,7 +43,7 @@ const Menu = () => {
             title="操作"
             key="action"
             render={(_: any, record: DataType) => (
-              <Space iddle">
+              <Space>
                 <Button type="primary" shape="circle" icon={<EditOutlined />} />
                 <Button type="primary" danger shape="circle" icon={<DeleteOutlined />} />
               </Space>
