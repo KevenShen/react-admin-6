@@ -13,10 +13,17 @@ export function editmenu(data) {
     data
   })
 }
-
 export function posAll() {
   return request({
     url: 'pos/all',
     method: 'get'
+  })
+}
+
+export function posEditMenu(data) {
+  return request({
+    url: 'pos/menu',
+    method: 'post',
+    data
   })
 }

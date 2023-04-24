@@ -1,17 +1,28 @@
 import { Form, Modal, Tree } from 'antd'
-import { Key, forwardRef, memo, useEffect, useImperativeHandle, useState } from 'react'
+import {
+  Key,
+  SetStateAction,
+  forwardRef,
+  memo,
+  useEffect,
+  useImperativeHandle,
+  useState
+} from 'react'
 import { getMenu, getMenuById } from '@/api/login'
+import { posEditMenu } from '@/api/menu'
 const EditMenu = (props, ref) => {
   console.log('编辑弹窗刷新')
   const [form] = Form.useForm()
   const [open, setOpen] = useState(false)
+  const [id, setId] = useState()
   const [treeData, settreeData] = useState([])
   const [checkedKeys, setCheckedKeys] = useState<React.Key[]>([])
   const [confirmLoading, setConfirmLoading] = useState(false)
   useImperativeHandle(ref, () => ({
     // changeVal 就是暴露给父组件的方法
     showModal: (id) => {
-      getMenuId(id)
+      setId(id)
+      getMenuId()
       setOpen(true)
     }
   }))
@@ -20,7 +31,7 @@ const EditMenu = (props, ref) => {
     settreeData(data)
   }
   // 根据岗位id获取菜单
-  const getMenuId = async (id) => {
+  const getMenuId = async () => {
     const { data: menu } = await getMenuById(id)
     const menuIds: any[] | ((prevState: Key[]) => Key[]) = []
     menu.forEach((item) => {
@@ -36,13 +47,21 @@ const EditMenu = (props, ref) => {
   }, [])
 
   // 更新权限菜单
-  const handleOk = async () => {}
+  const handleOk = async () => {
+    const { data } = await posEditMenu({
+      menu: checkedKeys,
+      id
+    })
+    setOpen(false)
+  }
   // 弹窗关闭
   const handleCancel = () => {
     setOpen(false)
     setCheckedKeys([])
   }
-  const onCheck = () => {}
+  const onCheck = (arr: SetStateAction<Key[]>) => {
+    setCheckedKeys(arr)
+  }
 
   return (
     <Modal

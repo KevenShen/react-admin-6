@@ -5,25 +5,27 @@ import Header from './Header'
 import Tags from './Tags'
 import { useRecoilValue } from 'recoil'
 import { btnSize, thColor } from '@/store/Module/com'
+import { useFullScreenHandle } from 'react-full-screen'
+import { FullScreenBox } from '@/components/FullScreenBox'
 
 const App: React.FC = () => {
   const bsize = useRecoilValue(btnSize)
   const color = useRecoilValue(thColor)
-
   return (
     <ConfigProvider componentSize={bsize} theme={{ token: { colorPrimary: color } }}>
-      <Layout>
-        <Header></Header>
-        <Layout className="site-layout">
-          <Sider></Sider>
+      <FullScreenBox>
+        <Layout>
+          <Header></Header>
           <Layout className="site-layout">
-            {/* <Tags></Tags> */}
-            <Content></Content>
+            <Sider></Sider>
+            <Layout className="site-layout">
+              {/* <Tags></Tags> */}
+              <Content></Content>
+            </Layout>
           </Layout>
         </Layout>
-      </Layout>
+      </FullScreenBox>
     </ConfigProvider>
   )
 }
-
 export default App

@@ -29,9 +29,9 @@ const Role = () => {
           <Button type="primary" onClick={getList}>
             查询
           </Button>
-          <Button type="primary" onClick={() => from?.current.showModal()} className="btn-pink">
+          {/* <Button type="primary" onClick={() => from?.current.showModal()} className="btn-pink">
             新增
-          </Button>
+          </Button> */}
         </Space>
         <Table bordered dataSource={list} rowKey={(record) => record.id}>
           <Column title="岗位名称" dataIndex="name" key="name" />

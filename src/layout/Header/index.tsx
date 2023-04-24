@@ -1,17 +1,26 @@
-import { Avatar, Breadcrumb, Drawer, Layout, Popover, Space, theme } from 'antd'
-import React, { useState } from 'react'
+import { Avatar, Breadcrumb, Drawer, Layout, Modal, Popover, Space, theme } from 'antd'
+import React, { useContext, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { CommentOutlined, BulbOutlined, DashboardOutlined } from '@ant-design/icons'
+import {
+  CommentOutlined,
+  CompressOutlined,
+  BulbOutlined,
+  SearchOutlined,
+  DashboardOutlined,
+  ExpandOutlined
+} from '@ant-design/icons'
 import { useRecoilState, useRecoilValue } from 'recoil'
+import { useFullScreenHandle } from 'react-full-screen'
 import { menu as m, userInfo } from '@/store/Module/user'
 import SvgImage from '@/components/SvgImage'
 const { Header } = Layout
 import './index.less'
-import { collapsed, navShow, navType } from '@/store/Module/com'
+import { collapsed, fullScreen, navShow, navType, search, tipBtn } from '@/store/Module/com'
 import { Router } from '@/Type'
 import Config from '@/components/Config'
 import Logo from '../Sider/Logo'
 import Tags from '../Tags'
+import { Box } from '@/components/FullScreenBox'
 
 const asyncUrl = (arr: Array<Router>) => {
   let urlObj: Record<string, string> = {}
@@ -26,6 +35,10 @@ const Headers: React.FC = () => {
     token: { colorBgContainer }
   } = theme.useToken()
   const [config, setConfig] = useState(false)
+  const seach = useRecoilValue(search)
+  const tip = useRecoilValue(tipBtn)
+  const full = useRecoilValue(fullScreen)
+
   const nav = useRecoilValue(navType)
   const isNav = useRecoilValue(navShow)
   const user = useRecoilValue(userInfo)
@@ -63,6 +76,8 @@ const Headers: React.FC = () => {
       </p>
     </div>
   )
+  // 全屏
+  const handle = useContext(Box)
 
   return (
     <Header style={{ padding: 0, background: colorBgContainer }}>
@@ -73,8 +88,14 @@ const Headers: React.FC = () => {
         {nav === 'navNimble' && isNav ? <Tags></Tags> : <div />}
         <div className="rightBox">
           <Space size={18}>
-            <CommentOutlined style={{ fontSize: 18 }} />
-            <BulbOutlined style={{ fontSize: 18 }} />
+            {seach && <SearchOutlined style={{ fontSize: 18 }} />}
+            {tip && <BulbOutlined style={{ fontSize: 18 }} />}
+            {full && !handle?.active && (
+              <ExpandOutlined onClick={handle?.enter} style={{ fontSize: 18 }} />
+            )}
+            {full && handle?.active && (
+              <CompressOutlined onClick={handle?.exit} style={{ fontSize: 18 }} />
+            )}
             <DashboardOutlined style={{ fontSize: 18 }} onClick={() => setConfig(true)} />
             <Popover placement="bottom" trigger="click" content={content}>
               <Avatar src={user.avatar} size={30}></Avatar>
@@ -83,9 +104,11 @@ const Headers: React.FC = () => {
           </Space>
         </div>
       </div>
+      {/* 全局配置模态框 */}
       <Drawer
         title="全局配置"
         placement="right"
+        getContainer={document.querySelector('.fullscreen') || document.body}
         closable={false}
         extra={
           <Space>
@@ -96,6 +119,8 @@ const Headers: React.FC = () => {
         open={config}>
         <Config></Config>
       </Drawer>
+      {/* 搜索模态框 */}
+      <Modal></Modal>
     </Header>
   )
 }

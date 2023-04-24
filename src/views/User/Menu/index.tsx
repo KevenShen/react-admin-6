@@ -28,8 +28,8 @@ const Menu = () => {
             查询
           </Button>
           {/* <Button type="primary" onClick={() => from?.current.showModal()} className="btn-pink">
-          新增
-        </Button> */}
+            新增
+          </Button> */}
         </Space>
         <Table bordered dataSource={list} rowKey={(record) => record.id}>
           <Column title="菜单名称" dataIndex="name" key="name" />
