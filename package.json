@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build && copy",
     "copy": "node copy.js",
-    "push": "start push.sh",
+    "push": "start ./push.sh",
     "preview": "vite preview",
     "format": "prettier --write .",
     "lint": "eslint src --ext .ts,.tsx,.js,.jsx --fix",
