@@ -3,7 +3,7 @@
 git init
 git add -A
 git commit -m '🎉 feat: init project'
-git push -f "https://github.com/jiuxiangyangguang/react-admin.git" dev
+git push origin -f "https://github.com/jiuxiangyangguang/react-admin.git" dev
 
 
 
