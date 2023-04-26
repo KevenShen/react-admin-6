@@ -43,7 +43,16 @@ const Manage = () => {
             新增
           </Button>
         </Space>
-        <Table bordered dataSource={list} rowKey={(record) => record.id}>
+        <Table
+          bordered
+          dataSource={list}
+          pagination={{
+            pageSize: 5,
+            pageSizeOptions: [5, 10],
+            showTotal: (total) => `共 ${total} 条`,
+            showSizeChanger: true
+          }}
+          rowKey={(record) => record.id}>
           <Column title="用户名称" dataIndex="username" key="username" />
           <Column title="用户昵称" dataIndex="nickname" key="nickname" />
           <Column
