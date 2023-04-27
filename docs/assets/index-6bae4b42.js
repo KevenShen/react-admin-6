@@ -1,0 +1,1 @@
+import{j as t}from"./index-bac5f010.js";import{P as o}from"./index-102c69e0.js";import"./PlusOutlined-53860e93.js";const s=()=>(console.log("about"),t(o,{title:"关于我",source:"关于我的信息",children:t("div",{className:"app-card chat",style:{height:"2000px"},children:"关于"})}));export{s as default};
