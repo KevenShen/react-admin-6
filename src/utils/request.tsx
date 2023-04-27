@@ -2,10 +2,9 @@ import axios from 'axios'
 import { message } from 'antd'
 //创建一个axios示例
 const service = axios.create({
-  baseURL: '/api', // api 的 base_url
+  baseURL: import.meta.env.VITE_BASE_URL,
   timeout: 5000 // request timeout
 })
-
 // 请求拦截器
 service.interceptors.request.use(
   (config) => {
