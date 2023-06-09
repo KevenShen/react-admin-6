@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.7.0/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <device-details></device-details>
+    </div>
+    <script type="text/x-template" id="device-details">
+      <div class="card-content pad_aling24 border_b device-content">
+
+
+                          <h4>设备详情</h4>
+                          <div class="flex_between" v-for="item in list" :key="item.value">
+                              <p>
+                                  <i class="iconfont iconquyu"></i>
+                                  <span>{{ item.label}}</span>
+                              </p >
+                              <span>{{taskDeviceInfo[item.value]}}</span>
+                          </div>
+                          <div class="flex_between">
+                              <p>
+                                  <i class="iconfont iconshengchangzhouqi"></i>
+                                  <span>对象类型</span>
+                              </p >
+                              <span>{{taskDeviceInfo.typeName}}</span>
+                          </div>
+                          <div style="display:flex;justify-content: space-between;">
+                              <p>
+                                  <i class="iconfont iconxunhuanjiagongcishu"></i>
+                                  <span>相关编号</span>
+                              </p >
+                              <span>{{taskDeviceInfo.sn}}</span>
+                          </div>
+                          <div class="flex_between">
+                              <p>
+                                  <i class="iconfont iconbiaoqian"></i>
+                                  <span>电子标签</span>
+                              </p >
+                              <p class="flex_align_center">
+                                  <span class="mr6">{{taskDeviceInfo.label || ''}}</span>
+                                  <i v-show="taskDeviceInfo.label && taskDeviceInfo.label!=''" class="el-icon-copy-document"
+                                      @click="handleCopy(taskDeviceInfo.label || '')"></i>
+                              </p >
+                          </div>
+                          <div class="flex_between">
+                              <p>
+                                  <i class="iconfont iconerweima"></i>
+                                  <span>二维码</span>
+                              </p >
+                              <p class="flex_align_center">
+                                  <span class="mr6">{{taskDeviceInfo.qcode || ''}}</span>
+                               
+    </script>
+    <script>
+      console.log(Vue)
+      // 定义名为 `device-details` 的组件
+      Vue.component('device-details', {
+        template: `#device-details`,
+        data: function () {
+          return {
+            message: '' // 定义该组件需要用到的 数据
+          }
+        },
+        props: {
+          isShow: {
+            type: Boolean, // 'boolean'
+            default: false
+          }
+        },
+        computed: {
+          visible: {
+            get() {
+              return this.isShow
+            },
+            set(value) {
+              this.$emit('update:isShow', value)
+            }
+          }
+        }
+      })
+
+      const list = [
+        {
+          value: 'uid',
+          label: '对象ID'
+        }
+      ]
+
+      new Vue({ el: '#app' })
+    </script>
+  </body>
+</html>
