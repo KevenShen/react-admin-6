@@ -3,7 +3,7 @@ import { message } from 'antd'
 //创建一个axios示例
 const service = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
-  timeout: 5000 // request timeout
+  timeout: 1000000 // request timeout
 })
 // 请求拦截器
 service.interceptors.request.use(
