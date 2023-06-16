@@ -5,8 +5,8 @@ const config = {
   ssh: {
     host: '116.62.37.172',
     port: 22,
-    username: 'root',
-    password: 'wc123456!'
+    username: '',
+    password: ''
   },
   remotePath: '/usr/local/docker_image',
   srcPath: './admin.tar',
