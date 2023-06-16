@@ -27,8 +27,13 @@ export default defineConfig({
     host: 'localhost',
     open: true,
     proxy: {
+      // '/api': {
+      //   target: 'http://116.62.37.172:1102/', // easymock
+      //   changeOrigin: true,
+      //   rewrite: (path) => path.replace(/^\/api/, '')
+      // },
       '/api': {
-        target: 'http://116.62.37.172:1102/', // easymock
+        target: 'http://127.0.0.1:1103/', // easymock
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       }

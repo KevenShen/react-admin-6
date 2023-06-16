@@ -6,3 +6,10 @@ export function getLogList(type) {
     method: 'get'
   })
 }
+
+export function getLogdetail(detail) {
+  return request({
+    url: `/logs/detail?name=${detail}`,
+    method: 'get'
+  })
+}
