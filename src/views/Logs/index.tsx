@@ -11,9 +11,14 @@ const Logs = () => {
   const [log, setlog] = useState('')
   const getList = async (item) => {
     setlog('')
-    const eventSource = new EventSource('api/logs/detail?name=access.202306.log')
+    const eventSource = new EventSource(`api/logs/detail?name=${item}`)
     eventSource.onmessage = (event) => {
       setlog(value + event.data.replace(/\n/g, '<br />'))
+    }
+    eventSource.onerror = (event) => {
+      eventSource.close()
+      setlog('文件不存在')
+      console.log(event)
     }
 
     return () => {
