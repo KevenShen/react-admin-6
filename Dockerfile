@@ -1,4 +1,4 @@
-FROM nginx:1.24.0-alpine
+FROM nginx:alpine
 
 # 复制打包好的文件到镜像中
 COPY dist /usr/local/admin
