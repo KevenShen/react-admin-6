@@ -9,7 +9,9 @@ const Logs = () => {
   const [value, setvalue] = useState('access')
   const [list, setlist] = useState([])
   const [log, setlog] = useState('')
+  const [selectedOption, setSelectedOption] = useState(null)
   const getList = async (item) => {
+    setSelectedOption(item)
     setlog('')
     const eventSource = new EventSource(`api/logs/detail?name=${item}`)
     eventSource.onmessage = (event) => {
@@ -18,7 +20,6 @@ const Logs = () => {
     eventSource.onerror = (event) => {
       eventSource.close()
       setlog('文件不存在')
-      console.log(event)
     }
 
     return () => {
@@ -26,6 +27,9 @@ const Logs = () => {
     }
   }
   const radioChange = async (e) => {
+    setlog('')
+    setlist([])
+    setSelectedOption(null)
     setvalue(e.target.value)
   }
   useEffect(() => {
@@ -51,7 +55,7 @@ const Logs = () => {
             <Radio.Button value="app-out">app</Radio.Button>
           </Radio.Group>
 
-          <Select onChange={getList} style={{ width: 240 }} options={list} />
+          <Select onChange={getList} style={{ width: 240 }} value={selectedOption} options={list} />
         </div>
         <div className="logs-body">
           <TextArea rows={4} value={log} />

@@ -123,6 +123,7 @@ const Calendar = () => {
   ])
   // 添加事件到列表
   const onSearch = (item: string) => {
+    if (!item) return
     setTaskList([...taskList, { ...currentColor, value: item }])
   }
   // 选择颜色

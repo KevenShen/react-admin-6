@@ -21,7 +21,8 @@ const Role = () => {
   useEffect(() => {
     getList()
   }, [])
-  const cardContent = '在这里，你可以对系统中的用户岗位进行管理，用户登录必须选择一个岗位。'
+  const cardContent =
+    '在这里，你可以对系统中的岗位进行管理，岗位对应一个角色,默认拥有角色对应菜单,管理员可以根据岗位定制化菜单(只会修改岗位,不会修改角色对应菜单)。'
   return (
     <Panl title="岗位管理" source={cardContent}>
       <div className="app-card pos">
@@ -39,6 +40,15 @@ const Role = () => {
           <Column title="岗位类型" dataIndex="role_id" key="role_id" />
           <Column title="机构ID" dataIndex="org_id" key="org_id" />
           <Column title="岗位描述" dataIndex="description" key="description" />
+          <Column
+            title="角色类型"
+            dataIndex="role"
+            key="role.name"
+            render={(role) =>
+              /* 确保 role 是一个对象并且有 name 属性 */
+              typeof role === 'object' && role !== null && 'name' in role ? role.name : '未知'
+            }
+          />
           <Column
             title="操作"
             key="action"
