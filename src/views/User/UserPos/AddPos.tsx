@@ -1,10 +1,9 @@
 import { AutoComplete, Form, Input, Modal, Select, Upload, message } from 'antd'
-import { forwardRef, useImperativeHandle, useState } from 'react'
-import { getUserNameList } from '@/api/user'
-import { delay } from '@/utils/const'
-import useDebounce from '@/hooks/useDebounce'
+import { forwardRef, useEffect, useImperativeHandle, useState } from 'react'
+import { posAll } from '@/api/menu'
+import { addUserPos } from '@/api/user'
 
-const AddUser = (props, ref) => {
+const AddPos = (props, ref) => {
   const [form] = Form.useForm()
   const [value, setValue] = useState('')
   const [options, setOptions] = useState<{ value: string }[]>([])
@@ -20,31 +19,38 @@ const AddUser = (props, ref) => {
   // 弹窗按钮提交表单
   const handleOk = async () => {
     try {
+      const values = await addUserPos({
+        userpos: {
+          user_id: props.id,
+          posId: form.getFieldsValue().posid
+        }
+      })
     } catch (errorInfo) {
       // 验证失败
       console.log('Failed:', errorInfo)
     }
   }
 
-  useDebounce(value, 1000, async () => {
-    const { data } = await getUserNameList({
-      name: value
-    })
+  const getpos = async () => {
+    const { data } = await posAll()
     setOptions(
       data.map((item) => {
         return {
-          label: item.username,
-          value: item.username,
+          label: item.name,
+          value: item.name,
           id: item.id
         }
       })
     )
-  })
+  }
+
+  useEffect(() => {
+    getpos()
+  }, [])
 
   const onSelect = (data: string, option) => {
     setValue(option.label)
-    form.setFieldValue('userId', option.id)
-    console.log(form.getFieldsValue(), option.id)
+    form.setFieldValue('posid', option.id)
   }
 
   // 弹窗关闭
@@ -68,7 +74,7 @@ const AddUser = (props, ref) => {
         initialValues={{ remember: true }}
         autoComplete="off">
         <Form.Item
-          label="选择用户"
+          label="选择岗位"
           name="username"
           rules={[{ required: true, message: 'Please input your username!' }]}>
           <AutoComplete
@@ -78,16 +84,10 @@ const AddUser = (props, ref) => {
             placeholder="input here"
           />
         </Form.Item>
-        <Form.Item name="userId" hidden />
-        <Form.Item
-          label="用户昵称"
-          name="nickname"
-          rules={[{ required: true, message: 'Please input your nickname!' }]}>
-          <Input autoComplete="off" />
-        </Form.Item>
+        <Form.Item name="posid" hidden />
       </Form>
     </Modal>
   )
 }
 
-export default forwardRef(AddUser) // 必须使用forwardRef包裹组件才能暴露方法
+export default forwardRef(AddPos) // 必须使用forwardRef包裹组件才能暴露方法

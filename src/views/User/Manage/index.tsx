@@ -1,5 +1,5 @@
 import Panl from '@/components/TypingCard'
-import { Avatar, Button, Space, Table, Tag } from 'antd'
+import { Avatar, Button, Space, Table, TablePaginationConfig } from 'antd'
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 import { useEffect, useRef, useState } from 'react'
 import { getUserList } from '@/api/user'
@@ -13,12 +13,18 @@ const Manage = () => {
   const from = useRef(null)
   const [list, setList] = useState([])
   const [row, setRow] = useState({})
-  const getList = async () => {
+  const [pagination, setPagination] = useState<TablePaginationConfig>({
+    current: 1,
+    pageSize: 10
+  })
+  const getList = async (page: TablePaginationConfig = pagination) => {
+    console.log(page)
+    setPagination(page)
     const { data } = await getUserList({
       param: {},
       pageInfo: {
-        pageNum: 1,
-        pageSize: 10
+        pageNum: page.current,
+        pageSize: page.pageSize
       }
     })
     setList(data)
@@ -29,14 +35,14 @@ const Manage = () => {
   }
   // 挂载时运行一次
   useEffect(() => {
-    getList()
+    getList(pagination)
   }, [])
   return (
     <Panl title="用户管理" source={cardContent}>
       <div className="app-card">
         {' '}
         <Space wrap>
-          <Button type="primary" onClick={getList}>
+          <Button type="primary" onClick={() => getList()}>
             查询
           </Button>
           <Button type="primary" onClick={() => from?.current.showModal()} className="btn-pink">
@@ -46,8 +52,9 @@ const Manage = () => {
         <Table
           bordered
           dataSource={list}
+          onChange={getList}
           pagination={{
-            pageSize: 5,
+            ...pagination,
             pageSizeOptions: [5, 10],
             showTotal: (total) => `共 ${total} 条`,
             showSizeChanger: true
@@ -93,7 +100,7 @@ const Manage = () => {
             )}
           />
         </Table>
-        <Edituser ref={from} getList={getList}></Edituser>
+        <Edituser ref={from} getList={() => getList()}></Edituser>
       </div>
     </Panl>
   )

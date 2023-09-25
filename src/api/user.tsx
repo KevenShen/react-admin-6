@@ -36,3 +36,17 @@ export function getUserNameList(data) {
     data
   })
 }
+export function delUserPos(data) {
+  return request({
+    url: '/user/delUserPos',
+    method: 'post',
+    data
+  })
+}
+export function addUserPos(data) {
+  return request({
+    url: '/user/addUserPos',
+    method: 'post',
+    data
+  })
+}

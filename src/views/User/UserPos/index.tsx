@@ -1,16 +1,19 @@
 import Panl from '@/components/TypingCard'
 import { getRole, getMenu } from '@/api/login'
+import AddUser from './AddUser'
+import EditUser from './EditUser'
 import { Button, Col, Row, Space, Table, Tree } from 'antd'
 import Column from 'antd/es/table/Column'
 import { useEffect, useRef, useState } from 'react'
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 import './index.less'
 import { getUserPosList } from '@/api/user'
-import AddUser from './AddUser'
 const Role = () => {
   console.log('用户岗位 渲染')
   const adduser = useRef<{ showModal: () => void } | null>(null)
+  const edituser = useRef<{ showModal: () => void } | null>(null)
   const [list, setList] = useState([])
+  const [rowList, setrowList] = useState([])
   const getList = async () => {
     const { data } = await getUserPosList({
       param: {},
@@ -98,7 +101,7 @@ const Role = () => {
               <Space>
                 <Button
                   type="primary"
-                  onClick={() => from?.current.showModal(record.id)}
+                  onClick={() => edituser?.current?.showModal(record.postList, record.user_id)}
                   shape="circle"
                   icon={<EditOutlined />}
                 />
@@ -110,6 +113,7 @@ const Role = () => {
       </div>
 
       <AddUser ref={adduser}></AddUser>
+      <EditUser ref={edituser} getList={getList}></EditUser>
     </Panl>
   )
 }
