@@ -33,6 +33,12 @@ const Manage = () => {
   const edit = async (row) => {
     from?.current.showModal(row)
   }
+
+  const imgacc = (acc) => {
+    if (!acc) return ''
+    if (acc.includes('http')) return acc
+    return 'http://' + window.document.location.host + '/api' + acc
+  }
   // 挂载时运行一次
   useEffect(() => {
     getList(pagination)
@@ -67,7 +73,11 @@ const Manage = () => {
             dataIndex="avatar"
             key="avatar"
             render={(_: any, record) => (
-              <img style={{ width: '64px', height: '64px' }} src={record.avatar} alt="avatar" />
+              <img
+                style={{ width: '64px', height: '64px' }}
+                src={imgacc(record.avatar)}
+                alt="avatar"
+              />
             )}
           />
           {/* <Column

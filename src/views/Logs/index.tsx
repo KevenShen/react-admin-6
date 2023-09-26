@@ -51,8 +51,8 @@ const Logs = () => {
         <div className="logs-header">
           <Radio.Group value={value} onChange={radioChange}>
             <Radio.Button value="access">成功</Radio.Button>
-            <Radio.Button value="errors">失败</Radio.Button>
-            <Radio.Button value="app-out">app</Radio.Button>
+            <Radio.Button value="error">失败</Radio.Button>
+            <Radio.Button value="app">app</Radio.Button>
           </Radio.Group>
 
           <Select onChange={getList} style={{ width: 240 }} value={selectedOption} options={list} />
