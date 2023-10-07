@@ -1,15 +1,45 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { resolve } from 'path'
-// https://vitejs.dev/config/
+import postcssPreseEnv from 'postcss-preset-env'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+import path from 'path'
 export default defineConfig({
   base: '',
-  plugins: [react()],
+  plugins: [
+    react(),
+    createSvgIconsPlugin({
+      // 指定需要缓存的图标文件夹
+      iconDirs: [path.resolve(process.cwd(), 'src/assets/svg')],
+      // 指定symbolId格式
+      symbolId: 'icon-[name]',
+      /**
+       * 自定义插入位置
+       * @default: body-last
+       */
+      inject: 'body-first',
+      /**
+       * custom dom id
+       * @default: __svg__icons__dom__
+       */
+      customDomId: '__svg__icons__dom__'
+    })
+  ],
   css: {
     preprocessorOptions: {
       less: {
         javascriptEnabled: true
       }
+    },
+    postcss: {
+      plugins: [
+        postcssPreseEnv({
+          stage: 0,
+          features: {
+            'nesting-rules': true
+          }
+        })
+      ]
     }
   },
   resolve: {

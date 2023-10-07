@@ -6,8 +6,9 @@ interface Props {
   name: string
   size?: string
   fill?: string
+  className?: string
 }
-const SvgImage = ({ name, size = '14px', fill = '#000' }: Props) => {
+const SvgImage = ({ name, size = '14px', fill = '#000', className }: Props) => {
   // const [imgUrl, setImgUrl] = useState('')
 
   // useEffect(() => {
@@ -27,7 +28,7 @@ const SvgImage = ({ name, size = '14px', fill = '#000' }: Props) => {
         fill,
         fontSize: '20px'
       }}
-      className="icon"
+      className={'icon ' + className}
       aria-hidden="true">
       <use xlinkHref={`#${name}`}></use>
     </svg>

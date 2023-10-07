@@ -1,8 +1,8 @@
-import logo from '@/assets/images/logo.png'
 import './index.less'
 import { Switch } from 'antd'
 import { collapsed, collbtn } from '@/store/Module/com'
 import { useRecoilValue, useRecoilState } from 'recoil'
+import SvgImage from '@/components/SvgImage'
 const Logo = () => {
   const [coll, setColl] = useRecoilState(collapsed)
   const btn = useRecoilValue(collbtn)
@@ -13,7 +13,7 @@ const Logo = () => {
 
   return (
     <div className="sidebar-logo-container">
-      <img src={logo} className="sidebar-logo" alt="" />
+      <SvgImage className="sidebar-logo" size="40px" name="icon-react"></SvgImage>
       {btn && <Switch checked={coll} onChange={onChange} defaultChecked />}
     </div>
   )
