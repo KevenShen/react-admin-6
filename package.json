@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build:docker": "vite build && yarn copy && yarn push && yarn docker:build && yarn docker:admin && yarn gulp",
-    "build": "vite build && yarn copy && yarn push && yarn gulpdocker",
+    "build:push": "vite build && yarn copy && yarn push && yarn gulpdocker",
+    "build": "vite build",
     "copy": "node copy.js",
     "push": "start ./push.sh",
     "docker:build": "docker build -t admin .",

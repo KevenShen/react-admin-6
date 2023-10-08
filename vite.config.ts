@@ -34,7 +34,7 @@ export default defineConfig({
     postcss: {
       plugins: [
         postcssPreseEnv({
-          stage: 0,
+          stage: 4,
           features: {
             'nesting-rules': true
           }
