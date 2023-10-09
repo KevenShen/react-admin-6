@@ -13,7 +13,6 @@ interface HistoryList {
 }
 const Tags = () => {
   const { token }: { token: ThemeType } = useToken()
-  console.log(token)
   const navigate = useNavigate()
   const [activeKey, setActiveKey] = useState('')
   const [historyList, removeTab] = useTab()

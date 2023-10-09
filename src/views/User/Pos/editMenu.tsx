@@ -11,10 +11,10 @@ import {
 import { getMenu, getMenuById } from '@/api/login'
 import { posEditMenu } from '@/api/menu'
 const EditMenu = (props, ref) => {
-  console.log('编辑弹窗刷新')
   const [form] = Form.useForm()
   const [open, setOpen] = useState(false)
   const [id, setId] = useState()
+  const [halfCheckedKeys, setHalfCheckedKeys] = useState([])
   const [treeData, settreeData] = useState([])
   const [checkedKeys, setCheckedKeys] = useState<React.Key[]>([])
   const [confirmLoading, setConfirmLoading] = useState(false)
@@ -22,7 +22,7 @@ const EditMenu = (props, ref) => {
     // changeVal 就是暴露给父组件的方法
     showModal: (id) => {
       setId(id)
-      getMenuId()
+      getMenuId(id)
       setOpen(true)
     }
   }))
@@ -31,12 +31,12 @@ const EditMenu = (props, ref) => {
     settreeData(data)
   }
   // 根据岗位id获取菜单
-  const getMenuId = async () => {
+  const getMenuId = async (id) => {
     const { data: menu } = await getMenuById(id)
     const menuIds: any[] | ((prevState: Key[]) => Key[]) = []
     menu.forEach((item) => {
+      if (item.children) return menuIds.push(...item.children.map((child) => child.id))
       menuIds.push(item.id)
-      if (item.children) menuIds.push(...item.children.map((child) => child.id))
     })
     setCheckedKeys(menuIds)
   }
@@ -49,7 +49,7 @@ const EditMenu = (props, ref) => {
   // 更新权限菜单
   const handleOk = async () => {
     const { data } = await posEditMenu({
-      menu: checkedKeys,
+      menu: [...checkedKeys, ...halfCheckedKeys],
       id
     })
     setOpen(false)
@@ -59,7 +59,8 @@ const EditMenu = (props, ref) => {
     setOpen(false)
     setCheckedKeys([])
   }
-  const onCheck = (arr: SetStateAction<Key[]>) => {
+  const onCheck = (arr: SetStateAction<Key[]>, e: { halfCheckedKeys: [] }) => {
+    setHalfCheckedKeys(e.halfCheckedKeys)
     setCheckedKeys(arr)
   }
 
@@ -84,4 +85,4 @@ const EditMenu = (props, ref) => {
   )
 }
 
-export default memo(forwardRef(EditMenu)) // 必须使用forwardRef包裹组件才能暴露方法
+export default forwardRef(EditMenu) // 必须使用forwardRef包裹组件才能暴露方法

@@ -73,27 +73,30 @@ const Calendar = () => {
 
   // 增加事件
   const handleDrop = (e) => {
-    if (!e) return
-    e.preventDefault()
-    const id = new Date().toISOString()
-    const ev: EventApi = {
-      id,
-      title: dragging.value,
-      backgroundColor: dragging.color,
-      borderColor: dragging.color
-    }
-    if (selectEve) {
-      ev.start = selectEve.startStr
-      ev.end = selectEve.endStr
-      ev.allDay = selectEve.allDay
-      setSelectEve(null)
-    } else {
-      ev.start = recursiveQuery(e.target)
-      ev.allDay = true
-    }
-    if (dragging) {
-      setEvents([...events, ev])
-      // setDragging(null)
+    try {
+      e.preventDefault()
+      const id = new Date().toISOString()
+      const ev: EventApi = {
+        id,
+        title: dragging.value,
+        backgroundColor: dragging.color,
+        borderColor: dragging.color
+      }
+      if (selectEve) {
+        ev.start = selectEve.startStr
+        ev.end = selectEve.endStr
+        ev.allDay = selectEve.allDay
+        setSelectEve(null)
+      } else {
+        ev.start = recursiveQuery(e.target)
+        ev.allDay = true
+      }
+      if (dragging) {
+        setEvents([...events, ev])
+        // setDragging(null)
+      }
+    } catch (e) {
+      console.log(e)
     }
   }
   const [colorList] = useState<Array<Color>>([
@@ -120,6 +123,7 @@ const Calendar = () => {
   ])
   // 添加事件到列表
   const onSearch = (item: string) => {
+    if (!item) return
     setTaskList([...taskList, { ...currentColor, value: item }])
   }
   // 选择颜色

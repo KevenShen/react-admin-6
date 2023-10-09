@@ -2,7 +2,7 @@ import Panl from '@/components/TypingCard'
 import { getRole, getMenu, updateRole } from '@/api/login'
 import { Button, Col, Row, Space, Table, Tree } from 'antd'
 import Column from 'antd/es/table/Column'
-import { useEffect, useState } from 'react'
+import { Key, useEffect, useState } from 'react'
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 import './index.less'
 import { editmenu, getmenu } from '@/api/menu'
@@ -11,7 +11,7 @@ const Role = () => {
 
   const [list, setList] = useState([])
   const [treeData, settreeData] = useState([])
-
+  const [halfCheckedKeys, setHalfCheckedKeys] = useState([])
   const [checkedKeys, setCheckedKeys] = useState<React.Key[]>([])
   const [rowValue, setRowValue] = useState<React.Key[]>([])
   const getList = async () => {
@@ -23,23 +23,26 @@ const Role = () => {
     settreeData(data)
   }
 
-  const onCheck = (checkedKeysValue: any) => {
-    console.log('onCheck', checkedKeysValue)
+  const onCheck = (checkedKeysValue: any, e: { halfCheckedKeys: [] }) => {
+    setHalfCheckedKeys(e.halfCheckedKeys)
     setCheckedKeys(checkedKeysValue)
   }
 
   const update = async () => {
-    console.log(checkedKeys.join(','))
     const { data } = await editmenu({
       id: rowValue[0],
-      menu: checkedKeys
+      menu: [...checkedKeys, ...halfCheckedKeys]
     })
   }
   // 点击角色菜单选中
   const inversemenu = async () => {
-    console.log(rowValue[0])
     const { data } = await getmenu(rowValue[0])
-    setCheckedKeys(data.map((item) => +item.menu_id))
+    const ketList: any[] | ((prevState: Key[]) => Key[]) = []
+    data.forEach((item) => {
+      if (item.children) return ketList.push(...item.children.map((child) => child.id))
+      ketList.push(item.id)
+    })
+    setCheckedKeys(ketList)
   }
   // 挂载时运行一次
   useEffect(() => {

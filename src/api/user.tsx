@@ -22,3 +22,31 @@ export function update(data) {
     data
   })
 }
+export function getUserPosList(data) {
+  return request({
+    url: '/user/getUserPosList',
+    method: 'post',
+    data
+  })
+}
+export function getUserNameList(data) {
+  return request({
+    url: '/user/getUserNameList',
+    method: 'post',
+    data
+  })
+}
+export function delUserPos(data) {
+  return request({
+    url: '/user/delUserPos',
+    method: 'post',
+    data
+  })
+}
+export function addUserPos(data) {
+  return request({
+    url: '/user/addUserPos',
+    method: 'post',
+    data
+  })
+}

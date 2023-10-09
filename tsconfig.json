@@ -21,7 +21,8 @@
       "views/*": ["src/views/*"],
       "@icons": ["src/assets/svg/"],
       "components/*": ["src/components/*"]
-    }
+    },
+    "types": ["vite-plugin-svg-icons/client"]
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]

@@ -15,8 +15,7 @@ const Contents = () => {
     <TransitionGroup
       style={{
         flex: 1,
-        overflow: 'hidden',
-        whiteSpace: 'nowrap'
+        overflowY: 'scroll'
       }}>
       <CSSTransition timeout={300} key={location.pathname} classNames={ant}>
         <Content

@@ -5,7 +5,7 @@ const filtermenuId = (arr) => {
   return arr.map((item) => item.id)
 }
 const editPos = (props, ref) => {
-  console.log('编辑弹窗刷新')
+  // console.log('编辑弹窗刷新')
   const [form] = Form.useForm()
   const [open, setOpen] = useState(false)
   const [treeData, settreeData] = useState([])
