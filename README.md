@@ -41,6 +41,12 @@
 git https://github.com/jiuxiangyangguang/react-admin.git
 ```
 
+- **切换dev分支 由于服务器到期部分后台服务未部署请切换至dev分支浏览账号密码随便填**
+
+```bash
+git checkout dev
+```
+
 - 安装依赖 (推荐使用yarn)
 
 ```bash
@@ -51,7 +57,7 @@ yarn
 npm i
 ```
 
-- 运行项目(需要先启动[后台项目](https://github.com/jiuxiangyangguang/nestJs)不然无法登录)
+- 运行项目(main分支需要先启动[后台项目](https://github.com/jiuxiangyangguang/nestJs)不然无法登录)
 
 ```bash
 yarn dev
