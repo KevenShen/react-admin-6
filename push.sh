@@ -3,7 +3,7 @@
 git init
 git add docs
 git commit -m '🎉 feat: 发布web项目'
-git push -f "https://github.com/jiuxiangyangguang/react-admin.git" main
+git push -f "https://github.com/jiuxiangyangguang/react-admin.git" dev
 
 
 
