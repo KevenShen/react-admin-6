@@ -125,11 +125,12 @@ const Edituser = (props, ref) => {
 
   return (
     <Modal
-      forceRender
       title="编辑"
       open={open}
       onOk={handleOk}
       confirmLoading={confirmLoading}
+      destroyOnClose
+      getContainer={false}
       onCancel={handleCancel}>
       <Form
         form={form}

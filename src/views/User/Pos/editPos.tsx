@@ -44,11 +44,12 @@ const editPos = (props, ref) => {
 
   return (
     <Modal
-      forceRender
       title="编辑"
       open={open}
       onOk={handleOk}
+      getContainer={false}
       confirmLoading={confirmLoading}
+      destroyOnClose
       onCancel={handleCancel}>
       <Tree
         checkable

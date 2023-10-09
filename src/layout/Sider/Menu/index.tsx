@@ -43,8 +43,6 @@ const Menus = ({ className }) => {
     navigate(item.key)
   }
 
-  console.log('Menu 渲染', menuArr)
-
   return (
     <Menu
       className={className}

@@ -42,10 +42,11 @@ const EditUser = (props, ref) => {
 
   return (
     <Modal
-      forceRender
       title="用户岗位设置"
       open={open}
       confirmLoading={confirmLoading}
+      getContainer={false}
+      destroyOnClose
       onCancel={handleCancel}>
       <Space wrap>
         <Button type="primary" onClick={() => addPos.current?.showModal()} className="btn-pink">

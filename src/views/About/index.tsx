@@ -3,7 +3,6 @@ import Panl from '@/components/TypingCard'
 
 const About = () => {
   console.log('about')
-  const text = ''
 
   return (
     <Panl title="关于我" source={'关于我的信息'}>

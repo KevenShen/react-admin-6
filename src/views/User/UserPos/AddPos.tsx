@@ -60,10 +60,11 @@ const AddPos = (props, ref) => {
 
   return (
     <Modal
-      forceRender
       title="新增用户岗位"
       open={open}
       onOk={handleOk}
+      destroyOnClose
+      getContainer={false}
       confirmLoading={confirmLoading}
       onCancel={handleCancel}>
       <Form
