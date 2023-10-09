@@ -22,12 +22,32 @@ function Login() {
   const onFinish = async (values: any) => {
     const { posId } = form.getFieldsValue()
     const obj = list.find((item) => item.id === posId) as LoginUser
-    const { data } = await userLogin({
-      username: values.username,
-      password: values.password,
-      role_id: obj.role_id,
-      pos_id: obj.id
-    })
+    // const { data } = await userLogin({
+    //   username: values.username,
+    //   password: values.password,
+    //   role_id: obj.role_id,
+    //   pos_id: obj.id
+    // })
+    const { data } = {
+      data: {
+        token:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTksInVzZXJJZCI6IlUwMDAxOSIsInVzZXJuYW1lIjoiY2x3Iiwibmlja25hbWUiOiLotoXnuqfnrqHnkIblkZgiLCJhdmF0YXIiOiJodHRwczovL2dpdGVlLmNvbS9qaXV4aWFuZ3lhbmdndWFuZy9teWltZy9yYXcvbWFzdGVyL3RyZWUvbWFzdGVyL2M3NTllZjE4MjA0ODgxZmQ4NzBlMDQ1MGRkZjUwYjAuanBnMTY5NTY5NzkzNDM5MyIsImNyZWF0ZVRpbWUiOiIyMDIzLTA5LTI2VDAzOjEyOjE4LjEwMVoiLCJ1cGRhdGVUaW1lIjoiMjAyMy0wOS0yNlQwMzoxMjoxOC4wMDBaIiwicm9sZV9pZCI6MSwicG9zX2lkIjoxLCJpYXQiOjE2OTY4MTkwNjQsImV4cCI6MTY5Njg2MjI2NH0.DSNCmfjy7qiLXsosJBmRSzGhqMolY4Ta_OGYnrEZaOM',
+        user: {
+          id: 19,
+          userId: 'U00019',
+          username: 'clw',
+          nickname: '超级管理员',
+          avatar:
+            'https://gitee.com/jiuxiangyangguang/myimg/raw/master/tree/master/c759ef18204881fd870e0450ddf50b0.jpg1695697934393',
+          createTime: '2023-09-26T03:12:18.101Z',
+          updateTime: '2023-09-26T03:12:18.000Z',
+          role_id: 1,
+          pos_id: 1
+        }
+      },
+      code: 200,
+      msg: '请求成功'
+    }
     setText(data.user)
     setTokenRec(data.token)
     const { data: menu } = await getMenuById(data.user.pos_id)
@@ -41,9 +61,24 @@ function Login() {
   const handleFocus = async () => {
     const { username } = form.getFieldsValue()
     if (!username) return
-    const { data } = await getPosList({
-      username
-    })
+    // const { data } = await getPosList({
+    //   username
+    // })
+    const { data } = {
+      data: [
+        {
+          id: 1,
+          name: '总部管理员',
+          type: 1,
+          role_id: 1,
+          status: 2,
+          description: '总部管理员',
+          org_id: '0315',
+          create_time: '2023-03-31T03:54:42.115Z',
+          update_time: '2023-04-10T09:11:18.706Z'
+        }
+      ]
+    }
     setList(data)
   }
   return (

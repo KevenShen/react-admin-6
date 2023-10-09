@@ -64,8 +64,8 @@ service.interceptors.response.use(
       message.error({
         content: text
       })
-      localStorage.removeItem('user')
-      window.location.hash = '/login' // 使用hash来实现不刷新页面重新登入
+      // localStorage.removeItem('user')
+      // window.location.hash = '/login' // 使用hash来实现不刷新页面重新登入
     } else {
       message.error({
         content: text
