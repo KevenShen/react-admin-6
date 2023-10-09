@@ -41,30 +41,29 @@
 git https://github.com/jiuxiangyangguang/react-admin.git
 ```
 
-- 安装依赖
+- 安装依赖 (推荐使用yarn)
 
 ```bash
-# 推荐使用yarn
 yarn
+```
 
-# 或者 npm
+```bash
 npm i
 ```
 
 - 运行项目(需要先启动[后台项目](https://github.com/jiuxiangyangguang/nestJs)不然无法登录)
 
 ```bash
-# 开发环境
 yarn dev
 ```
 
-- 打包使用  `"build": "vite build"`  其他均为docker发布使用如未安装docker也不会对项目产生任何影响
+- 打包使用
 
 ```bash
 yarn build
 ```
 
-
+- 部署使用docker详情可见  package.json文件  支持gulpfile一键部署到服务器
 
 ### 五、项目截图
 

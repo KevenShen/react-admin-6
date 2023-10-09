@@ -3,7 +3,7 @@ import pkg from 'gulp'
 const { task, dest, series, src } = pkg
 const config = {
   ssh: {
-    host: '116.62.37.172',
+    host: '',
     port: 22,
     username: '',
     password: ''
