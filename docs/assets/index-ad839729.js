@@ -1,0 +1,1 @@
+import{b8 as e,d as t,b9 as o,j as a,ba as n,bb as r}from"./index-ff970420.js";function c(){console.log("User 渲染");const s=e();return t(o,{children:[s.pathname==="/user"&&a(n,{to:"/user/manage"}),a(r,{})]})}export{c as default};

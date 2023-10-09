@@ -1,0 +1,1 @@
+import{s as e}from"./request-7bfa538c.js";function n(){return e({url:"/menu/list",method:"get"})}function u(t){return e({url:`/menu/list/${t}`,method:"get"})}function o(){return e({url:"/role/all",method:"get"})}export{u as a,o as b,n as g};
