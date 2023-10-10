@@ -74,7 +74,60 @@ yarn build
 ```
 
 - 部署使用 docker 详情可见 package.json 文件 支持 gulpfile 一键部署到服务器
-- <a id="docker"></a>Docker部署  可体验完整功能
+
+- <a id="docker"></a>**Docker部署  可体验完整功能**
+
+- 所需镜像列表
+
+  - `traveldocker1/node`  后台服务
+  - `traveldocker1/admin:latest`  前端服务
+  - `traveldocker1/mysql`  数据库服务
+  - `traveldocker1/redis`  缓存服务
+  - 新建`docker-compose.yml`文件
+
+  ```yaml
+  version: '3'
+  services:
+    node:
+      build: .
+      image: traveldocker1/node
+      ports:
+        - '1152:1103'
+      depends_on:
+        - mysql
+    admin:
+      image: traveldocker1/admin:latest
+      ports:
+        - '1102:1102'
+    mysql:
+      image: traveldocker1/mysql
+      ports:
+        - '3308:3306'
+      environment:
+        MYSQL_ROOT_PASSWORD: root
+      volumes:
+        - db_data:/var/lib/mysql
+        - ./test.sql:/docker-entrypoint-initdb.d/test.sql
+    redis:
+      image: traveldocker1/redis
+      ports:
+        - '6378:6379'
+      command: redis-server /usr/local/etc/redis/redis.conf
+      volumes:
+        - ./redis.conf:/usr/local/etc/redis/redis.conf
+  
+  volumes:
+    db_data:
+  
+  ```
+
+  - 运行容器
+
+  ```bash
+  docker-compose up
+  ```
+
+  
 
 ### 五、项目截图
 
