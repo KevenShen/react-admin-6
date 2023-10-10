@@ -13,7 +13,11 @@
 ### 二、Git 仓库地址
 
 - web 项目 ☞ [jiuxiangyangguang/react-admin: react-后台管理项目 (github.com)](https://github.com/jiuxiangyangguang/react-admin)
-- 后台 nestJs ☞ [jiuxiangyangguang/nestJs (github.com)](https://github.com/jiuxiangyangguang/nestJs)
+
+- 后台 nestJs ☞ [jiuxiangyangguang/nestJs (github.com)](https://github.com/jiuxiangyangguang/nestJs)  (依赖Redis,MySQL)
+
+- ###### docker部署  ☞ 跳转到docker
+
 
 ### 三、项目简介
 
@@ -57,7 +61,7 @@ yarn
 npm i
 ```
 
-- 运行项目(main 分支需要先启动[后台项目](https://github.com/jiuxiangyangguang/nestJs)不然无法登录)
+- 运行项目(使用main 分支时需要先启动[后台项目](https://github.com/jiuxiangyangguang/nestJs)不然无法登录,后台服务依赖于Redis,MySQL,建议使用Dockery拉取镜像以体验完整功能)
 
 ```bash
 yarn dev
@@ -70,6 +74,7 @@ yarn build
 ```
 
 - 部署使用 docker 详情可见 package.json 文件 支持 gulpfile 一键部署到服务器
+- <a id="docker"></a>Docker部署  可体验完整功能
 
 ### 五、项目截图
 
