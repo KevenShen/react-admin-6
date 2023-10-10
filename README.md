@@ -16,7 +16,7 @@
 
 - 后台 nestJs ☞ [jiuxiangyangguang/nestJs (github.com)](https://github.com/jiuxiangyangguang/nestJs)  (依赖Redis,MySQL)
 
-- ###### docker部署  ☞ 跳转到docker
+- docker部署  ☞ [docker部署详情](#docker)
 
 
 ### 三、项目简介
