@@ -83,7 +83,7 @@ yarn build
   - `traveldocker1/admin:latest`  前端服务
   - `traveldocker1/mysql`  数据库服务
   - `traveldocker1/redis`  缓存服务
-  - 新建`docker-compose.yml`文件
+  - 新建`docker-compose.yml`文件   [test.sql](./test.sql)
 
   ```yaml
   version: '3'
@@ -146,3 +146,4 @@ yarn build
 - 工作日历页(支持拖拽)
 
 ![](mdimg/202310091012526.png)
+
