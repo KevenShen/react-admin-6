@@ -1,0 +1,32 @@
+version: '3'
+services:
+  node:
+    build: .
+    image: traveldocker1/node
+    ports:
+      - '1152:1103'
+    depends_on:
+      - mysql
+  admin:
+    image: traveldocker1/admin:latest
+    ports:
+      - '1102:1102'
+  mysql:
+    image: traveldocker1/mysql
+    ports:
+      - '3308:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./test.sql:/docker-entrypoint-initdb.d/test.sql
+  redis:
+    image: traveldocker1/redis
+    ports:
+      - '6378:6379'
+    command: redis-server /usr/local/etc/redis/redis.conf
+    volumes:
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
+
+volumes:
+  db_data:

@@ -81,9 +81,9 @@ yarn build
 
   - `traveldocker1/node`  后台服务
   - `traveldocker1/admin:latest`  前端服务
-  - `traveldocker1/mysql`  数据库服务
-  - `traveldocker1/redis`  缓存服务
-  - 新建`docker-compose.yml`文件   [test.sql](./test.sql)
+  - `traveldocker1/mysql`  数据库服务  [初始化数据库sql](./test.sql)
+  - `traveldocker1/redis`  缓存服务   [redis配置](./redis.conf)
+  - 新建`docker-compose.yml`文件   
 
   ```yaml
   version: '3'
