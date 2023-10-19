@@ -5,9 +5,10 @@ import EditUser from './EditUser'
 import { Button, Col, Row, Space, Table, Tree } from 'antd'
 import Column from 'antd/es/table/Column'
 import { useEffect, useRef, useState } from 'react'
-import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
+import { EditOutlined, DeleteOutlined, VerticalAlignBottomOutlined } from '@ant-design/icons'
 import './index.less'
 import { getUserPosList } from '@/api/user'
+import exportToExcel from '@/utils/exportExcel'
 const Role = () => {
   console.log('用户岗位 渲染')
   const adduser = useRef<{ showModal: () => void } | null>(null)
@@ -28,6 +29,14 @@ const Role = () => {
   useEffect(() => {
     getList()
   }, [])
+
+  const exportExl = () => {
+    const data = [
+      { name: 'John', age: 30, city: 'New York' },
+      { name: 'Jane', age: 40, city: 'San Francisco' }
+    ]
+    exportToExcel(data, '测试.xlsx')
+  }
   const cardContent = '在这里，你可以对系统中的用户岗位进行管理，用户登录必须选择一个岗位。'
   return (
     <Panl title="岗位管理" source={cardContent}>
@@ -38,6 +47,10 @@ const Role = () => {
           </Button>
           <Button type="primary" onClick={() => adduser?.current?.showModal()} className="btn-pink">
             新增
+          </Button>
+
+          <Button type="primary" onClick={exportExl} icon={<VerticalAlignBottomOutlined />}>
+            导出
           </Button>
         </Space>
         <Table bordered dataSource={list} rowKey={(record) => record.id}>
