@@ -68,5 +68,13 @@ export default defineConfig({
         rewrite: (path) => path.replace(/^\/api/, '')
       }
     }
+  },
+  build: {
+    manifest: true,
+    rollupOptions: {
+      output: {
+        sourcemap: true
+      }
+    }
   }
 })
