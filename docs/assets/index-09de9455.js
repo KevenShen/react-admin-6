@@ -1,0 +1,1 @@
+import{r as o,j as r}from"./index-2dc9f0ca.js";import{P as e}from"./index-0183c3d6.js";import"./PlusOutlined-062043c8.js";const a=o.memo(()=>(console.log("home"),r(e,{title:"主页",source:"图表及配置信息",children:"图表及配置信息"})));export{a as default};
