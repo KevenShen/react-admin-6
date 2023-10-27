@@ -1,13 +1,62 @@
 import Panl from '@/components/TypingCard'
 import { token, userInfo } from '@/store/Module/user'
-import { memo } from 'react'
+import { memo, useState } from 'react'
 import { useRecoilValue, useRecoilState } from 'recoil'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Button, Card } from 'antd'
+import './index.less'
+import { CloseCircleOutlined } from '@ant-design/icons'
 
 const Home = memo(() => {
-  console.log('home')
+  const [selectedId, setSelectedId] = useState('')
   return (
-    <Panl title="主页" source={'图表及配置信息'}>
-      图表及配置信息
+    <Panl title="主页" source={'主页可以作为您的工作台'}>
+      <div className="card-layout">
+        <div className="card-box">
+          <motion.div layoutId={'1'} onClick={() => setSelectedId('1')}>
+            <Card title="Card 1" bordered={false} style={{ width: 300 }}>
+              <p>Card content</p>
+              <p>Card content</p>
+              <p>Card content</p>
+            </Card>
+          </motion.div>
+          <motion.div layoutId={'2'} onClick={() => setSelectedId('2')}>
+            <Card title="Card 2" bordered={false} style={{ width: 300 }}>
+              <p>Card content</p>
+              <p>Card content</p>
+              <p>Card content</p>
+            </Card>
+          </motion.div>
+          <motion.div layoutId={'3'} onClick={() => setSelectedId('3')}>
+            <Card title="Card 3" bordered={false} style={{ width: 300 }}>
+              <p>Card content</p>
+              <p>Card content</p>
+              <p>Card content</p>
+            </Card>
+          </motion.div>
+        </div>
+        <AnimatePresence>
+          {selectedId && (
+            <div className="mask-card-box">
+              <motion.div layoutId={selectedId}>
+                <Card
+                  title="Card title"
+                  extra={
+                    <CloseCircleOutlined
+                      onClick={() => {
+                        setSelectedId('')
+                      }}
+                    />
+                  }
+                  bordered={false}
+                  style={{ width: 400 }}>
+                  <p>{selectedId}</p>
+                </Card>
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>
+      </div>
     </Panl>
   )
 })
