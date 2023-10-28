@@ -59,7 +59,7 @@ const Live = () => {
               <ReactPlayer
                 key={reload} // 将key设置为状态变量
                 className="live-player"
-                url="http://127.0.0.1:8887/live/mylive_360.flv"
+                url="http://127.0.0.1:8887/live/mylive_1440.flv"
                 config={{
                   file: {
                     attributes: {
