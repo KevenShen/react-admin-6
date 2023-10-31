@@ -1,0 +1,398 @@
+{
+  "_Box-d24c1e4f.js": {
+    "file": "assets/Box-d24c1e4f.js",
+    "imports": [
+      "index.html"
+    ],
+    "isDynamicEntry": true
+  },
+  "_DeleteOutlined-e85ccc9f.js": {
+    "file": "assets/DeleteOutlined-e85ccc9f.js",
+    "imports": [
+      "index.html"
+    ]
+  },
+  "_EditOutlined-996586ab.js": {
+    "file": "assets/EditOutlined-996586ab.js",
+    "imports": [
+      "index.html"
+    ]
+  },
+  "_PlusOutlined-5ea3486f.js": {
+    "file": "assets/PlusOutlined-5ea3486f.js",
+    "imports": [
+      "index.html"
+    ]
+  },
+  "_Table-2f9958f1.js": {
+    "file": "assets/Table-2f9958f1.js",
+    "imports": [
+      "index.html",
+      "_index-756ea820.js"
+    ]
+  },
+  "_index-2b04c7ca.js": {
+    "file": "assets/index-2b04c7ca.js",
+    "imports": [
+      "index.html"
+    ]
+  },
+  "_index-756ea820.js": {
+    "file": "assets/index-756ea820.js",
+    "imports": [
+      "index.html"
+    ]
+  },
+  "_index-7934c754.js": {
+    "css": [
+      "assets/index-7fac03a1.css"
+    ],
+    "file": "assets/index-7934c754.js",
+    "imports": [
+      "index.html"
+    ]
+  },
+  "_index-880b2d3d.js": {
+    "css": [
+      "assets/index-2fe222bf.css"
+    ],
+    "file": "assets/index-880b2d3d.js",
+    "imports": [
+      "index.html",
+      "_PlusOutlined-5ea3486f.js"
+    ]
+  },
+  "_index-9313d934.js": {
+    "file": "assets/index-9313d934.js",
+    "imports": [
+      "index.html"
+    ]
+  },
+  "_menu-f44ca379.js": {
+    "file": "assets/menu-f44ca379.js",
+    "imports": [
+      "index.html"
+    ]
+  },
+  "_user-b0fdf8d8.js": {
+    "file": "assets/user-b0fdf8d8.js",
+    "imports": [
+      "index.html"
+    ]
+  },
+  "index.css": {
+    "file": "assets/index-2fe222bf.css",
+    "src": "index.css"
+  },
+  "index.html": {
+    "css": [
+      "assets/index-fe961e3c.css"
+    ],
+    "dynamicImports": [
+      "src/views/About/index.tsx",
+      "src/views/Calendar/eventList.tsx",
+      "src/views/Calendar/index.tsx",
+      "_Box-d24c1e4f.js",
+      "src/views/ChatGPT/index.tsx",
+      "src/views/Home/index.tsx",
+      "src/views/Logs/index.tsx",
+      "src/views/Staging/Live/index.tsx",
+      "src/views/Staging/index.tsx",
+      "src/views/User/Manage/editUser.tsx",
+      "src/views/User/Manage/index.tsx",
+      "src/views/User/Menu/index.tsx",
+      "src/views/User/Pos/editMenu.tsx",
+      "src/views/User/Pos/editPos.tsx",
+      "src/views/User/Pos/index.tsx",
+      "src/views/User/Role/index.tsx",
+      "src/views/User/UserPos/AddPos.tsx",
+      "src/views/User/UserPos/AddUser.tsx",
+      "src/views/User/UserPos/EditUser.tsx",
+      "src/views/User/UserPos/index.tsx",
+      "src/views/User/index.tsx"
+    ],
+    "file": "assets/index-096d81ea.js",
+    "isEntry": true,
+    "src": "index.html"
+  },
+  "src/views/About/index.tsx": {
+    "file": "assets/index-50c25e3d.js",
+    "imports": [
+      "index.html",
+      "_index-880b2d3d.js",
+      "_PlusOutlined-5ea3486f.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/About/index.tsx"
+  },
+  "src/views/Calendar/eventList.tsx": {
+    "file": "assets/eventList-5e6731aa.js",
+    "imports": [
+      "index.html",
+      "_index-7934c754.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/Calendar/eventList.tsx"
+  },
+  "src/views/Calendar/index.css": {
+    "file": "assets/index-aec3f0c1.css",
+    "src": "src/views/Calendar/index.css"
+  },
+  "src/views/Calendar/index.tsx": {
+    "css": [
+      "assets/index-aec3f0c1.css"
+    ],
+    "file": "assets/index-c964a9d4.js",
+    "imports": [
+      "index.html",
+      "_index-880b2d3d.js",
+      "_index-7934c754.js",
+      "_PlusOutlined-5ea3486f.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/Calendar/index.tsx"
+  },
+  "src/views/ChatGPT/index.css": {
+    "file": "assets/index-099d6529.css",
+    "src": "src/views/ChatGPT/index.css"
+  },
+  "src/views/ChatGPT/index.tsx": {
+    "css": [
+      "assets/index-099d6529.css"
+    ],
+    "file": "assets/index-eedd4346.js",
+    "imports": [
+      "index.html",
+      "_index-880b2d3d.js",
+      "_Box-d24c1e4f.js",
+      "_PlusOutlined-5ea3486f.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/ChatGPT/index.tsx"
+  },
+  "src/views/Home/index.css": {
+    "file": "assets/index-9fce50e6.css",
+    "src": "src/views/Home/index.css"
+  },
+  "src/views/Home/index.tsx": {
+    "css": [
+      "assets/index-9fce50e6.css"
+    ],
+    "file": "assets/index-d1436284.js",
+    "imports": [
+      "index.html",
+      "_index-880b2d3d.js",
+      "_PlusOutlined-5ea3486f.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/Home/index.tsx"
+  },
+  "src/views/Logs/index.css": {
+    "file": "assets/index-cbf9e153.css",
+    "src": "src/views/Logs/index.css"
+  },
+  "src/views/Logs/index.tsx": {
+    "css": [
+      "assets/index-cbf9e153.css"
+    ],
+    "file": "assets/index-69433ca7.js",
+    "imports": [
+      "index.html",
+      "_index-880b2d3d.js",
+      "_PlusOutlined-5ea3486f.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/Logs/index.tsx"
+  },
+  "src/views/Staging/Live/index.css": {
+    "file": "assets/index-a5e2210e.css",
+    "src": "src/views/Staging/Live/index.css"
+  },
+  "src/views/Staging/Live/index.tsx": {
+    "css": [
+      "assets/index-a5e2210e.css"
+    ],
+    "file": "assets/index-bce4e722.js",
+    "imports": [
+      "index.html",
+      "_index-880b2d3d.js",
+      "_index-9313d934.js",
+      "_PlusOutlined-5ea3486f.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/Staging/Live/index.tsx"
+  },
+  "src/views/Staging/index.tsx": {
+    "file": "assets/index-63f8b9fe.js",
+    "imports": [
+      "index.html"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/Staging/index.tsx"
+  },
+  "src/views/User/Manage/editUser.tsx": {
+    "file": "assets/editUser-52fe9f43.js",
+    "imports": [
+      "index.html",
+      "_user-b0fdf8d8.js",
+      "_DeleteOutlined-e85ccc9f.js",
+      "_PlusOutlined-5ea3486f.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/User/Manage/editUser.tsx"
+  },
+  "src/views/User/Manage/index.tsx": {
+    "file": "assets/index-28f93b18.js",
+    "imports": [
+      "index.html",
+      "_index-880b2d3d.js",
+      "_user-b0fdf8d8.js",
+      "src/views/User/Manage/editUser.tsx",
+      "_Table-2f9958f1.js",
+      "_EditOutlined-996586ab.js",
+      "_DeleteOutlined-e85ccc9f.js",
+      "_PlusOutlined-5ea3486f.js",
+      "_index-756ea820.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/User/Manage/index.tsx"
+  },
+  "src/views/User/Menu/index.tsx": {
+    "file": "assets/index-749ae6ec.js",
+    "imports": [
+      "index.html",
+      "_index-880b2d3d.js",
+      "_Table-2f9958f1.js",
+      "_EditOutlined-996586ab.js",
+      "_DeleteOutlined-e85ccc9f.js",
+      "_PlusOutlined-5ea3486f.js",
+      "_index-756ea820.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/User/Menu/index.tsx"
+  },
+  "src/views/User/Pos/editMenu.tsx": {
+    "file": "assets/editMenu-b47e9775.js",
+    "imports": [
+      "index.html",
+      "_menu-f44ca379.js",
+      "_index-756ea820.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/User/Pos/editMenu.tsx"
+  },
+  "src/views/User/Pos/editPos.tsx": {
+    "file": "assets/editPos-799f0862.js",
+    "imports": [
+      "index.html",
+      "_index-756ea820.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/User/Pos/editPos.tsx"
+  },
+  "src/views/User/Pos/index.tsx": {
+    "file": "assets/index-3f7dbf04.js",
+    "imports": [
+      "index.html",
+      "_index-880b2d3d.js",
+      "_Table-2f9958f1.js",
+      "_menu-f44ca379.js",
+      "src/views/User/Pos/editMenu.tsx",
+      "src/views/User/Pos/editPos.tsx",
+      "_EditOutlined-996586ab.js",
+      "_DeleteOutlined-e85ccc9f.js",
+      "_PlusOutlined-5ea3486f.js",
+      "_index-756ea820.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/User/Pos/index.tsx"
+  },
+  "src/views/User/Role/index.css": {
+    "file": "assets/index-0c4f099c.css",
+    "src": "src/views/User/Role/index.css"
+  },
+  "src/views/User/Role/index.tsx": {
+    "css": [
+      "assets/index-0c4f099c.css"
+    ],
+    "file": "assets/index-696f763c.js",
+    "imports": [
+      "index.html",
+      "_index-880b2d3d.js",
+      "_Table-2f9958f1.js",
+      "_menu-f44ca379.js",
+      "_index-756ea820.js",
+      "_EditOutlined-996586ab.js",
+      "_DeleteOutlined-e85ccc9f.js",
+      "_PlusOutlined-5ea3486f.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/User/Role/index.tsx"
+  },
+  "src/views/User/UserPos/AddPos.tsx": {
+    "file": "assets/AddPos-1bb4ad04.js",
+    "imports": [
+      "index.html",
+      "_menu-f44ca379.js",
+      "_user-b0fdf8d8.js",
+      "_index-2b04c7ca.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/User/UserPos/AddPos.tsx"
+  },
+  "src/views/User/UserPos/AddUser.tsx": {
+    "file": "assets/AddUser-b868e407.js",
+    "imports": [
+      "index.html",
+      "_user-b0fdf8d8.js",
+      "_index-2b04c7ca.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/User/UserPos/AddUser.tsx"
+  },
+  "src/views/User/UserPos/EditUser.tsx": {
+    "file": "assets/EditUser-850ad8cd.js",
+    "imports": [
+      "index.html",
+      "_user-b0fdf8d8.js",
+      "src/views/User/UserPos/AddPos.tsx",
+      "_Table-2f9958f1.js",
+      "_index-9313d934.js",
+      "_DeleteOutlined-e85ccc9f.js",
+      "_menu-f44ca379.js",
+      "_index-2b04c7ca.js",
+      "_index-756ea820.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/User/UserPos/EditUser.tsx"
+  },
+  "src/views/User/UserPos/index.tsx": {
+    "file": "assets/index-a1a0a97c.js",
+    "imports": [
+      "index.html",
+      "_index-880b2d3d.js",
+      "src/views/User/UserPos/AddUser.tsx",
+      "src/views/User/UserPos/EditUser.tsx",
+      "_Table-2f9958f1.js",
+      "_user-b0fdf8d8.js",
+      "_EditOutlined-996586ab.js",
+      "_DeleteOutlined-e85ccc9f.js",
+      "_PlusOutlined-5ea3486f.js",
+      "_index-2b04c7ca.js",
+      "src/views/User/UserPos/AddPos.tsx",
+      "_menu-f44ca379.js",
+      "_index-9313d934.js",
+      "_index-756ea820.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/User/UserPos/index.tsx"
+  },
+  "src/views/User/index.tsx": {
+    "file": "assets/index-0036861b.js",
+    "imports": [
+      "index.html"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/User/index.tsx"
+  }
+}
