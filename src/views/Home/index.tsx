@@ -14,21 +14,21 @@ const Home = memo(() => {
       <div className="card-layout">
         <div className="card-box">
           <motion.div layoutId={'1'} onClick={() => setSelectedId('1')}>
-            <Card title="Card 1" bordered={false} style={{ width: 300 }}>
+            <Card title="访问量" bordered={false} style={{ width: 300 }}>
               <p>Card content</p>
               <p>Card content</p>
               <p>Card content</p>
             </Card>
           </motion.div>
           <motion.div layoutId={'2'} onClick={() => setSelectedId('2')}>
-            <Card title="Card 2" bordered={false} style={{ width: 300 }}>
+            <Card title="直播数据" bordered={false} style={{ width: 300 }}>
               <p>Card content</p>
               <p>Card content</p>
               <p>Card content</p>
             </Card>
           </motion.div>
           <motion.div layoutId={'3'} onClick={() => setSelectedId('3')}>
-            <Card title="Card 3" bordered={false} style={{ width: 300 }}>
+            <Card title="收益数据" bordered={false} style={{ width: 300 }}>
               <p>Card content</p>
               <p>Card content</p>
               <p>Card content</p>
