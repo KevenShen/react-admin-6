@@ -8,7 +8,7 @@
 
 - web 项目地址 ☞ https://jiuxiangyangguang.github.io/react-admin/
 - 由于服务器到期后台服务可能无法访问 ☠
-- web 项目登录需要用户名:yonghu1,密码:123456
+- web 项目登录需要用户名:admin,密码:123456
 
 ### 二、Git 仓库地址
 
@@ -23,7 +23,7 @@
 
 - ✨ 采用最新技术找开发：react18 recoil(原子化状态管理) vite4.0 Ts react-router-domV6 Antd5
 - ✨ 采用 最新 Vite4.0 转为打包工具,配置了 Svg 自动引入,less 解析,Postcss 兼容
-- ✨ 摒弃繁琐的 Redux,使用最新 react 下一代状态管理工具 recoil,原子化管理将状态与业务分离回归状态管理的本质
+- ✨ 摒弃繁琐的 Redux使用最新 react 下一代状态管理工具 recoil,原子化管理状态与业务分离回归状态管理的本质
 - ✨ 使用最新版 react-router-domV6,实现动态路由,面包屑,导航栏,支持路由切换动画
 - ✨ 目前完善了权限管理系统 菜单=>角色=>岗位=>权限,用户对应多岗位
 - ✨ 以日历形式支持任务清单,支持拖拽
@@ -51,14 +51,10 @@ git https://github.com/jiuxiangyangguang/react-admin.git
 git checkout dev
 ```
 
-- 安装依赖 (推荐使用 yarn)
+- 安装依赖 (推荐使用 pnpm或者yarn)
 
 ```bash
-yarn
-```
-
-```bash
-npm i
+pnpm i 
 ```
 
 - 运行项目(使用main 分支时需要先启动[后台项目](https://github.com/jiuxiangyangguang/nestJs)不然无法登录,后台服务依赖于Redis,MySQL,建议使用Dockery拉取镜像以体验完整功能)
@@ -92,9 +88,13 @@ yarn build
       build: .
       image: traveldocker1/node
       ports:
+      ports:
         - '1152:1103'
+        - '8887:8887'
+        - '1935:1935'
       depends_on:
         - mysql
+        - redis
     admin:
       image: traveldocker1/admin:latest
       ports:
@@ -120,13 +120,13 @@ yarn build
     db_data:
   
   ```
-
+  
   - 运行容器
 
   ```bash
   docker-compose up
   ```
-
+  
   
 
 ### 五、项目截图
@@ -147,3 +147,6 @@ yarn build
 
 ![](mdimg/202310091012526.png)
 
+- 工作台直播页面
+
+![image-20231101141511717](mdimg/image-20231101141511717.png)
