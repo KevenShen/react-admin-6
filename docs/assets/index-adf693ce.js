@@ -1,1 +1,0 @@
-import{b2 as e,d as t,b3 as o,j as a,b4 as n,b5 as r}from"./index-62c827a7.js";function c(){console.log("User 渲染");const s=e();return t(o,{children:[s.pathname==="/user"&&a(n,{to:"/user/manage"}),a(r,{})]})}export{c as default};
