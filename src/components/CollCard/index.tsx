@@ -1,4 +1,3 @@
-import { SettingOutlined } from '@ant-design/icons'
 import { Collapse } from 'antd'
 const { Panel } = Collapse
 import './index.less'
@@ -10,7 +9,8 @@ const CollCard = (props: { title: any; children: any; className?: any; style?: a
       defaultActiveKey={[title]}
       expandIconPosition="end"
       className={'collcard ' + className}
-      style={style}>
+      style={style}
+    >
       <Panel key={title} header={title}>
         {children}
       </Panel>

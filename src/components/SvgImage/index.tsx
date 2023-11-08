@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react'
-import { ReactSVG } from 'react-svg'
 import './index.less'
 import '@/styles/font/iconfont'
 interface Props {
@@ -29,7 +27,8 @@ const SvgImage = ({ name, size = '14px', fill = '#000', className }: Props) => {
         fontSize: '20px'
       }}
       className={'icon ' + className}
-      aria-hidden="true">
+      aria-hidden="true"
+    >
       <use xlinkHref={`#${name}`}></use>
     </svg>
   )

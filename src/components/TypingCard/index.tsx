@@ -1,6 +1,8 @@
-import { useRef, useEffect } from 'react'
-import { Card } from 'antd'
+import { menuTip } from '@/store/Module/com'
 import Typing from '@/utils/typing'
+import { Card } from 'antd'
+import { useEffect, useRef } from 'react'
+import { useRecoilValue } from 'recoil'
 import './index.less'
 
 const Panl = (props: { title: any; source: any; children: any; className?: any }) => {
@@ -8,7 +10,7 @@ const Panl = (props: { title: any; source: any; children: any; className?: any }
 
   const sourceEl = useRef()
   const outputEl = useRef()
-
+  const menuTipValue = useRecoilValue(menuTip)
   useEffect(() => {
     const typing = new Typing({
       source: sourceEl.current,
@@ -19,14 +21,16 @@ const Panl = (props: { title: any; source: any; children: any; className?: any }
   }, [])
   return (
     <div className="card-wrapper">
-      <Card bordered={false} className="card-item" title={title}>
-        <div
-          style={{ display: 'none' }}
-          ref={sourceEl}
-          dangerouslySetInnerHTML={{ __html: source }}
-        />
-        <div ref={outputEl} />
-      </Card>
+      {menuTipValue && (
+        <Card bordered={false} className="card-item" title={title}>
+          <div
+            style={{ display: 'none' }}
+            ref={sourceEl}
+            dangerouslySetInnerHTML={{ __html: source }}
+          />
+          <div ref={outputEl} />
+        </Card>
+      )}
       <div className={className} style={{ flex: 1 }}>
         {children}
       </div>

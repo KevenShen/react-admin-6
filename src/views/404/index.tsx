@@ -1,6 +1,4 @@
-import Panl from '@/components/TypingCard'
 import './index.less'
-import error from '@/assets/images/error-404.png'
 import { useNavigate } from 'react-router-dom'
 
 const Error = () => {

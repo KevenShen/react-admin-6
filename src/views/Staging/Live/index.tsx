@@ -142,13 +142,15 @@ const Live = () => {
             <Popconfirm
               title="关闭直播"
               description="确定关闭直播吗?"
-              icon={<QuestionCircleOutlined style={{ color: 'red' }} />}>
+              icon={<QuestionCircleOutlined style={{ color: 'red' }} />}
+            >
               <Button
                 style={{ marginTop: '10px' }}
                 block
                 type="dashed"
                 danger
-                icon={<PoweroffOutlined />}>
+                icon={<PoweroffOutlined />}
+              >
                 关闭直播
               </Button>
             </Popconfirm>

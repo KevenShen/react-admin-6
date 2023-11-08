@@ -1,1 +1,23 @@
-.collcard{background-color:#fff;color:#000;border:none;margin-bottom:10px;box-shadow:0 1px 2px #00000008,0 1px 6px -1px #00000005,0 2px 4px #00000005}.collcard .ant-collapse-item{border-bottom:none}.collcard .ant-collapse-content{border-top:1px solid #f0f0f0}.collcard .ant-collapse-header-text{display:inline-block;flex:1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;color:#000000e0;font-weight:600;font-size:16px}
+.collcard {
+  background-color: #fff;
+  color: #000;
+  border: none;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 2px #00000008, 0 1px 6px -1px #00000005, 0 2px 4px #00000005;
+}
+.collcard .ant-collapse-item {
+  border-bottom: none;
+}
+.collcard .ant-collapse-content {
+  border-top: 1px solid #f0f0f0;
+}
+.collcard .ant-collapse-header-text {
+  display: inline-block;
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #000000e0;
+  font-weight: 600;
+  font-size: 16px;
+}

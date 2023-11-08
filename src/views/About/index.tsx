@@ -1,4 +1,3 @@
-import { getLogdetail } from '@/api/logs'
 import Panl from '@/components/TypingCard'
 
 const About = () => {

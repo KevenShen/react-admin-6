@@ -1,4 +1,4 @@
-import { AutoComplete, Form, Input, Modal, Select, Upload, message } from 'antd'
+import { AutoComplete, Form, Modal } from 'antd'
 import { forwardRef, useEffect, useImperativeHandle, useState } from 'react'
 import { posAll } from '@/api/menu'
 import { addUserPos } from '@/api/user'
@@ -66,18 +66,21 @@ const AddPos = (props, ref) => {
       destroyOnClose
       getContainer={false}
       confirmLoading={confirmLoading}
-      onCancel={handleCancel}>
+      onCancel={handleCancel}
+    >
       <Form
         form={form}
         style={{ padding: '10px 60px 10px 0' }}
         labelCol={{ span: 6 }}
         name="basic"
         initialValues={{ remember: true }}
-        autoComplete="off">
+        autoComplete="off"
+      >
         <Form.Item
           label="选择岗位"
           name="username"
-          rules={[{ required: true, message: 'Please input your username!' }]}>
+          rules={[{ required: true, message: 'Please input your username!' }]}
+        >
           <AutoComplete
             options={options}
             onSelect={onSelect}

@@ -2,7 +2,7 @@ import { Button, Checkbox, Form, Input, Select } from 'antd'
 import { getMenuById, getPosList, userLogin } from '@/api/login'
 import './index.less'
 import { useSetRecoilState } from 'recoil'
-import { menu, token, userInfo, router } from '@/store/Module/user'
+import { menu, token, userInfo } from '@/store/Module/user'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { LoginUser } from '@/Type'
@@ -56,7 +56,8 @@ function Login() {
         initialValues={{ remember: true }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
-        autoComplete="off">
+        autoComplete="off"
+      >
         <Form.Item name="username" rules={[{ required: true, message: '请输入用户名!' }]}>
           <Input placeholder="用户名" onChange={onChange} />
         </Form.Item>

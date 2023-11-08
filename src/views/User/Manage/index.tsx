@@ -1,8 +1,8 @@
-import Panl from '@/components/TypingCard'
-import { Avatar, Button, Space, Table, TablePaginationConfig } from 'antd'
-import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
-import { useEffect, useRef, useState } from 'react'
 import { getUserList } from '@/api/user'
+import Panl from '@/components/TypingCard'
+import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
+import { Button, Space, Table, TablePaginationConfig } from 'antd'
+import { useEffect, useRef, useState } from 'react'
 import Edituser from './editUser'
 const { Column } = Table
 const cardContent =
@@ -65,7 +65,8 @@ const Manage = () => {
             showTotal: (total) => `共 ${total} 条`,
             showSizeChanger: true
           }}
-          rowKey={(record) => record.id}>
+          rowKey={(record) => record.id}
+        >
           <Column title="用户名称" dataIndex="username" key="username" />
           <Column title="用户昵称" dataIndex="nickname" key="nickname" />
           <Column

@@ -1,5 +1,4 @@
 // 全局状态  用户自定义状态等
-import { Router, User } from '@/Type'
 import { SizeType } from 'antd/es/config-provider/SizeContext'
 import { atom } from 'recoil'
 import { recoilPersist } from 'recoil-persist'
@@ -75,6 +74,12 @@ export const fullScreen = atom<boolean>({
 // 搜索
 export const search = atom<boolean>({
   key: 'search',
+  default: true,
+  effects_UNSTABLE: [persistAtom]
+})
+// 搜索
+export const menuTip = atom<boolean>({
+  key: 'menuTip',
   default: true,
   effects_UNSTABLE: [persistAtom]
 })

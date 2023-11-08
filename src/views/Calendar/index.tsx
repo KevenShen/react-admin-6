@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
   EventApi,
   DateSelectArg,
@@ -15,7 +15,7 @@ import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import './index.less'
 import Panl from '@/components/TypingCard'
-import { Color, TaskList } from '@/Type'
+import { Color } from '@/Type'
 import CollCard from '@/components/CollCard'
 import { useRecoilState } from 'recoil'
 import { calendar } from '@/store/Module/user'
@@ -158,7 +158,8 @@ const Calendar = () => {
           width: '100%',
           borderRadius: '3px',
           color: '#fff'
-        }}>
+        }}
+      >
         <b>{eventContent.timeText}</b>
         &nbsp;
         <i>{eventContent.event.title}</i>
@@ -211,7 +212,8 @@ const Calendar = () => {
                   onClick={() => colorClick(item)}
                   key={item.name}
                   className="son"
-                  style={{ backgroundColor: item.color }}></p>
+                  style={{ backgroundColor: item.color }}
+                ></p>
               )
             })}
           </div>

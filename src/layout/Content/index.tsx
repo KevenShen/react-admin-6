@@ -19,18 +19,21 @@ const Contents = () => {
         style={{
           flex: 1,
           overflowY: 'scroll'
-        }}>
+        }}
+      >
         <CSSTransition
           timeout={300}
           key={location.pathname}
           mountOnEnter
           unmountOnExit
-          classNames={ant}>
+          classNames={ant}
+        >
           <Content
             style={{
               padding: '16px',
               height: '100%'
-            }}>
+            }}
+          >
             <KeepAlive saveScrollPosition={false} name={location.pathname}>
               {current}
             </KeepAlive>

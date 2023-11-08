@@ -1,11 +1,9 @@
-import { ConfigProvider, Layout, Tabs, theme } from 'antd'
+import { ConfigProvider, Layout } from 'antd'
 import Sider from './Sider'
 import Content from './Content'
 import Header from './Header'
-import Tags from './Tags'
 import { useRecoilValue } from 'recoil'
 import { btnSize, thColor } from '@/store/Module/com'
-import { useFullScreenHandle } from 'react-full-screen'
 import { FullScreenBox } from '@/components/FullScreenBox'
 
 const App: React.FC = () => {

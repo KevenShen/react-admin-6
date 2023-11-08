@@ -1,4 +1,4 @@
-import { useEffect, memo } from 'react'
+import { useEffect } from 'react'
 import { Chart } from '@antv/g2'
 
 const AntVOne = () => {

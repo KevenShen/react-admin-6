@@ -27,7 +27,8 @@ function Box() {
               className={
                 'message prose text-slate break-words ' + (item.role === 'user' ? 'left' : 'right')
               }
-              dangerouslySetInnerHTML={{ __html: item.content }}></div>
+              dangerouslySetInnerHTML={{ __html: item.content }}
+            ></div>
             {item.role === 'user' ? <img style={{ marginLeft: '10px' }} src={userImg} /> : ''}
           </div>
         )

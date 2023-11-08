@@ -1,6 +1,6 @@
 import Panl from '@/components/TypingCard'
 import { Input } from 'antd'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilState } from 'recoil'
 import './index.less'
 import Box from './Box'
 import { chatGPTMes } from '@/store/Module/chatGPT'

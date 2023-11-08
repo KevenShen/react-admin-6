@@ -1,11 +1,11 @@
+import { getMenu, getRole } from '@/api/login'
+import { editmenu, getmenu } from '@/api/menu'
 import Panl from '@/components/TypingCard'
-import { getRole, getMenu, updateRole } from '@/api/login'
+import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
 import { Button, Col, Row, Space, Table, Tree } from 'antd'
 import Column from 'antd/es/table/Column'
 import { Key, useEffect, useState } from 'react'
-import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 import './index.less'
-import { editmenu, getmenu } from '@/api/menu'
 const Role = () => {
   console.log('Role 渲染')
 
@@ -79,7 +79,8 @@ const Role = () => {
                 setRowValue([record.id])
               }
             })}
-            rowKey={(record) => record.id}>
+            rowKey={(record) => record.id}
+          >
             <Column title="角色名称" dataIndex="name" key="name" />
             <Column title="角色代码" dataIndex="code" key="code" />
             <Column title="角色等级" dataIndex="level" key="level" />

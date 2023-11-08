@@ -1,11 +1,10 @@
 import Panl from '@/components/TypingCard'
-import { getRole, getMenu } from '@/api/login'
-import { Button, Col, Row, Space, Table, Tree } from 'antd'
+import { Button, Space, Table } from 'antd'
 import Column from 'antd/es/table/Column'
 import { useEffect, useRef, useState } from 'react'
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 import './index.less'
-import { editmenu, getmenu, posAll } from '@/api/menu'
+import { posAll } from '@/api/menu'
 import EditMenu from './editMenu'
 import EditPos from './editPos'
 const Role = () => {

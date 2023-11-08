@@ -1,6 +1,5 @@
 import { Mes } from '@/Type'
 import { atom, selector } from 'recoil'
-import getGPT from '@/api/chatgpt'
 import MarkdownIt from 'markdown-it'
 import mdKatex from 'markdown-it-katex'
 import mdHighlight from 'markdown-it-highlightjs'

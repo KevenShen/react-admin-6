@@ -1,7 +1,6 @@
 import Panl from '@/components/TypingCard'
-import { Radio, Select, Space } from 'antd'
+import { Radio, Select } from 'antd'
 import { useEffect, useState } from 'react'
-import { SmileTwoTone } from '@ant-design/icons'
 import './index.less'
 import { getLogList } from '@/api/logs'
 import TextArea from 'antd/es/input/TextArea'

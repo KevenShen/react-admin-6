@@ -1,9 +1,7 @@
 import Panl from '@/components/TypingCard'
-import { token, userInfo } from '@/store/Module/user'
-import { useEffect, useState } from 'react'
-import { useRecoilValue, useRecoilState } from 'recoil'
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Button, Card } from 'antd'
+import { Card } from 'antd'
 import './index.less'
 import { CloseCircleOutlined } from '@ant-design/icons'
 import AntVOne from './components/AntVOne'
@@ -49,7 +47,8 @@ const Home = () => {
                     />
                   }
                   bordered={false}
-                  style={{ width: 400 }}>
+                  style={{ width: 400 }}
+                >
                   <p>{selectedId}</p>
                 </Card>
               </motion.div>

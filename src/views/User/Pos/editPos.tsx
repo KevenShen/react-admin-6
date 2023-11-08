@@ -50,7 +50,8 @@ const editPos = (props, ref) => {
       getContainer={false}
       confirmLoading={confirmLoading}
       destroyOnClose
-      onCancel={handleCancel}>
+      onCancel={handleCancel}
+    >
       <Tree
         checkable
         blockNode

@@ -2,20 +2,18 @@ import { Avatar, Breadcrumb, Drawer, Layout, Modal, Popover, Space, theme } from
 import React, { useContext, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import {
-  CommentOutlined,
   CompressOutlined,
   BulbOutlined,
   SearchOutlined,
   DashboardOutlined,
   ExpandOutlined
 } from '@ant-design/icons'
-import { useRecoilState, useRecoilValue } from 'recoil'
-import { useFullScreenHandle } from 'react-full-screen'
+import { useRecoilValue } from 'recoil'
 import { menu as m, userInfo } from '@/store/Module/user'
 import SvgImage from '@/components/SvgImage'
 const { Header } = Layout
 import './index.less'
-import { collapsed, fullScreen, navShow, navType, search, tipBtn } from '@/store/Module/com'
+import { fullScreen, navShow, navType, search, tipBtn } from '@/store/Module/com'
 import { Router } from '@/Type'
 import Config from '@/components/Config'
 import Logo from '../Sider/Logo'
@@ -116,7 +114,8 @@ const Headers: React.FC = () => {
           </Space>
         }
         onClose={() => setConfig(false)}
-        open={config}>
+        open={config}
+      >
         <Config></Config>
       </Drawer>
       {/* 搜索模态框 */}

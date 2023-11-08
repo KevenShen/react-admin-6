@@ -1,6 +1,6 @@
-import { Button, Form, Modal, Popconfirm, Space, Table } from 'antd'
+import { Button, Modal, Popconfirm, Space, Table } from 'antd'
 import { forwardRef, useImperativeHandle, useRef, useState } from 'react'
-import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
+import { DeleteOutlined } from '@ant-design/icons'
 import { delUserPos } from '@/api/user'
 import AddPos from './AddPos'
 const { Column } = Table
@@ -47,7 +47,8 @@ const EditUser = (props, ref) => {
       confirmLoading={confirmLoading}
       getContainer={false}
       destroyOnClose
-      onCancel={handleCancel}>
+      onCancel={handleCancel}
+    >
       <Space wrap>
         <Button type="primary" onClick={() => addPos.current?.showModal()} className="btn-pink">
           新增
@@ -68,7 +69,8 @@ const EditUser = (props, ref) => {
                 title="是否确定删除该岗位?"
                 onConfirm={() => delPos(record)}
                 okText="确定"
-                cancelText="取消">
+                cancelText="取消"
+              >
                 <Button type="primary" danger shape="circle" icon={<DeleteOutlined />} />
               </Popconfirm>
             </Space>
