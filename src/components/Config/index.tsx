@@ -65,8 +65,7 @@ const Config = () => {
               optionType="button"
               buttonStyle="solid"
               defaultValue={btnSizeValue}
-              onChange={(value) => setbtnSize(value.target.value)}
-            >
+              onChange={(value) => setbtnSize(value.target.value)}>
               <Radio.Button value="large">大</Radio.Button>
               <Radio.Button value="middle">默认</Radio.Button>
               <Radio.Button value="small">小</Radio.Button>
@@ -79,8 +78,7 @@ const Config = () => {
             <Radio.Group
               optionType="button"
               buttonStyle="solid"
-              onChange={(value) => setthColor(value.target.value)}
-            >
+              onChange={(value) => setthColor(value.target.value)}>
               <Radio style={{ backgroundColor: '#ff7588' }} value="#ff7588"></Radio>
               <Radio style={{ backgroundColor: '#16d39a' }} value="#16d39a"></Radio>
               <Radio style={{ backgroundColor: '#2196f3' }} value="#2196f3"></Radio>
@@ -99,8 +97,7 @@ const Config = () => {
                 style={{ backgroundColor: '#fff', color: '#000' }}
                 onClick={() => {
                   setthColor(picColor), setPicker(false)
-                }}
-              >
+                }}>
                 应用
               </Radio>
             </Radio.Group>
@@ -179,8 +176,7 @@ const Config = () => {
             color={picColor}
             onChange={(value) => {
               setPicColor(value.hex)
-            }}
-          ></SketchPicker>
+            }}></SketchPicker>
         )}
       </div>
       {/* 分享 */}
@@ -189,8 +185,7 @@ const Config = () => {
         onOpenChange={() => setopen(false)}
         content={share}
         title={title}
-        trigger="click"
-      >
+        trigger="click">
         <Button type="primary" block onClick={setFx}>
           分享配置
         </Button>

@@ -65,8 +65,7 @@ const Manage = () => {
             showTotal: (total) => `共 ${total} 条`,
             showSizeChanger: true
           }}
-          rowKey={(record) => record.id}
-        >
+          rowKey={(record) => record.id}>
           <Column title="用户名称" dataIndex="username" key="username" />
           <Column title="用户昵称" dataIndex="nickname" key="nickname" />
           <Column

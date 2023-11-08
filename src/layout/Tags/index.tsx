@@ -70,19 +70,16 @@ const Tags = () => {
               <div
                 className="tabs-nav-box ant-tabs"
                 key={item.pathname + item.state}
-                onClick={() => navigate(item.pathname)}
-              >
+                onClick={() => navigate(item.pathname)}>
                 <div
                   className={
                     (isActive(item.pathname) ? 'ant-tabs-tab-active' : '') + '  ant-tabs-tab'
-                  }
-                >
+                  }>
                   {item.icon && (
                     <SvgImage
                       name={item.icon}
                       size="14px"
-                      fill={activeKey === item.pathname ? '#1677ff' : '#000'}
-                    ></SvgImage>
+                      fill={activeKey === item.pathname ? '#1677ff' : '#000'}></SvgImage>
                   )}
                   <span className="ant-tabs-tab-btn">{item.name}</span>
                   {item.pathname !== '/home' && (

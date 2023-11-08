@@ -114,8 +114,7 @@ const Headers: React.FC = () => {
           </Space>
         }
         onClose={() => setConfig(false)}
-        open={config}
-      >
+        open={config}>
         <Config></Config>
       </Drawer>
       {/* 搜索模态框 */}

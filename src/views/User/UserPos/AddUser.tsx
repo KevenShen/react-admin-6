@@ -59,21 +59,18 @@ const AddUser = (props, ref) => {
       destroyOnClose
       getContainer={false}
       confirmLoading={confirmLoading}
-      onCancel={handleCancel}
-    >
+      onCancel={handleCancel}>
       <Form
         form={form}
         style={{ padding: '10px 60px 10px 0' }}
         labelCol={{ span: 6 }}
         name="basic"
         initialValues={{ remember: true }}
-        autoComplete="off"
-      >
+        autoComplete="off">
         <Form.Item
           label="选择用户"
           name="username"
-          rules={[{ required: true, message: 'Please input your username!' }]}
-        >
+          rules={[{ required: true, message: 'Please input your username!' }]}>
           <AutoComplete
             options={options}
             onSelect={onSelect}
@@ -85,8 +82,7 @@ const AddUser = (props, ref) => {
         <Form.Item
           label="用户昵称"
           name="nickname"
-          rules={[{ required: true, message: 'Please input your nickname!' }]}
-        >
+          rules={[{ required: true, message: 'Please input your nickname!' }]}>
           <Input autoComplete="off" />
         </Form.Item>
       </Form>

@@ -51,8 +51,7 @@ const Menus = ({ className }) => {
       defaultOpenKeys={openKeys}
       selectedKeys={openKeys}
       onClick={onClick}
-      items={menus}
-    ></Menu>
+      items={menus}></Menu>
   )
 }
 

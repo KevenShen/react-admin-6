@@ -130,35 +130,30 @@ const Edituser = (props, ref) => {
       confirmLoading={confirmLoading}
       destroyOnClose
       getContainer={false}
-      onCancel={handleCancel}
-    >
+      onCancel={handleCancel}>
       <Form
         form={form}
         style={{ padding: '10px 60px 10px 0' }}
         labelCol={{ span: 6 }}
         name="basic"
         initialValues={{ remember: true }}
-        autoComplete="off"
-      >
+        autoComplete="off">
         <Form.Item
           label="用户名称"
           name="username"
-          rules={[{ required: true, message: 'Please input your username!' }]}
-        >
+          rules={[{ required: true, message: 'Please input your username!' }]}>
           <Input autoComplete="off" />
         </Form.Item>
         <Form.Item
           label="用户昵称"
           name="nickname"
-          rules={[{ required: true, message: 'Please input your nickname!' }]}
-        >
+          rules={[{ required: true, message: 'Please input your nickname!' }]}>
           <Input autoComplete="off" />
         </Form.Item>
         <Form.Item
           label="用户密码"
           name="password"
-          rules={[{ required: true, message: 'Please input your password!' }]}
-        >
+          rules={[{ required: true, message: 'Please input your password!' }]}>
           <Input.Password autoComplete="off" />
         </Form.Item>
         <Form.Item
@@ -166,15 +161,13 @@ const Edituser = (props, ref) => {
           name="avatar"
           valuePropName="fileList"
           getValueFromEvent={normFile}
-          rules={[{ required: false, message: 'Please input your avatar!' }]}
-        >
+          rules={[{ required: false, message: 'Please input your avatar!' }]}>
           <Upload
             name="avatar"
             listType="picture-card"
             className="avatar-uploader"
             showUploadList={false}
-            beforeUpload={beforeUpload}
-          >
+            beforeUpload={beforeUpload}>
             {imageUrl ? (
               <img src={imageUrl} alt="avatar" style={{ width: '100%', height: '100%' }} />
             ) : (

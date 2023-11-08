@@ -47,8 +47,7 @@ const Home = () => {
                     />
                   }
                   bordered={false}
-                  style={{ width: 400 }}
-                >
+                  style={{ width: 400 }}>
                   <p>{selectedId}</p>
                 </Card>
               </motion.div>

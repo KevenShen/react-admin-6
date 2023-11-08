@@ -79,8 +79,7 @@ const Role = () => {
                 setRowValue([record.id])
               }
             })}
-            rowKey={(record) => record.id}
-          >
+            rowKey={(record) => record.id}>
             <Column title="角色名称" dataIndex="name" key="name" />
             <Column title="角色代码" dataIndex="code" key="code" />
             <Column title="角色等级" dataIndex="level" key="level" />

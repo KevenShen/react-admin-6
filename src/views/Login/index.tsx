@@ -56,8 +56,7 @@ function Login() {
         initialValues={{ remember: true }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
-        autoComplete="off"
-      >
+        autoComplete="off">
         <Form.Item name="username" rules={[{ required: true, message: '请输入用户名!' }]}>
           <Input placeholder="用户名" onChange={onChange} />
         </Form.Item>

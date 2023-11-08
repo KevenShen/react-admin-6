@@ -158,8 +158,7 @@ const Calendar = () => {
           width: '100%',
           borderRadius: '3px',
           color: '#fff'
-        }}
-      >
+        }}>
         <b>{eventContent.timeText}</b>
         &nbsp;
         <i>{eventContent.event.title}</i>
@@ -212,8 +211,7 @@ const Calendar = () => {
                   onClick={() => colorClick(item)}
                   key={item.name}
                   className="son"
-                  style={{ backgroundColor: item.color }}
-                ></p>
+                  style={{ backgroundColor: item.color }}></p>
               )
             })}
           </div>
