@@ -1,23 +1,23 @@
 import Panl from '@/components/TypingCard'
 import { token, userInfo } from '@/store/Module/user'
-import { memo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRecoilValue, useRecoilState } from 'recoil'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button, Card } from 'antd'
 import './index.less'
 import { CloseCircleOutlined } from '@ant-design/icons'
+import AntVOne from './components/AntVOne'
 
-const Home = memo(() => {
+const Home = () => {
   const [selectedId, setSelectedId] = useState('')
+
   return (
     <Panl title="主页" source={'主页可以作为您的工作台'}>
       <div className="card-layout">
         <div className="card-box">
           <motion.div layoutId={'1'} onClick={() => setSelectedId('1')}>
-            <Card title="访问量" bordered={false} style={{ width: 300 }}>
-              <p>Card content</p>
-              <p>Card content</p>
-              <p>Card content</p>
+            <Card title="数据展示" bordered={false}>
+              <AntVOne></AntVOne>
             </Card>
           </motion.div>
           <motion.div layoutId={'2'} onClick={() => setSelectedId('2')}>
@@ -56,9 +56,10 @@ const Home = memo(() => {
             </div>
           )}
         </AnimatePresence>
+        {selectedId && <div className="mask-f"></div>}
       </div>
     </Panl>
   )
-})
+}
 
 export default Home

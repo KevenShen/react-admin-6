@@ -1,6 +1,8 @@
 .card-layout {
   position: relative;
+  height: 100%;
   .card-box {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     .ant-card {
@@ -11,11 +13,19 @@
   .mask-card-box {
     position: absolute;
     z-index: 10000;
+    top: 30%;
+    left: 50%;
+    width: 40%;
+    transform: translate(-50%, -50%);
+  }
+  .mask-f {
+    position: absolute;
+    z-index: 1;
     top: 0;
     left: 0;
-    display: flex;
     width: 100%;
     height: 100%;
-    display: flex;
+    background: #fff;
+    opacity: 0.8;
   }
 }

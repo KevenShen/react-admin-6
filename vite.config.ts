@@ -31,16 +31,7 @@ export default defineConfig({
         javascriptEnabled: true
       }
     },
-    postcss: {
-      plugins: [
-        postcssPreseEnv({
-          stage: 4,
-          features: {
-            'nesting-rules': true
-          }
-        })
-      ]
-    }
+    postcss: './postcss.config.js'
   },
   resolve: {
     //设置路径别名
