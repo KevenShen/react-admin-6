@@ -18,7 +18,8 @@
     "format": "prettier --write .",
     "lint": "eslint src --ext .ts,.tsx,.js,.jsx --fix",
     "server": "cd ../nestJs && yarn start:dev",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "pre-commit": "lint-staged"
   },
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
@@ -113,7 +114,8 @@
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx}": [
-      "eslint --fix",
+      "prettier --write",
+      "eslint --cache --fix",
       "git add"
     ]
   }
