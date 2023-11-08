@@ -1,24 +1,24 @@
+import { Router } from '@/Type'
+import Config from '@/components/Config'
+import { Box } from '@/components/FullScreenBox'
+import SvgImage from '@/components/SvgImage'
+import { fullScreen, navShow, navType, search, tipBtn } from '@/store/Module/com'
+import { menu as m, userInfo } from '@/store/Module/user'
+import {
+  BulbOutlined,
+  CompressOutlined,
+  DashboardOutlined,
+  ExpandOutlined,
+  SearchOutlined
+} from '@ant-design/icons'
 import { Avatar, Breadcrumb, Drawer, Layout, Modal, Popover, Space, theme } from 'antd'
 import React, { useContext, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import {
-  CompressOutlined,
-  BulbOutlined,
-  SearchOutlined,
-  DashboardOutlined,
-  ExpandOutlined
-} from '@ant-design/icons'
 import { useRecoilValue } from 'recoil'
-import { menu as m, userInfo } from '@/store/Module/user'
-import SvgImage from '@/components/SvgImage'
-const { Header } = Layout
-import './index.less'
-import { fullScreen, navShow, navType, search, tipBtn } from '@/store/Module/com'
-import { Router } from '@/Type'
-import Config from '@/components/Config'
 import Logo from '../Sider/Logo'
 import Tags from '../Tags'
-import { Box } from '@/components/FullScreenBox'
+import './index.less'
+const { Header } = Layout
 
 const asyncUrl = (arr: Array<Router>) => {
   let urlObj: Record<string, string> = {}
@@ -79,7 +79,7 @@ const Headers: React.FC = () => {
 
   return (
     <Header style={{ padding: 0, background: colorBgContainer }}>
-      <div className="logo">{true ? <Logo /> : null}</div>
+      <div className="logo">{<Logo />}</div>
 
       <div className="nav-user">
         {nav === 'nav' && isNav ? <Breadcrumb items={breadcrumbItems} /> : <div />}

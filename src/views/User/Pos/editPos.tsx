@@ -1,10 +1,10 @@
+import { getMenu, getMenuById } from '@/api/login'
 import { Form, Modal, Tree } from 'antd'
 import { forwardRef, memo, useEffect, useImperativeHandle, useState } from 'react'
-import { getMenu, getMenuById } from '@/api/login'
 const filtermenuId = (arr) => {
   return arr.map((item) => item.id)
 }
-const editPos = (props, ref) => {
+const EditPos = (props, ref) => {
   // console.log('编辑弹窗刷新')
   const [form] = Form.useForm()
   const [open, setOpen] = useState(false)
@@ -63,4 +63,4 @@ const editPos = (props, ref) => {
   )
 }
 
-export default memo(forwardRef(editPos)) // 必须使用forwardRef包裹组件才能暴露方法
+export default memo(forwardRef(EditPos)) // 必须使用forwardRef包裹组件才能暴露方法

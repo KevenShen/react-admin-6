@@ -17,13 +17,7 @@ const AddUser = (props, ref) => {
   }))
 
   // 弹窗按钮提交表单
-  const handleOk = async () => {
-    try {
-    } catch (errorInfo) {
-      // 验证失败
-      console.log('Failed:', errorInfo)
-    }
-  }
+  const handleOk = async () => {}
 
   useDebounce(value, 1000, async () => {
     const { data } = await getUserNameList({
@@ -42,6 +36,7 @@ const AddUser = (props, ref) => {
 
   const onSelect = (data: string, option) => {
     setValue(option.label)
+
     form.setFieldValue('userId', option.id)
     console.log(form.getFieldsValue(), option.id)
   }

@@ -1,5 +1,5 @@
-import { useEffect } from 'react'
 import { Chart } from '@antv/g2'
+import { useEffect } from 'react'
 
 const AntVOne = () => {
   useEffect(() => {
