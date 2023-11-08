@@ -12,13 +12,15 @@ const Panl = (props: { title: any; source: any; children: any; className?: any }
   const outputEl = useRef()
   const menuTipValue = useRecoilValue(menuTip)
   useEffect(() => {
-    const typing = new Typing({
-      source: sourceEl.current,
-      output: outputEl.current,
-      delay: 30
-    })
-    typing.start()
-  }, [])
+    if (menuTipValue) {
+      const typing = new Typing({
+        source: sourceEl.current,
+        output: outputEl.current,
+        delay: 30
+      })
+      typing.start()
+    }
+  }, [menuTipValue])
   return (
     <div className="card-wrapper">
       {menuTipValue && (
