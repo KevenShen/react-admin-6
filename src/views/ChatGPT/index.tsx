@@ -1,12 +1,12 @@
-import Panl from '@/components/TypingCard'
-import { Input } from 'antd'
-import { useRecoilState } from 'recoil'
-import './index.less'
-import Box from './Box'
-import { chatGPTMes } from '@/store/Module/chatGPT'
 import { Mes } from '@/Type'
-import { useRef, useState } from 'react'
 import getGPT from '@/api/chatgpt'
+import Panl from '@/components/Panl'
+import { chatGPTMes } from '@/store/Module/chatGPT'
+import { Input } from 'antd'
+import { useRef, useState } from 'react'
+import { useRecoilState } from 'recoil'
+import Box from './Box'
+import './index.less'
 const { Search } = Input
 
 function ChatGPT() {

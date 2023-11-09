@@ -1,9 +1,9 @@
 import { getMenu } from '@/api/login'
-import Panl from '@/components/TypingCard'
+import Panl from '@/components/Panl'
+import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
 import { Button, Space, Table } from 'antd'
 import Column from 'antd/es/table/Column'
 import { useEffect, useRef, useState } from 'react'
-import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 
 const Menu = () => {
   console.log('Menu 渲染')

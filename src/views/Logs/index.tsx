@@ -1,9 +1,9 @@
-import Panl from '@/components/TypingCard'
+import { getLogList } from '@/api/logs'
+import Panl from '@/components/Panl'
 import { Radio, Select } from 'antd'
+import TextArea from 'antd/es/input/TextArea'
 import { useEffect, useState } from 'react'
 import './index.less'
-import { getLogList } from '@/api/logs'
-import TextArea from 'antd/es/input/TextArea'
 const Logs = () => {
   const [value, setvalue] = useState('access')
   const [list, setlist] = useState([])

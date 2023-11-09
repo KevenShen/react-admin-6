@@ -1,6 +1,6 @@
 import { getMenu, getRole } from '@/api/login'
 import { editmenu, getmenu } from '@/api/menu'
-import Panl from '@/components/TypingCard'
+import Panl from '@/components/Panl'
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
 import { Button, Col, Row, Space, Table, Tree } from 'antd'
 import Column from 'antd/es/table/Column'

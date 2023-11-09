@@ -1,12 +1,12 @@
-import Panl from '@/components/TypingCard'
-import { useEffect, useRef, useState } from 'react'
-import { Button, Card, Input, Popconfirm, Segmented, Space, Tabs, TabsProps, message } from 'antd'
-import './index.less'
-import ReactPlayer from 'react-player'
-import flvjs from 'flv.js'
-import { PoweroffOutlined, QuestionCircleOutlined } from '@ant-design/icons'
 import { getlivelist } from '@/api/live'
+import Panl from '@/components/Panl'
+import { PoweroffOutlined, QuestionCircleOutlined } from '@ant-design/icons'
+import { Button, Card, Input, Popconfirm, Segmented, Space, Tabs, TabsProps, message } from 'antd'
+import flvjs from 'flv.js'
 import Hls from 'hls.js'
+import { useEffect, useRef, useState } from 'react'
+import ReactPlayer from 'react-player'
+import './index.less'
 
 window.Hls = Hls
 const Live = () => {

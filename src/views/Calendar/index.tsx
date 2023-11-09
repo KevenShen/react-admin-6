@@ -1,24 +1,24 @@
-import { useEffect, useRef, useState } from 'react'
-import {
-  EventApi,
-  DateSelectArg,
-  EventClickArg,
-  EventContentArg,
-  EventChangeArg
-} from '@fullcalendar/core'
-import Sortable from 'sortablejs'
-import { Card, Input, InputRef } from 'antd'
-import zhLocale from '@fullcalendar/core/locales/zh-cn'
-import FullCalendar from '@fullcalendar/react'
-import dayGridPlugin from '@fullcalendar/daygrid'
-import timeGridPlugin from '@fullcalendar/timegrid'
-import interactionPlugin from '@fullcalendar/interaction'
-import './index.less'
-import Panl from '@/components/TypingCard'
 import { Color } from '@/Type'
 import CollCard from '@/components/CollCard'
-import { useRecoilState } from 'recoil'
+import Panl from '@/components/Panl'
 import { calendar } from '@/store/Module/user'
+import {
+  DateSelectArg,
+  EventApi,
+  EventChangeArg,
+  EventClickArg,
+  EventContentArg
+} from '@fullcalendar/core'
+import zhLocale from '@fullcalendar/core/locales/zh-cn'
+import dayGridPlugin from '@fullcalendar/daygrid'
+import interactionPlugin from '@fullcalendar/interaction'
+import FullCalendar from '@fullcalendar/react'
+import timeGridPlugin from '@fullcalendar/timegrid'
+import { Card, Input, InputRef } from 'antd'
+import { useEffect, useRef, useState } from 'react'
+import { useRecoilState } from 'recoil'
+import Sortable from 'sortablejs'
+import './index.less'
 
 const { Search } = Input
 

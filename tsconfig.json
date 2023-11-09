@@ -30,6 +30,6 @@
       "components/*": ["src/components/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "./auto-imports.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

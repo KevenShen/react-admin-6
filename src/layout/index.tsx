@@ -1,10 +1,10 @@
+import { FullScreenBox } from '@/components'
+import { btnSize, thColor } from '@/store/Module/com'
 import { ConfigProvider, Layout } from 'antd'
-import Sider from './Sider'
+import { useRecoilValue } from 'recoil'
 import Content from './Content'
 import Header from './Header'
-import { useRecoilValue } from 'recoil'
-import { btnSize, thColor } from '@/store/Module/com'
-import { FullScreenBox } from '@/components/FullScreenBox'
+import Sider from './Sider'
 
 const App: React.FC = () => {
   const bsize = useRecoilValue(btnSize)

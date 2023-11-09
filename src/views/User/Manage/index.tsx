@@ -1,5 +1,5 @@
 import { getUserList } from '@/api/user'
-import Panl from '@/components/TypingCard'
+import { Panl } from '@/components'
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
 import { Button, Space, Table, TablePaginationConfig } from 'antd'
 import { useEffect, useRef, useState } from 'react'
@@ -18,7 +18,6 @@ const Manage = () => {
     pageSize: 10
   })
   const getList = async (page: TablePaginationConfig = pagination) => {
-    console.log(page)
     setPagination(page)
     const { data } = await getUserList({
       param: {},

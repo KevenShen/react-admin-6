@@ -51,6 +51,7 @@
     "react-activation": "^0.12.4",
     "react-beautiful-dnd": "^13.1.1",
     "react-color": "^2.19.3",
+    "react-countup": "^6.5.0",
     "react-dom": "^18.2.0",
     "react-full-screen": "^1.1.1",
     "react-markdown": "^8.0.5",
@@ -102,6 +103,7 @@
     "prettier": "2.8.4",
     "react-transition-group": "^4.4.5",
     "typescript": "^5.0.2",
+    "unplugin-auto-import": "^0.16.7",
     "vite": "^4.4.5"
   },
   "eslintConfig": {

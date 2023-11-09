@@ -1,4 +1,4 @@
-import Panl from '@/components/TypingCard'
+import Panl from '@/components/Panl'
 
 const About = () => {
   console.log('about')

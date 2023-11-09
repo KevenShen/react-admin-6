@@ -1,12 +1,12 @@
-import Panl from '@/components/TypingCard'
+import { posAll } from '@/api/menu'
+import Panl from '@/components/Panl'
+import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
 import { Button, Space, Table } from 'antd'
 import Column from 'antd/es/table/Column'
 import { useEffect, useRef, useState } from 'react'
-import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
-import './index.less'
-import { posAll } from '@/api/menu'
 import EditMenu from './editMenu'
 import EditPos from './editPos'
+import './index.less'
 const Role = () => {
   console.log('岗位 渲染')
   const from = useRef(null)

@@ -1,13 +1,13 @@
-import Panl from '@/components/TypingCard'
-import AddUser from './AddUser'
-import EditUser from './EditUser'
+import { getUserPosList } from '@/api/user'
+import Panl from '@/components/Panl'
+import exportToExcel from '@/utils/exportExcel'
+import { DeleteOutlined, EditOutlined, VerticalAlignBottomOutlined } from '@ant-design/icons'
 import { Button, Space, Table } from 'antd'
 import Column from 'antd/es/table/Column'
 import { useEffect, useRef, useState } from 'react'
-import { EditOutlined, DeleteOutlined, VerticalAlignBottomOutlined } from '@ant-design/icons'
+import AddUser from './AddUser'
+import EditUser from './EditUser'
 import './index.less'
-import { getUserPosList } from '@/api/user'
-import exportToExcel from '@/utils/exportExcel'
 const Role = () => {
   console.log('用户岗位 渲染')
   const adduser = useRef<{ showModal: () => void } | null>(null)

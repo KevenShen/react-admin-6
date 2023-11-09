@@ -1,0 +1,6 @@
+export { default as CollCard } from './CollCard'
+export { default as Config } from './Config'
+export { default as CountUp } from './CountUp'
+export { default as FullScreenBox } from './FullScreenBox'
+export { default as Panl } from './Panl'
+export { default as SvgImage } from './SvgImage'
