@@ -54,8 +54,9 @@ export default defineConfig({
   },
   server: {
     port: 1102,
-    host: 'localhost',
+    host: '0.0.0.0',
     open: true,
+
     proxy: {
       // '/api': {
       //   target: 'http://116.62.37.172:1102/', // easymock
