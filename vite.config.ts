@@ -1,9 +1,8 @@
-import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { resolve } from 'path'
-import postcssPreseEnv from 'postcss-preset-env'
+import path, { resolve } from 'path'
+import AutoImport from 'unplugin-auto-import/vite' // 自动引入组件
+import { defineConfig } from 'vite'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
-import path from 'path'
 export default defineConfig({
   base: '',
   plugins: [
@@ -23,6 +22,20 @@ export default defineConfig({
        * @default: __svg__icons__dom__
        */
       customDomId: '__svg__icons__dom__'
+    }),
+    AutoImport({
+      imports: [
+        'react',
+        {
+          antd: ['Button', 'Layout', 'Card', 'Col', 'Row', 'Statistic', 'Carousel']
+        }
+      ],
+      dts: true,
+      eslintrc: {
+        enabled: true,
+        filepath: './.eslintrc-auto-import.json',
+        globalsPropValue: true
+      }
     })
   ],
   css: {
@@ -31,16 +44,7 @@ export default defineConfig({
         javascriptEnabled: true
       }
     },
-    postcss: {
-      plugins: [
-        postcssPreseEnv({
-          stage: 4,
-          features: {
-            'nesting-rules': true
-          }
-        })
-      ]
-    }
+    postcss: './postcss.config.js'
   },
   resolve: {
     //设置路径别名

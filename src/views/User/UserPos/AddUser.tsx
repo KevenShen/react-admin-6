@@ -1,8 +1,7 @@
-import { AutoComplete, Form, Input, Modal, Select, Upload, message } from 'antd'
-import { forwardRef, useImperativeHandle, useState } from 'react'
 import { getUserNameList } from '@/api/user'
-import { delay } from '@/utils/const'
 import useDebounce from '@/hooks/useDebounce'
+import { AutoComplete, Form, Input, Modal } from 'antd'
+import { forwardRef, useImperativeHandle, useState } from 'react'
 
 const AddUser = (props, ref) => {
   const [form] = Form.useForm()
@@ -18,13 +17,7 @@ const AddUser = (props, ref) => {
   }))
 
   // 弹窗按钮提交表单
-  const handleOk = async () => {
-    try {
-    } catch (errorInfo) {
-      // 验证失败
-      console.log('Failed:', errorInfo)
-    }
-  }
+  const handleOk = async () => {}
 
   useDebounce(value, 1000, async () => {
     const { data } = await getUserNameList({
@@ -43,6 +36,7 @@ const AddUser = (props, ref) => {
 
   const onSelect = (data: string, option) => {
     setValue(option.label)
+
     form.setFieldValue('userId', option.id)
     console.log(form.getFieldsValue(), option.id)
   }

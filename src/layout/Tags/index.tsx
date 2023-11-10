@@ -1,7 +1,6 @@
 import { LeftOutlined, RightOutlined, CloseOutlined } from '@ant-design/icons'
-import { Tabs } from 'antd'
 import './index.less'
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import useTab from '@/hooks/useTab'
 import { useLocation, useNavigate } from 'react-router-dom'
 import SvgImage from '@/components/SvgImage'

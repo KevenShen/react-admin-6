@@ -1,7 +1,6 @@
-import { Form, Input, Modal, Select, Upload, message } from 'antd'
+import { Form, Input, Modal, Upload, message } from 'antd'
 import { forwardRef, memo, useEffect, useImperativeHandle, useState } from 'react'
 import { sign, update } from '@/api/user'
-import type { SelectProps } from 'antd'
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons'
 import type { RcFile } from 'antd/es/upload/interface'
 import { upload } from '@/api/upload'

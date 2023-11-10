@@ -1,4 +1,4 @@
-import { AutoComplete, Form, Input, Modal, Select, Upload, message } from 'antd'
+import { AutoComplete, Form, Modal } from 'antd'
 import { forwardRef, useEffect, useImperativeHandle, useState } from 'react'
 import { posAll } from '@/api/menu'
 import { addUserPos } from '@/api/user'

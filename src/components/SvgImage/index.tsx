@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react'
-import { ReactSVG } from 'react-svg'
 import './index.less'
 import '@/styles/font/iconfont'
 interface Props {

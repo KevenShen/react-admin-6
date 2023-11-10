@@ -1,12 +1,10 @@
-import { ConfigProvider, Layout, Tabs, theme } from 'antd'
-import Sider from './Sider'
+import { FullScreenBox } from '@/components'
+import { btnSize, thColor } from '@/store/Module/com'
+import { ConfigProvider, Layout } from 'antd'
+import { useRecoilValue } from 'recoil'
 import Content from './Content'
 import Header from './Header'
-import Tags from './Tags'
-import { useRecoilValue } from 'recoil'
-import { btnSize, thColor } from '@/store/Module/com'
-import { useFullScreenHandle } from 'react-full-screen'
-import { FullScreenBox } from '@/components/FullScreenBox'
+import Sider from './Sider'
 
 const App: React.FC = () => {
   const bsize = useRecoilValue(btnSize)

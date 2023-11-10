@@ -1,4 +1,3 @@
-import { SettingOutlined } from '@ant-design/icons'
 import { Collapse } from 'antd'
 const { Panel } = Collapse
 import './index.less'

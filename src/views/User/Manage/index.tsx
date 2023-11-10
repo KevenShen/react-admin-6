@@ -1,8 +1,8 @@
-import Panl from '@/components/TypingCard'
-import { Avatar, Button, Space, Table, TablePaginationConfig } from 'antd'
-import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
-import { useEffect, useRef, useState } from 'react'
 import { getUserList } from '@/api/user'
+import { Panl } from '@/components'
+import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
+import { Button, Space, Table, TablePaginationConfig } from 'antd'
+import { useEffect, useRef, useState } from 'react'
 import Edituser from './editUser'
 const { Column } = Table
 const cardContent =
@@ -18,7 +18,6 @@ const Manage = () => {
     pageSize: 10
   })
   const getList = async (page: TablePaginationConfig = pagination) => {
-    console.log(page)
     setPagination(page)
     const { data } = await getUserList({
       param: {},

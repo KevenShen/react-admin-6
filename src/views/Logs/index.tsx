@@ -1,10 +1,9 @@
-import Panl from '@/components/TypingCard'
-import { Radio, Select, Space } from 'antd'
-import { useEffect, useState } from 'react'
-import { SmileTwoTone } from '@ant-design/icons'
-import './index.less'
 import { getLogList } from '@/api/logs'
+import Panl from '@/components/Panl'
+import { Radio, Select } from 'antd'
 import TextArea from 'antd/es/input/TextArea'
+import { useEffect, useState } from 'react'
+import './index.less'
 const Logs = () => {
   const [value, setvalue] = useState('access')
   const [list, setlist] = useState([])

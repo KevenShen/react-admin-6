@@ -1,18 +1,22 @@
-import Panl from '@/components/TypingCard'
-import './index.less'
-import error from '@/assets/images/error-404.png'
+import { Result } from 'antd'
 import { useNavigate } from 'react-router-dom'
+import './index.less'
 
 const Error = () => {
   const navigate = useNavigate()
 
   return (
     <div>
-      <p>404</p>
-      <p className="info">该页面不存在或与管理员联系配置权限</p>
-      <p className="jump" onClick={() => navigate('/login')}>
-        重新登录
-      </p>
+      <Result
+        status="404"
+        title="404"
+        subTitle="该页面不存在或与管理员联系配置权限"
+        extra={
+          <Button onClick={() => navigate('/home')} type="primary">
+            回到首页
+          </Button>
+        }
+      />
     </div>
   )
 }

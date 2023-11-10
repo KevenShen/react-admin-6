@@ -1,10 +1,9 @@
 import { createContext } from 'react'
-import { useFullScreenHandle, FullScreen } from 'react-full-screen'
+import { FullScreen, useFullScreenHandle } from 'react-full-screen'
 
 // 创建一个上下文
 export const Box = createContext(null)
-
-export const FullScreenBox = (props) => {
+const FullScreenBox = (props) => {
   const handle = useFullScreenHandle()
   const { children } = props
 
@@ -14,3 +13,5 @@ export const FullScreenBox = (props) => {
     </Box.Provider>
   )
 }
+
+export default FullScreenBox

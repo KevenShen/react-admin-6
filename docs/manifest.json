@@ -1,0 +1,437 @@
+{
+  "_Box-12b7fabd.js": {
+    "file": "assets/Box-12b7fabd.js",
+    "imports": [
+      "index.html"
+    ],
+    "isDynamicEntry": true
+  },
+  "_DeleteOutlined-1d08d034.js": {
+    "file": "assets/DeleteOutlined-1d08d034.js",
+    "imports": [
+      "index.html"
+    ]
+  },
+  "_EditOutlined-bd9f48f9.js": {
+    "file": "assets/EditOutlined-bd9f48f9.js",
+    "imports": [
+      "index.html"
+    ]
+  },
+  "_PlusOutlined-2216b065.js": {
+    "file": "assets/PlusOutlined-2216b065.js",
+    "imports": [
+      "index.html"
+    ]
+  },
+  "_Table-37fb6f07.js": {
+    "file": "assets/Table-37fb6f07.js",
+    "imports": [
+      "index.html",
+      "_index-a3a6dd08.js"
+    ]
+  },
+  "_index-42ac211f.js": {
+    "file": "assets/index-42ac211f.js",
+    "imports": [
+      "index.html",
+      "_PlusOutlined-2216b065.js"
+    ]
+  },
+  "_index-70e23365.js": {
+    "file": "assets/index-70e23365.js",
+    "imports": [
+      "index.html"
+    ]
+  },
+  "_index-7f1610c8.js": {
+    "file": "assets/index-7f1610c8.js",
+    "imports": [
+      "index.html"
+    ]
+  },
+  "_index-9ed70b9c.js": {
+    "file": "assets/index-9ed70b9c.js",
+    "imports": [
+      "index.html"
+    ]
+  },
+  "_index-a3a6dd08.js": {
+    "file": "assets/index-a3a6dd08.js",
+    "imports": [
+      "index.html"
+    ]
+  },
+  "_index-fc984a4e.js": {
+    "file": "assets/index-fc984a4e.js",
+    "imports": [
+      "index.html"
+    ]
+  },
+  "_menu-0bcc1d6d.js": {
+    "file": "assets/menu-0bcc1d6d.js",
+    "imports": [
+      "index.html"
+    ]
+  },
+  "_sortable.esm-0d19b1d3.js": {
+    "file": "assets/sortable.esm-0d19b1d3.js"
+  },
+  "_user-e3f0082f.js": {
+    "file": "assets/user-e3f0082f.js",
+    "imports": [
+      "index.html"
+    ]
+  },
+  "index.css": {
+    "file": "assets/index-115c9833.css",
+    "src": "index.css"
+  },
+  "index.html": {
+    "css": [
+      "assets/index-115c9833.css"
+    ],
+    "dynamicImports": [
+      "src/views/About/index.tsx",
+      "src/views/Calendar/eventList.tsx",
+      "src/views/Calendar/index.tsx",
+      "_Box-12b7fabd.js",
+      "src/views/ChatGPT/index.tsx",
+      "src/views/Home/components/AntTwo.tsx",
+      "src/views/Home/components/AntVOne.tsx",
+      "src/views/Home/components/DragM.tsx",
+      "src/views/Home/index.tsx",
+      "src/views/Logs/index.tsx",
+      "src/views/Staging/Live/index.tsx",
+      "src/views/Staging/index.tsx",
+      "src/views/User/Manage/editUser.tsx",
+      "src/views/User/Manage/index.tsx",
+      "src/views/User/Menu/index.tsx",
+      "src/views/User/Pos/editMenu.tsx",
+      "src/views/User/Pos/editPos.tsx",
+      "src/views/User/Pos/index.tsx",
+      "src/views/User/Role/index.tsx",
+      "src/views/User/UserPos/AddPos.tsx",
+      "src/views/User/UserPos/AddUser.tsx",
+      "src/views/User/UserPos/EditUser.tsx",
+      "src/views/User/UserPos/index.tsx",
+      "src/views/User/index.tsx"
+    ],
+    "file": "assets/index-893b5070.js",
+    "isEntry": true,
+    "src": "index.html"
+  },
+  "src/views/About/index.tsx": {
+    "file": "assets/index-ca3d2055.js",
+    "imports": [
+      "index.html",
+      "_index-42ac211f.js",
+      "_PlusOutlined-2216b065.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/About/index.tsx"
+  },
+  "src/views/Calendar/eventList.tsx": {
+    "file": "assets/eventList-be01cb7e.js",
+    "imports": [
+      "index.html",
+      "_index-9ed70b9c.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/Calendar/eventList.tsx"
+  },
+  "src/views/Calendar/index.css": {
+    "file": "assets/index-aec3f0c1.css",
+    "src": "src/views/Calendar/index.css"
+  },
+  "src/views/Calendar/index.tsx": {
+    "css": [
+      "assets/index-aec3f0c1.css"
+    ],
+    "file": "assets/index-44119512.js",
+    "imports": [
+      "index.html",
+      "_index-9ed70b9c.js",
+      "_index-42ac211f.js",
+      "_sortable.esm-0d19b1d3.js",
+      "_PlusOutlined-2216b065.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/Calendar/index.tsx"
+  },
+  "src/views/ChatGPT/index.css": {
+    "file": "assets/index-43b82a4a.css",
+    "src": "src/views/ChatGPT/index.css"
+  },
+  "src/views/ChatGPT/index.tsx": {
+    "css": [
+      "assets/index-43b82a4a.css"
+    ],
+    "file": "assets/index-b6276c02.js",
+    "imports": [
+      "index.html",
+      "_index-42ac211f.js",
+      "_Box-12b7fabd.js",
+      "_PlusOutlined-2216b065.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/ChatGPT/index.tsx"
+  },
+  "src/views/Home/components/AntTwo.tsx": {
+    "file": "assets/AntTwo-f582da0f.js",
+    "imports": [
+      "index.html",
+      "_index-70e23365.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/Home/components/AntTwo.tsx"
+  },
+  "src/views/Home/components/AntVOne.tsx": {
+    "file": "assets/AntVOne-35a5f339.js",
+    "imports": [
+      "index.html",
+      "_index-70e23365.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/Home/components/AntVOne.tsx"
+  },
+  "src/views/Home/components/DragM.tsx": {
+    "file": "assets/DragM-e20aba70.js",
+    "imports": [
+      "index.html",
+      "_sortable.esm-0d19b1d3.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/Home/components/DragM.tsx"
+  },
+  "src/views/Home/index.css": {
+    "file": "assets/index-66754870.css",
+    "src": "src/views/Home/index.css"
+  },
+  "src/views/Home/index.tsx": {
+    "css": [
+      "assets/index-66754870.css"
+    ],
+    "file": "assets/index-78bd53a0.js",
+    "imports": [
+      "index.html",
+      "_index-42ac211f.js",
+      "src/views/Home/components/AntTwo.tsx",
+      "src/views/Home/components/AntVOne.tsx",
+      "src/views/Home/components/DragM.tsx",
+      "_PlusOutlined-2216b065.js",
+      "_index-70e23365.js",
+      "_sortable.esm-0d19b1d3.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/Home/index.tsx"
+  },
+  "src/views/Logs/index.css": {
+    "file": "assets/index-cbf9e153.css",
+    "src": "src/views/Logs/index.css"
+  },
+  "src/views/Logs/index.tsx": {
+    "css": [
+      "assets/index-cbf9e153.css"
+    ],
+    "file": "assets/index-a6a9b37f.js",
+    "imports": [
+      "index.html",
+      "_index-42ac211f.js",
+      "_PlusOutlined-2216b065.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/Logs/index.tsx"
+  },
+  "src/views/Staging/Live/index.css": {
+    "file": "assets/index-a5e2210e.css",
+    "src": "src/views/Staging/Live/index.css"
+  },
+  "src/views/Staging/Live/index.tsx": {
+    "css": [
+      "assets/index-a5e2210e.css"
+    ],
+    "file": "assets/index-7773614c.js",
+    "imports": [
+      "index.html",
+      "_index-42ac211f.js",
+      "_index-7f1610c8.js",
+      "_PlusOutlined-2216b065.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/Staging/Live/index.tsx"
+  },
+  "src/views/Staging/index.tsx": {
+    "file": "assets/index-9abb436d.js",
+    "imports": [
+      "index.html"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/Staging/index.tsx"
+  },
+  "src/views/User/Manage/editUser.tsx": {
+    "file": "assets/editUser-65c6e835.js",
+    "imports": [
+      "index.html",
+      "_user-e3f0082f.js",
+      "_DeleteOutlined-1d08d034.js",
+      "_PlusOutlined-2216b065.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/User/Manage/editUser.tsx"
+  },
+  "src/views/User/Manage/index.tsx": {
+    "file": "assets/index-d4b2571b.js",
+    "imports": [
+      "index.html",
+      "_user-e3f0082f.js",
+      "_index-42ac211f.js",
+      "src/views/User/Manage/editUser.tsx",
+      "_Table-37fb6f07.js",
+      "_EditOutlined-bd9f48f9.js",
+      "_DeleteOutlined-1d08d034.js",
+      "_PlusOutlined-2216b065.js",
+      "_index-a3a6dd08.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/User/Manage/index.tsx"
+  },
+  "src/views/User/Menu/index.tsx": {
+    "file": "assets/index-9ac83241.js",
+    "imports": [
+      "index.html",
+      "_index-42ac211f.js",
+      "_Table-37fb6f07.js",
+      "_EditOutlined-bd9f48f9.js",
+      "_DeleteOutlined-1d08d034.js",
+      "_PlusOutlined-2216b065.js",
+      "_index-a3a6dd08.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/User/Menu/index.tsx"
+  },
+  "src/views/User/Pos/editMenu.tsx": {
+    "file": "assets/editMenu-3cb557f5.js",
+    "imports": [
+      "index.html",
+      "_menu-0bcc1d6d.js",
+      "_index-a3a6dd08.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/User/Pos/editMenu.tsx"
+  },
+  "src/views/User/Pos/editPos.tsx": {
+    "file": "assets/editPos-3c6022b1.js",
+    "imports": [
+      "index.html",
+      "_index-a3a6dd08.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/User/Pos/editPos.tsx"
+  },
+  "src/views/User/Pos/index.tsx": {
+    "file": "assets/index-84eabcbb.js",
+    "imports": [
+      "index.html",
+      "_menu-0bcc1d6d.js",
+      "_index-42ac211f.js",
+      "_Table-37fb6f07.js",
+      "src/views/User/Pos/editMenu.tsx",
+      "src/views/User/Pos/editPos.tsx",
+      "_EditOutlined-bd9f48f9.js",
+      "_DeleteOutlined-1d08d034.js",
+      "_PlusOutlined-2216b065.js",
+      "_index-a3a6dd08.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/User/Pos/index.tsx"
+  },
+  "src/views/User/Role/index.css": {
+    "file": "assets/index-3f9c9e86.css",
+    "src": "src/views/User/Role/index.css"
+  },
+  "src/views/User/Role/index.tsx": {
+    "css": [
+      "assets/index-3f9c9e86.css"
+    ],
+    "file": "assets/index-a0b7c39b.js",
+    "imports": [
+      "index.html",
+      "_menu-0bcc1d6d.js",
+      "_index-42ac211f.js",
+      "_Table-37fb6f07.js",
+      "_index-a3a6dd08.js",
+      "_EditOutlined-bd9f48f9.js",
+      "_DeleteOutlined-1d08d034.js",
+      "_PlusOutlined-2216b065.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/User/Role/index.tsx"
+  },
+  "src/views/User/UserPos/AddPos.tsx": {
+    "file": "assets/AddPos-b6b4b163.js",
+    "imports": [
+      "index.html",
+      "_menu-0bcc1d6d.js",
+      "_user-e3f0082f.js",
+      "_index-fc984a4e.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/User/UserPos/AddPos.tsx"
+  },
+  "src/views/User/UserPos/AddUser.tsx": {
+    "file": "assets/AddUser-c4be9030.js",
+    "imports": [
+      "index.html",
+      "_user-e3f0082f.js",
+      "_index-fc984a4e.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/User/UserPos/AddUser.tsx"
+  },
+  "src/views/User/UserPos/EditUser.tsx": {
+    "file": "assets/EditUser-5efd6b7f.js",
+    "imports": [
+      "index.html",
+      "_user-e3f0082f.js",
+      "src/views/User/UserPos/AddPos.tsx",
+      "_Table-37fb6f07.js",
+      "_index-7f1610c8.js",
+      "_DeleteOutlined-1d08d034.js",
+      "_menu-0bcc1d6d.js",
+      "_index-fc984a4e.js",
+      "_index-a3a6dd08.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/User/UserPos/EditUser.tsx"
+  },
+  "src/views/User/UserPos/index.tsx": {
+    "file": "assets/index-6f1f5a42.js",
+    "imports": [
+      "index.html",
+      "_user-e3f0082f.js",
+      "_index-42ac211f.js",
+      "_Table-37fb6f07.js",
+      "src/views/User/UserPos/AddUser.tsx",
+      "src/views/User/UserPos/EditUser.tsx",
+      "_EditOutlined-bd9f48f9.js",
+      "_DeleteOutlined-1d08d034.js",
+      "_PlusOutlined-2216b065.js",
+      "_index-a3a6dd08.js",
+      "_index-fc984a4e.js",
+      "src/views/User/UserPos/AddPos.tsx",
+      "_menu-0bcc1d6d.js",
+      "_index-7f1610c8.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/User/UserPos/index.tsx"
+  },
+  "src/views/User/index.tsx": {
+    "file": "assets/index-ebe7ce87.js",
+    "imports": [
+      "index.html"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/views/User/index.tsx"
+  }
+}

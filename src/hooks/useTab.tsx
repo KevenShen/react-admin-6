@@ -1,6 +1,6 @@
 import { menu } from '@/store/Module/user'
 import { useState, useEffect } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { useRecoilValue } from 'recoil'
 
 interface HistoryList {

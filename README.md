@@ -8,22 +8,21 @@
 
 - web 项目地址 ☞ https://jiuxiangyangguang.github.io/react-admin/
 - 由于服务器到期后台服务可能无法访问 ☠
-- web 项目登录需要用户名:yonghu1,密码:123456
+- web 项目登录需要用户名:admin,密码:123456
 
 ### 二、Git 仓库地址
 
 - web 项目 ☞ [jiuxiangyangguang/react-admin: react-后台管理项目 (github.com)](https://github.com/jiuxiangyangguang/react-admin)
 
-- 后台 nestJs ☞ [jiuxiangyangguang/nestJs (github.com)](https://github.com/jiuxiangyangguang/nestJs)  (依赖Redis,MySQL)
+- 后台 nestJs ☞ [jiuxiangyangguang/nestJs (github.com)](https://github.com/jiuxiangyangguang/nestJs) (依赖 Redis,MySQL)
 
-- docker部署  ☞ [docker部署详情](#docker)
-
+- docker 部署 ☞ [docker 部署详情](#docker)
 
 ### 三、项目简介
 
 - ✨ 采用最新技术找开发：react18 recoil(原子化状态管理) vite4.0 Ts react-router-domV6 Antd5
 - ✨ 采用 最新 Vite4.0 转为打包工具,配置了 Svg 自动引入,less 解析,Postcss 兼容
-- ✨ 摒弃繁琐的 Redux,使用最新 react 下一代状态管理工具 recoil,原子化管理将状态与业务分离回归状态管理的本质
+- ✨ 摒弃繁琐的 Redux 使用最新 react 下一代状态管理工具 recoil,原子化管理状态与业务分离回归状态管理的本质
 - ✨ 使用最新版 react-router-domV6,实现动态路由,面包屑,导航栏,支持路由切换动画
 - ✨ 目前完善了权限管理系统 菜单=>角色=>岗位=>权限,用户对应多岗位
 - ✨ 以日历形式支持任务清单,支持拖拽
@@ -51,17 +50,13 @@ git https://github.com/jiuxiangyangguang/react-admin.git
 git checkout dev
 ```
 
-- 安装依赖 (推荐使用 yarn)
+- 安装依赖 (推荐使用 pnpm 或者 yarn)
 
 ```bash
-yarn
+pnpm i
 ```
 
-```bash
-npm i
-```
-
-- 运行项目(使用main 分支时需要先启动[后台项目](https://github.com/jiuxiangyangguang/nestJs)不然无法登录,后台服务依赖于Redis,MySQL,建议使用Dockery拉取镜像以体验完整功能)
+- 运行项目(使用 main 分支时需要先启动[后台项目](https://github.com/jiuxiangyangguang/nestJs)不然无法登录,后台服务依赖于 Redis,MySQL,建议使用 Dockery 拉取镜像以体验完整功能)
 
 ```bash
 yarn dev
@@ -75,15 +70,15 @@ yarn build
 
 - 部署使用 docker 详情可见 package.json 文件 支持 gulpfile 一键部署到服务器
 
-- <a id="docker"></a>**Docker部署  可体验完整功能**
+- <a id="docker"></a>**Docker 部署 可体验完整功能**
 
 - 所需镜像列表
 
-  - `traveldocker1/node`  后台服务
-  - `traveldocker1/admin:latest`  前端服务
-  - `traveldocker1/mysql`  数据库服务  [初始化数据库sql](./test.sql)
-  - `traveldocker1/redis`  缓存服务   [redis配置](./redis.conf)
-  - 新建`docker-compose.yml`文件   
+  - `traveldocker1/node` 后台服务
+  - `traveldocker1/admin:latest` 前端服务
+  - `traveldocker1/mysql` 数据库服务 [初始化数据库 sql](./test.sql)
+  - `traveldocker1/redis` 缓存服务 [redis 配置](./redis.conf)
+  - 新建`docker-compose.yml`文件
 
   ```yaml
   version: '3'
@@ -92,9 +87,13 @@ yarn build
       build: .
       image: traveldocker1/node
       ports:
+      ports:
         - '1152:1103'
+        - '8887:8887'
+        - '1935:1935'
       depends_on:
         - mysql
+        - redis
     admin:
       image: traveldocker1/admin:latest
       ports:
@@ -115,10 +114,10 @@ yarn build
       command: redis-server /usr/local/etc/redis/redis.conf
       volumes:
         - ./redis.conf:/usr/local/etc/redis/redis.conf
-  
+
   volumes:
     db_data:
-  
+
   ```
 
   - 运行容器
@@ -126,8 +125,6 @@ yarn build
   ```bash
   docker-compose up
   ```
-
-  
 
 ### 五、项目截图
 
@@ -147,3 +144,6 @@ yarn build
 
 ![](mdimg/202310091012526.png)
 
+- 工作台直播页面
+
+![image-20231101141511717](mdimg/image-20231101141511717.png)
