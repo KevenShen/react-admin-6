@@ -61,13 +61,14 @@ const Calendar = () => {
   }, [dstDom])
   useEffect(() => {
     const sortable = document.getElementById('sortable')
-    new Sortable(sortable, {
-      animation: 150,
-      forceFallback: true,
-      fallbackClass: 'dragged-item',
-      onEnd: handleDragOnEnd,
-      onStart: handleDragOnStart
-    })
+    if (sortable)
+      new Sortable(sortable, {
+        animation: 150,
+        forceFallback: true,
+        fallbackClass: 'dragged-item',
+        onEnd: handleDragOnEnd,
+        onStart: handleDragOnStart
+      })
     colorClick(currentColor)
   }, [])
 
