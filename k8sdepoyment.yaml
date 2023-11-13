@@ -16,6 +16,7 @@ spec:
     spec:
       containers:
         - name: admin
-          image: traveldocker1/admin
+          image: admin
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 1102
