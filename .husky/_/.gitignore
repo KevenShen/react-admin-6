@@ -1,0 +1,9 @@
+
+node_modules
+docs
+*.tar
+dist
+dist-ssr
+*.local
+logs
+mdimg

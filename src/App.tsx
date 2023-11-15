@@ -1,5 +1,5 @@
-import '@/styles/index.less'
 import Router from '@/router'
+import '@/styles/index.less'
 import { RecoilRoot } from 'recoil'
 import Auth from './Auth'
 function App() {

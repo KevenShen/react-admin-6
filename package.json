@@ -56,7 +56,6 @@
     "react-full-screen": "^1.1.1",
     "react-markdown": "^8.0.5",
     "react-player": "^2.13.0",
-    "react-redux": "^8.0.5",
     "react-router-dom": "^6.3.0",
     "react-svg": "^16.1.7",
     "react-syntax-highlighter": "^15.5.0",
@@ -111,11 +110,6 @@
       "react-app",
       "react-app/jest"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx}": [
