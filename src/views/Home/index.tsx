@@ -27,7 +27,7 @@ const Home = () => {
                         title="昨收 (CNY)"
                         prefix={<PayCircleOutlined />}
                         valueStyle={{ color: '#cf1322' }}
-                        value={112893.0}
+                        value={1183.0}
                         precision={2}
                         formatter={CountUp}
                       />
