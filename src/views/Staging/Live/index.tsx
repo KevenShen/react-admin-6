@@ -6,6 +6,7 @@ import flvjs from 'flv.js'
 import Hls from 'hls.js'
 import { useEffect, useRef, useState } from 'react'
 import ReactPlayer from 'react-player'
+import Recorded from '../components/Recorded'
 import './index.less'
 
 window.Hls = Hls
@@ -30,7 +31,7 @@ const Live = () => {
     {
       key: '2',
       label: '录播',
-      children: 'Content of Tab Pane 2'
+      children: <Recorded></Recorded>
     },
     {
       key: '3',

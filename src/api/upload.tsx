@@ -7,3 +7,10 @@ export function upload(data) {
     data
   })
 }
+export function uploadChunk(formData) {
+  return request({
+    url: '/upload/uploadchunk',
+    method: 'post',
+    data: formData
+  })
+}
