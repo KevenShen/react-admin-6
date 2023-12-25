@@ -19,3 +19,27 @@ export const computeHash = (file: File): Promise<string> => {
     fileReader.readAsArrayBuffer(file)
   })
 }
+
+export const RequestQueue = (num) => {
+  const taskList = [] // 待执行任务数组
+  let curNum = 0 // 当前运行阀值
+
+  // 添加任务
+  const addTask = (fun) => {
+    taskList.push(fun)
+    runTask()
+  }
+
+  // 执行任务
+  const runTask = async () => {
+    if (curNum >= num || !taskList.length) return
+    curNum++
+    const fun = taskList.shift()
+    await fun()
+    curNum--
+    runTask()
+  }
+
+  return { addTask }
+}
+// 使用
