@@ -3,6 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "volta": {
+    "node": "20.10.0",
+    "pnpm": "8.13.1"
+  },
   "scripts": {
     "dev": "vite",
     "build:docker": "vite build && yarn copy && yarn push && yarn docker:build && yarn docker:admin && yarn gulp",
