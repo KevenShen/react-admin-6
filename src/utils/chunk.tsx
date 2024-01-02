@@ -35,7 +35,12 @@ export const RequestQueue = (num) => {
     if (curNum >= num || !taskList.length) return
     curNum++
     const fun = taskList.shift()
-    await fun()
+    try {
+      await fun()
+    } catch (error) {
+      console.error(error)
+      // handle error as you wish
+    }
     curNum--
     runTask()
   }
